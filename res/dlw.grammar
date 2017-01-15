@@ -13,9 +13,6 @@
     
         [t.numberState setFallbackState:t.symbolState from:'%' to:'%'];
         [t.numberState setFallbackState:t.symbolState from:'$' to:'$'];
-        
-        //    while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-
     }
 }
 
@@ -32,8 +29,8 @@ stmt
     | jumpoStmt
     ;
     
-addStmt     = 'add'! arg ','! arg ';'!;
-subStmt     = 'sub'! arg ','! arg ';'!;
+addStmt     = 'add'! arg ','! arg ','! arg ';'!;
+subStmt     = 'sub'! arg ','! arg ','! arg ';'!;
 
 loadStmt    = 'load'! arg ','! arg ';'!;
 saveStmt    = 'save'! arg ','! arg ';'!;

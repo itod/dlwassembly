@@ -90,7 +90,7 @@
 - (void)prog_ {
     
     while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-        [self stmt_]; 
+        [self stmt_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchProg:)];
@@ -127,6 +127,8 @@
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
+    [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
+    [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchAddStmt:)];
@@ -135,6 +137,8 @@
 - (void)subStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SUB discard:YES]; 
+    [self arg_]; 
+    [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
