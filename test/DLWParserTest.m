@@ -25,10 +25,10 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testAddInstruction {
     DLWParser *p = [[[DLWParser alloc] initWithDelegate:nil] autorelease];
     
-    NSString *str = @"add 1, 2";
+    NSString *str = @"add 1, 2;";
     
     NSError *err = nil;
     id res = [p parseString:str error:&err];
