@@ -9,11 +9,11 @@
         [t.numberState addPrefix:@"%" forRadix:2];
         [t.numberState addPrefix:@"$" forRadix:16];
     
-        [t setState:t.numberState from:'%' to:'%'];
-        [t setState:t.numberState from:'$' to:'$'];
+        [t setTokenizerState:t.numberState from:'%' to:'%'];
+        [t setTokenizerState:t.numberState from:'$' to:'$'];
     
-        [t.numberState setFallback:t.symbolState from:'%' to:'%'];
-        [t.numberState setFallback:t.symbolState from:'$' to:'$'];
+        [t.numberState setFallbackState:t.symbolState from:'%' to:'%'];
+        [t.numberState setFallbackState:t.symbolState from:'$' to:'$'];
     }
 }
 
@@ -36,15 +36,24 @@ subStmt     = 'sub'! arg ','! arg ';'!;
 loadStmt    = 'load'! arg ','! arg ';'!;
 saveStmt    = 'save'! arg ','! arg ';'!;
 
-jumpStmt    = 'jump'!  arg ';'!;
-jumpzStmt   = 'jumpz'! arg ';'!;
-jumpnStmt   = 'jumpn'! arg ';'!;
-jumpoStmt   = 'jumpo'! arg ';'!;
+jumpStmt    = 'jump'!  loc ';'!;
+jumpzStmt   = 'jumpz'! loc ';'!;
+jumpnStmt   = 'jumpn'! loc ';'!;
+jumpoStmt   = 'jumpo'! loc ';'!;
 
-arg = lit, reg, addr, ref, offset;
+arg 
+    = lit
+    | reg
+    | addr
+    | ref
+    | offset
+    ;
 
 lit = Number;
 reg = 'A' | 'B' | 'C' | 'D';
 addr = '#'! Number;
 ref = '#'! reg;
 offset = '#'! '('! reg '+'! lit ')'!;
+
+loc = arg | label;
+label = { islower([LS(1) characterAtIndex:0]) }? Word;

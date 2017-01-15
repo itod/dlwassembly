@@ -48,3 +48,4 @@ fastlane/screenshots
 # https://github.com/johnno1962/injectionforxcode
 iOSInjectionProject/
 lib/PEGKit
+lib/TDTemplateEngine

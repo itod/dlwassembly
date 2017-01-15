@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D36319B91E2C051C00E7916C /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36319AC1E2C04F300E7916C /* PEGKit.framework */; };
+		D36319C91E2C0D7E00E7916C /* DLWParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319C71E2C0D7E00E7916C /* DLWParser.h */; };
+		D36319CA1E2C0D7E00E7916C /* DLWParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319C81E2C0D7E00E7916C /* DLWParser.m */; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +65,27 @@
 			remoteGlobalIDString = D3F8A3DA175817DF00056188;
 			remoteInfo = PEGKit;
 		};
+		D36319C01E2C0B5700E7916C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D367DFB018E5EF6900F97BCC;
+			remoteInfo = TDTemplateEngine;
+		};
+		D36319C21E2C0B5700E7916C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3100CB91CE52E4F007B38BE;
+			remoteInfo = TDTemplateEngineiOS;
+		};
+		D36319C41E2C0B5700E7916C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D367DFC718E5EF6900F97BCC;
+			remoteInfo = TDTemplateEngineTests;
+		};
 		D38C06501E2C03CD00EB3EA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38C063C1E2C03CD00EB3EA5 /* Project object */;
@@ -74,6 +97,9 @@
 
 /* Begin PBXFileReference section */
 		D36319A21E2C04F300E7916C /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEGKit.xcodeproj; path = lib/PEGKit/PEGKit.xcodeproj; sourceTree = "<group>"; };
+		D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TDTemplateEngine.xcodeproj; path = lib/TDTemplateEngine/TDTemplateEngine.xcodeproj; sourceTree = "<group>"; };
+		D36319C71E2C0D7E00E7916C /* DLWParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLWParser.h; path = src/DLWParser.h; sourceTree = SOURCE_ROOT; };
+		D36319C81E2C0D7E00E7916C /* DLWParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWParser.m; path = src/DLWParser.m; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -115,10 +141,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D36319BB1E2C0B5700E7916C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D36319C11E2C0B5700E7916C /* TDTemplateEngine.framework */,
+				D36319C31E2C0B5700E7916C /* TDTemplateEngine.framework */,
+				D36319C51E2C0B5700E7916C /* TDTemplateEngineTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D36319C61E2C0D6C00E7916C /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D36319C71E2C0D7E00E7916C /* DLWParser.h */,
+				D36319C81E2C0D7E00E7916C /* DLWParser.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		D38C063B1E2C03CD00EB3EA5 = {
 			isa = PBXGroup;
 			children = (
 				D36319A21E2C04F300E7916C /* PEGKit.xcodeproj */,
+				D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */,
 				D38C06471E2C03CD00EB3EA5 /* Framework */,
 				D38C06521E2C03CD00EB3EA5 /* Test */,
 				D38C06461E2C03CD00EB3EA5 /* Products */,
@@ -138,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */,
+				D36319C61E2C0D6C00E7916C /* Parser */,
 				D38C06491E2C03CD00EB3EA5 /* Info.plist */,
 			);
 			name = Framework;
@@ -162,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */,
+				D36319C91E2C0D7E00E7916C /* DLWParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +287,10 @@
 					ProductGroup = D36319A31E2C04F300E7916C /* Products */;
 					ProjectRef = D36319A21E2C04F300E7916C /* PEGKit.xcodeproj */;
 				},
+				{
+					ProductGroup = D36319BB1E2C0B5700E7916C /* Products */;
+					ProjectRef = D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -291,6 +343,27 @@
 			remoteRef = D36319B51E2C04F300E7916C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D36319C11E2C0B5700E7916C /* TDTemplateEngine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TDTemplateEngine.framework;
+			remoteRef = D36319C01E2C0B5700E7916C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D36319C31E2C0B5700E7916C /* TDTemplateEngine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TDTemplateEngine.framework;
+			remoteRef = D36319C21E2C0B5700E7916C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D36319C51E2C0B5700E7916C /* TDTemplateEngineTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TDTemplateEngineTests.xctest;
+			remoteRef = D36319C41E2C0B5700E7916C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -315,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36319CA1E2C0D7E00E7916C /* DLWParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +424,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -379,7 +452,6 @@
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -400,7 +472,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -423,7 +494,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
