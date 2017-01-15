@@ -1,5 +1,5 @@
 //
-//  DLWAssemblyTests.m
+//  DLWParserTest.m
 //  DLWAssemblyTests
 //
 //  Created by Todd Ditchendorf on 15.01.17.
@@ -7,12 +7,13 @@
 //
 
 #import "DLWTestScaffold.h"
+#import "DLWParser.h"
 
-@interface DLWAssemblyTests : XCTestCase
+@interface DLWParserTest : XCTestCase
 
 @end
 
-@implementation DLWAssemblyTests
+@implementation DLWParserTest
 
 - (void)setUp {
     [super setUp];
@@ -25,15 +26,14 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    DLWParser *p = [[[DLWParser alloc] initWithDelegate:nil] autorelease];
+    
+    NSString *str = @"add 1, 2";
+    
+    NSError *err = nil;
+    id res = [p parseString:str error:&err];
+    TDNil(err);
+    TDNotNil(res);
 }
 
 @end

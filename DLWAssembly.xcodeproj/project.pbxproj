@@ -10,6 +10,7 @@
 		D36319B91E2C051C00E7916C /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36319AC1E2C04F300E7916C /* PEGKit.framework */; };
 		D36319C91E2C0D7E00E7916C /* DLWParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319C71E2C0D7E00E7916C /* DLWParser.h */; };
 		D36319CA1E2C0D7E00E7916C /* DLWParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319C81E2C0D7E00E7916C /* DLWParser.m */; };
+		D36319CE1E2C11E200E7916C /* DLWParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319CB1E2C103C00E7916C /* DLWParserTest.m */; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,6 +101,8 @@
 		D36319BA1E2C0B5700E7916C /* TDTemplateEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TDTemplateEngine.xcodeproj; path = lib/TDTemplateEngine/TDTemplateEngine.xcodeproj; sourceTree = "<group>"; };
 		D36319C71E2C0D7E00E7916C /* DLWParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLWParser.h; path = src/DLWParser.h; sourceTree = SOURCE_ROOT; };
 		D36319C81E2C0D7E00E7916C /* DLWParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWParser.m; path = src/DLWParser.m; sourceTree = SOURCE_ROOT; };
+		D36319CB1E2C103C00E7916C /* DLWParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWParserTest.m; path = test/DLWParserTest.m; sourceTree = SOURCE_ROOT; };
+		D36319CD1E2C10EB00E7916C /* DLWTestScaffold.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWTestScaffold.h; path = test/DLWTestScaffold.h; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -194,7 +197,9 @@
 		D38C06521E2C03CD00EB3EA5 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				D36319CD1E2C10EB00E7916C /* DLWTestScaffold.h */,
 				D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */,
+				D36319CB1E2C103C00E7916C /* DLWParserTest.m */,
 				D38C06551E2C03CD00EB3EA5 /* Info.plist */,
 			);
 			name = Test;
@@ -396,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36319CE1E2C11E200E7916C /* DLWParserTest.m in Sources */,
 				D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

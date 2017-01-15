@@ -5,7 +5,6 @@
     {
         t.numberState.allowsFloatingPoint = NO;
         t.numberState.allowsScientificNotation = NO;
-        [t.numberState removeSuffix:@"0x"];
         [t.numberState addPrefix:@"%" forRadix:2];
         [t.numberState addPrefix:@"$" forRadix:16];
     
