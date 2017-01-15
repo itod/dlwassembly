@@ -1,0 +1,50 @@
+@before {
+    PKTokenizer *t = self.tokenizer;
+
+    // Number State config
+    {
+        t.numberState.allowsFloatingPoint = NO;
+        t.numberState.allowsScientificNotation = NO;
+        [t.numberState removeSuffix:@"0x"];
+        [t.numberState addPrefix:@"%" forRadix:2];
+        [t.numberState addPrefix:@"$" forRadix:16];
+    
+        [t setState:t.numberState from:'%' to:'%'];
+        [t setState:t.numberState from:'$' to:'$'];
+    
+        [t.numberState setFallback:t.symbolState from:'%' to:'%'];
+        [t.numberState setFallback:t.symbolState from:'$' to:'$'];
+    }
+}
+
+prog = stmt*;
+
+stmt 
+    = addStmt 
+    | subStmt
+    | loadStmt
+    | saveStmt
+    | jumpStmt
+    | jumpzStmt
+    | jumpnStmt
+    | jumpoStmt
+    ;
+    
+addStmt     = 'add'! arg ','! arg ';'!;
+subStmt     = 'sub'! arg ','! arg ';'!;
+
+loadStmt    = 'load'! arg ','! arg ';'!;
+saveStmt    = 'save'! arg ','! arg ';'!;
+
+jumpStmt    = 'jump'!  arg ';'!;
+jumpzStmt   = 'jumpz'! arg ';'!;
+jumpnStmt   = 'jumpn'! arg ';'!;
+jumpoStmt   = 'jumpo'! arg ';'!;
+
+arg = lit, reg, addr, ref, offset;
+
+lit = Number;
+reg = 'A' | 'B' | 'C' | 'D';
+addr = '#'! Number;
+ref = '#'! reg;
+offset = '#'! '('! reg '+'! lit ')'!;
