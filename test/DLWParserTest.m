@@ -36,6 +36,10 @@
     NSArray *prog = [p parseString:str error:&err];
     TDNil(err);
     TDNotNil(prog);
+    TDTrue([prog isKindOfClass:[NSArray class]]);
+    
+    
+    
 
 //    DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
 //    DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];

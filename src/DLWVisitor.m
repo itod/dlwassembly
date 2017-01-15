@@ -33,7 +33,7 @@
 
 - (void)visit:(NSArray *)program {
     NSParameterAssert(program);
-    NSAssert(_context, @"");
+    TDAssert(_context);
     
 }
 

@@ -78,7 +78,10 @@
     
         [t.numberState setFallbackState:t.symbolState from:'%' to:'%'];
         [t.numberState setFallbackState:t.symbolState from:'$' to:'$'];
+        
     }
+
+    self.assembly.target = [NSMutableArray array];
 
     }];
 
@@ -90,7 +93,7 @@
 - (void)prog_ {
     
     while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-        [self stmt_];
+        [self stmt_]; 
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchProg:)];
@@ -123,7 +126,7 @@
 
 - (void)addStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_ADD discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_ADD discard:NO]; 
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
@@ -136,7 +139,7 @@
 
 - (void)subStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_SUB discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_SUB discard:NO]; 
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
@@ -149,7 +152,7 @@
 
 - (void)loadStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_LOAD discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_LOAD discard:NO]; 
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
@@ -160,7 +163,7 @@
 
 - (void)saveStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_SAVE discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_SAVE discard:NO]; 
     [self arg_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self arg_]; 
@@ -171,7 +174,7 @@
 
 - (void)jumpStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_JUMP discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_JUMP discard:NO]; 
     [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
@@ -180,7 +183,7 @@
 
 - (void)jumpzStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_JUMPZ discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_JUMPZ discard:NO]; 
     [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
@@ -189,7 +192,7 @@
 
 - (void)jumpnStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_JUMPN discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_JUMPN discard:NO]; 
     [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
@@ -198,7 +201,7 @@
 
 - (void)jumpoStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_JUMPO discard:YES]; 
+    [self match:DLWPARSER_TOKEN_KIND_JUMPO discard:NO]; 
     [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 

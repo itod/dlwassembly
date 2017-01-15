@@ -7,7 +7,12 @@
 //
 
 #import <PEGKit/PEGKit.h>
+#import <DLWAssembly/DLWContext.h>
+
+//@class DLWContext;
 
 @interface DLWExpression : PKAST
+
+- (ASWord)evaluateInContext:(DLWContext *)ctx;
 
 @end
