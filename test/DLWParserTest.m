@@ -8,6 +8,7 @@
 
 #import "DLWTestScaffold.h"
 #import "DLWParser.h"
+#import "DLWParserDelegate.h"
 
 @interface DLWParserTest : XCTestCase
 
@@ -26,14 +27,22 @@
 }
 
 - (void)testAddInstruction {
-    DLWParser *p = [[[DLWParser alloc] initWithDelegate:nil] autorelease];
+    id d = [[[DLWParserDelegate alloc] init] autorelease];
+    DLWParser *p = [[[DLWParser alloc] initWithDelegate:d] autorelease];
     
-    NSString *str = @"add 1, 2;";
+    NSString *str = @"add 1, 2, A;";
     
     NSError *err = nil;
-    id res = [p parseString:str error:&err];
+    NSArray *prog = [p parseString:str error:&err];
     TDNil(err);
-    TDNotNil(res);
+    TDNotNil(prog);
+
+    DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
+    DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
+    
+    [v visit:prog];
+    
+    TDEquals((ASWord)3, ctx.registerA);
 }
 
 @end

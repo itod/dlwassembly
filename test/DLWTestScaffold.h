@@ -22,6 +22,8 @@
 
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
+#import <DLWAssembly/DLWAssembly.h>
+#import <PEGKit/PEGKit.h>
 
 #define TDTrue(e) XCTAssertTrue((e), @"")
 #define TDFalse(e) XCTAssertFalse((e), @"")

@@ -13,6 +13,9 @@
     
         [t.numberState setFallbackState:t.symbolState from:'%' to:'%'];
         [t.numberState setFallbackState:t.symbolState from:'$' to:'$'];
+        
+        //    while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
+
     }
 }
 
@@ -35,10 +38,10 @@ subStmt     = 'sub'! arg ','! arg ';'!;
 loadStmt    = 'load'! arg ','! arg ';'!;
 saveStmt    = 'save'! arg ','! arg ';'!;
 
-jumpStmt    = 'jump'!  loc ';'!;
-jumpzStmt   = 'jumpz'! loc ';'!;
-jumpnStmt   = 'jumpn'! loc ';'!;
-jumpoStmt   = 'jumpo'! loc ';'!;
+jumpStmt    = 'jump'!  expr ';'!;
+jumpzStmt   = 'jumpz'! expr ';'!;
+jumpnStmt   = 'jumpn'! expr ';'!;
+jumpoStmt   = 'jumpo'! expr ';'!;
 
 arg 
     = lit
@@ -54,5 +57,5 @@ addr = '#'! Number;
 ref = '#'! reg;
 offset = '#'! '('! reg '+'! lit ')'!;
 
-loc = arg | label;
+expr = arg | label;
 label = { islower([LS(1) characterAtIndex:0]) }? Word;

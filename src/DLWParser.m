@@ -168,7 +168,7 @@
 - (void)jumpStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMP discard:YES]; 
-    [self loc_]; 
+    [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpStmt:)];
@@ -177,7 +177,7 @@
 - (void)jumpzStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPZ discard:YES]; 
-    [self loc_]; 
+    [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpzStmt:)];
@@ -186,7 +186,7 @@
 - (void)jumpnStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPN discard:YES]; 
-    [self loc_]; 
+    [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpnStmt:)];
@@ -195,7 +195,7 @@
 - (void)jumpoStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPO discard:YES]; 
-    [self loc_]; 
+    [self expr_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpoStmt:)];
@@ -272,17 +272,17 @@
     [self fireDelegateSelector:@selector(parser:didMatchOffset:)];
 }
 
-- (void)loc_ {
+- (void)expr_ {
     
     if ([self predicts:DLWPARSER_TOKEN_KIND_A, DLWPARSER_TOKEN_KIND_B, DLWPARSER_TOKEN_KIND_C, DLWPARSER_TOKEN_KIND_D, DLWPARSER_TOKEN_KIND_POUND, TOKEN_KIND_BUILTIN_NUMBER, 0]) {
         [self arg_]; 
     } else if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
         [self label_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'loc'."];
+        [self raise:@"No viable alternative found in rule 'expr'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchLoc:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)label_ {
