@@ -90,7 +90,7 @@
 
 - (void)prog_ {
     
-    while ([self speculate:^{ [self stmt_]; }]) {
+    while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
         [self stmt_]; 
     }
 
