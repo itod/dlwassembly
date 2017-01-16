@@ -1,5 +1,5 @@
 //
-//  DLWVisitor.h
+//  DLWExecutor.h
 //  DLWAssembly
 //
 //  Created by Todd Ditchendorf on 15.01.17.
@@ -10,9 +10,9 @@
 
 @class DLWContext;
 
-@interface DLWVisitor : NSObject
+@interface DLWExecutor : NSObject
 
 - (instancetype)initWithContext:(DLWContext *)ctx;
 
-- (void)visit:(NSArray *)program;
+- (void)execute:(NSArray *)program;
 @end

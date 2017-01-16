@@ -1,20 +1,20 @@
 //
-//  DLWVisitor.m
+//  DLWExecutor.m
 //  DLWAssembly
 //
 //  Created by Todd Ditchendorf on 15.01.17.
 //  Copyright © 2017 Celestial Teapot. All rights reserved.
 //
 
-#import <DLWAssembly/DLWVisitor.h>
+#import <DLWAssembly/DLWExecutor.h>
 #import <DLWAssembly/DLWContext.h>
 #import "DLWStatement.h"
 
-@interface DLWVisitor ()
+@interface DLWExecutor ()
 @property (nonatomic, retain) DLWContext *context;
 @end
 
-@implementation DLWVisitor
+@implementation DLWExecutor
 
 - (instancetype)initWithContext:(DLWContext *)ctx {
     NSParameterAssert(ctx);
@@ -32,7 +32,7 @@
 }
 
 
-- (void)visit:(NSArray *)program {
+- (void)execute:(NSArray *)program {
     NSParameterAssert(program);
     TDAssert(_context);
 

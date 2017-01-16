@@ -18,4 +18,4 @@ FOUNDATION_EXPORT const unsigned char DLWAssemblyVersionString[];
 
 
 #import <DLWAssembly/DLWContext.h>
-#import <DLWAssembly/DLWVisitor.h>
+#import <DLWAssembly/DLWExecutor.h>
