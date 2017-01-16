@@ -228,6 +228,8 @@
         [self addrExpr_]; 
     } else if ([self speculate:^{ [self refExpr_]; }]) {
         [self refExpr_]; 
+    } else if ([self speculate:^{ [self offsetExpr_]; }]) {
+        [self offsetExpr_]; 
     } else {
         [self raise:@"No viable alternative found in rule 'loadSrc'."];
     }
