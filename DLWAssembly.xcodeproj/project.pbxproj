@@ -21,6 +21,8 @@
 		D36319E11E2C1ED300E7916C /* DLWParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319DF1E2C1ED300E7916C /* DLWParserDelegate.m */; };
 		D36319E41E2C3C2500E7916C /* DLWVisitor.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319E21E2C3C2500E7916C /* DLWVisitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D36319E51E2C3C2500E7916C /* DLWVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319E31E2C3C2500E7916C /* DLWVisitor.m */; };
+		D36319F41E2C498900E7916C /* DLWDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319F21E2C498900E7916C /* DLWDestination.h */; };
+		D36319F51E2C498900E7916C /* DLWDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319F31E2C498900E7916C /* DLWDestination.m */; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +125,8 @@
 		D36319DF1E2C1ED300E7916C /* DLWParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWParserDelegate.m; path = src/DLWParserDelegate.m; sourceTree = SOURCE_ROOT; };
 		D36319E21E2C3C2500E7916C /* DLWVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLWVisitor.h; path = include/DLWAssembly/DLWVisitor.h; sourceTree = SOURCE_ROOT; };
 		D36319E31E2C3C2500E7916C /* DLWVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWVisitor.m; path = src/DLWVisitor.m; sourceTree = SOURCE_ROOT; };
+		D36319F21E2C498900E7916C /* DLWDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLWDestination.h; path = src/DLWDestination.h; sourceTree = SOURCE_ROOT; };
+		D36319F31E2C498900E7916C /* DLWDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWDestination.m; path = src/DLWDestination.m; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -192,6 +196,8 @@
 				D36319D11E2C1D0D00E7916C /* DLWStatement.m */,
 				D36319D41E2C1D2300E7916C /* DLWExpression.h */,
 				D36319D51E2C1D2300E7916C /* DLWExpression.m */,
+				D36319F21E2C498900E7916C /* DLWDestination.h */,
+				D36319F31E2C498900E7916C /* DLWDestination.m */,
 			);
 			name = AST;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 				D36319C91E2C0D7E00E7916C /* DLWParser.h in Headers */,
 				D36319E01E2C1ED300E7916C /* DLWParserDelegate.h in Headers */,
 				D36319D21E2C1D0D00E7916C /* DLWStatement.h in Headers */,
+				D36319F41E2C498900E7916C /* DLWDestination.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36319F51E2C498900E7916C /* DLWDestination.m in Sources */,
 				D36319E51E2C3C2500E7916C /* DLWVisitor.m in Sources */,
 				D36319E11E2C1ED300E7916C /* DLWParserDelegate.m in Sources */,
 				D36319D71E2C1D2300E7916C /* DLWExpression.m in Sources */,

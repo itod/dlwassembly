@@ -11,6 +11,7 @@
 #import "DLWParserDelegate.h"
 #import "DLWStatement.h"
 #import "DLWExpression.h"
+#import "DLWDestination.h"
 
 @interface DLWParserTest : XCTestCase
 
@@ -47,7 +48,7 @@
         TDEquals(3, [stmt.children count]);
         TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
-        TDEqualObjects([stmt.children[2] class], [DLWRegisterExpression class]);
+        TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
     }
     
     {

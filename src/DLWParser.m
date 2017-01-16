@@ -15,39 +15,39 @@
         self.startRuleName = @"prog";
         self.tokenKindTab[@"A"] = @(DLWPARSER_TOKEN_KIND_A);
         self.tokenKindTab[@"save"] = @(DLWPARSER_TOKEN_KIND_SAVE);
-        self.tokenKindTab[@"add"] = @(DLWPARSER_TOKEN_KIND_ADD);
-        self.tokenKindTab[@"B"] = @(DLWPARSER_TOKEN_KIND_B);
         self.tokenKindTab[@"#"] = @(DLWPARSER_TOKEN_KIND_POUND);
+        self.tokenKindTab[@"add"] = @(DLWPARSER_TOKEN_KIND_ADD);
+        self.tokenKindTab[@"+"] = @(DLWPARSER_TOKEN_KIND_PLUS);
         self.tokenKindTab[@";"] = @(DLWPARSER_TOKEN_KIND_SEMI_COLON);
         self.tokenKindTab[@","] = @(DLWPARSER_TOKEN_KIND_COMMA);
-        self.tokenKindTab[@"C"] = @(DLWPARSER_TOKEN_KIND_C);
+        self.tokenKindTab[@"B"] = @(DLWPARSER_TOKEN_KIND_B);
         self.tokenKindTab[@"jump"] = @(DLWPARSER_TOKEN_KIND_JUMP);
+        self.tokenKindTab[@"C"] = @(DLWPARSER_TOKEN_KIND_C);
         self.tokenKindTab[@"D"] = @(DLWPARSER_TOKEN_KIND_D);
-        self.tokenKindTab[@"+"] = @(DLWPARSER_TOKEN_KIND_PLUS);
         self.tokenKindTab[@"jumpn"] = @(DLWPARSER_TOKEN_KIND_JUMPN);
         self.tokenKindTab[@"sub"] = @(DLWPARSER_TOKEN_KIND_SUB);
         self.tokenKindTab[@"load"] = @(DLWPARSER_TOKEN_KIND_LOAD);
-        self.tokenKindTab[@"jumpz"] = @(DLWPARSER_TOKEN_KIND_JUMPZ);
         self.tokenKindTab[@"("] = @(DLWPARSER_TOKEN_KIND_OPEN_PAREN);
+        self.tokenKindTab[@"jumpz"] = @(DLWPARSER_TOKEN_KIND_JUMPZ);
         self.tokenKindTab[@")"] = @(DLWPARSER_TOKEN_KIND_CLOSE_PAREN);
         self.tokenKindTab[@"jumpo"] = @(DLWPARSER_TOKEN_KIND_JUMPO);
 
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_A] = @"A";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SAVE] = @"save";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_ADD] = @"add";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_B] = @"B";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_POUND] = @"#";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_ADD] = @"add";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_PLUS] = @"+";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SEMI_COLON] = @";";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_COMMA] = @",";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_C] = @"C";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_B] = @"B";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMP] = @"jump";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_C] = @"C";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_D] = @"D";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_PLUS] = @"+";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPN] = @"jumpn";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SUB] = @"sub";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_LOAD] = @"load";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPZ] = @"jumpz";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_OPEN_PAREN] = @"(";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPZ] = @"jumpz";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_CLOSE_PAREN] = @")";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPO] = @"jumpo";
 
@@ -78,7 +78,6 @@
     
         [t.numberState setFallbackState:t.symbolState from:'%' to:'%'];
         [t.numberState setFallbackState:t.symbolState from:'$' to:'$'];
-        
     }
 
     self.assembly.target = [NSMutableArray array];
@@ -127,11 +126,11 @@
 - (void)addStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_ADD discard:NO]; 
-    [self arg_]; 
+    [self src_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self src_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchAddStmt:)];
@@ -140,11 +139,11 @@
 - (void)subStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SUB discard:NO]; 
-    [self arg_]; 
+    [self src_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self src_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchSubStmt:)];
@@ -153,9 +152,9 @@
 - (void)loadStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_LOAD discard:NO]; 
-    [self arg_]; 
+    [self addr_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchLoadStmt:)];
@@ -164,9 +163,9 @@
 - (void)saveStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SAVE discard:NO]; 
-    [self arg_]; 
+    [self addr_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self arg_]; 
+    [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchSaveStmt:)];
@@ -175,7 +174,7 @@
 - (void)jumpStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMP discard:NO]; 
-    [self expr_]; 
+    [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpStmt:)];
@@ -184,7 +183,7 @@
 - (void)jumpzStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPZ discard:NO]; 
-    [self expr_]; 
+    [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpzStmt:)];
@@ -193,7 +192,7 @@
 - (void)jumpnStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPN discard:NO]; 
-    [self expr_]; 
+    [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpnStmt:)];
@@ -202,13 +201,13 @@
 - (void)jumpoStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPO discard:NO]; 
-    [self expr_]; 
+    [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchJumpoStmt:)];
 }
 
-- (void)arg_ {
+- (void)src_ {
     
     if ([self speculate:^{ [self lit_]; }]) {
         [self lit_]; 
@@ -221,10 +220,17 @@
     } else if ([self speculate:^{ [self offset_]; }]) {
         [self offset_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'arg'."];
+        [self raise:@"No viable alternative found in rule 'src'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchArg:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSrc:)];
+}
+
+- (void)dest_ {
+    
+    [self regName_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchDest:)];
 }
 
 - (void)lit_ {
@@ -236,17 +242,7 @@
 
 - (void)reg_ {
     
-    if ([self predicts:DLWPARSER_TOKEN_KIND_A, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_A discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_B, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_B discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_C, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_C discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_D, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_D discard:NO]; 
-    } else {
-        [self raise:@"No viable alternative found in rule 'reg'."];
-    }
+    [self regName_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchReg:)];
 }
@@ -279,25 +275,44 @@
     [self fireDelegateSelector:@selector(parser:didMatchOffset:)];
 }
 
-- (void)expr_ {
-    
-    if ([self predicts:DLWPARSER_TOKEN_KIND_A, DLWPARSER_TOKEN_KIND_B, DLWPARSER_TOKEN_KIND_C, DLWPARSER_TOKEN_KIND_D, DLWPARSER_TOKEN_KIND_POUND, TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self arg_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self label_]; 
-    } else {
-        [self raise:@"No viable alternative found in rule 'expr'."];
-    }
-
-    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
-}
-
 - (void)label_ {
     
     [self testAndThrow:(id)^{ return islower([LS(1) characterAtIndex:0]); }]; 
     [self matchWord:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchLabel:)];
+}
+
+- (void)loc_ {
+    
+    if ([self speculate:^{ [self label_]; }]) {
+        [self label_]; 
+    } else if ([self speculate:^{ [self addr_]; }]) {
+        [self addr_]; 
+    } else if ([self speculate:^{ [self offset_]; }]) {
+        [self offset_]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'loc'."];
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchLoc:)];
+}
+
+- (void)regName_ {
+    
+    if ([self predicts:DLWPARSER_TOKEN_KIND_A, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_A discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_B, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_B discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_C, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_C discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_D, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_D discard:NO]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'regName'."];
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchRegName:)];
 }
 
 @end

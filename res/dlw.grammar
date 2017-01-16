@@ -31,18 +31,18 @@ stmt
     | jumpoStmt
     ;
     
-addStmt     = 'add' arg ','! arg ','! arg ';'!;
-subStmt     = 'sub' arg ','! arg ','! arg ';'!;
+addStmt     = 'add' src ','! src ','! dest ';'!;
+subStmt     = 'sub' src ','! src ','! dest ';'!;
 
-loadStmt    = 'load' arg ','! arg ';'!;
-saveStmt    = 'save' arg ','! arg ';'!;
+loadStmt    = 'load' addr ','! dest ';'!;
+saveStmt    = 'save' addr ','! dest ';'!;
 
-jumpStmt    = 'jump'  expr ';'!;
-jumpzStmt   = 'jumpz' expr ';'!;
-jumpnStmt   = 'jumpn' expr ';'!;
-jumpoStmt   = 'jumpo' expr ';'!;
+jumpStmt    = 'jump'  loc ';'!;
+jumpzStmt   = 'jumpz' loc ';'!;
+jumpnStmt   = 'jumpn' loc ';'!;
+jumpoStmt   = 'jumpo' loc ';'!;
 
-arg 
+src 
     = lit
     | reg
     | addr
@@ -50,11 +50,15 @@ arg
     | offset
     ;
 
+dest = regName;
+
 lit = Number;
-reg = 'A' | 'B' | 'C' | 'D';
+reg = regName;
 addr = '#'! Number;
 ref = '#'! reg;
 offset = '#'! '('! reg '+'! lit ')'!;
 
-expr = arg | label;
 label = { islower([LS(1) characterAtIndex:0]) }? Word;
+loc = label | addr | offset;
+
+regName = 'A' | 'B' | 'C' | 'D';

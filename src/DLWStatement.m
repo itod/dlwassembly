@@ -8,6 +8,7 @@
 
 #import "DLWStatement.h"
 #import "DLWExpression.h"
+#import "DLWDestination.h"
 
 @class DLWContext;
 
@@ -28,8 +29,8 @@
     
     ASWord res = arg0 + arg1;
     
-    id *dest = self.children[2];
-    //[dest store:res];
+    DLWDestination *dest = self.children[2];
+    [dest store:res inContext:ctx];
 }
 
 @end

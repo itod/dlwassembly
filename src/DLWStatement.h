@@ -9,6 +9,8 @@
 #import <PEGKit/PEGKit.h>
 #import <DLWAssembly/DLWContext.h>
 
+//@class DLWContext;
+
 @interface DLWStatement : PKAST
 - (void)executeInContext:(DLWContext *)ctx;
 @end

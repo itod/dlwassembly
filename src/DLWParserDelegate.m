@@ -12,6 +12,7 @@
 
 #import "DLWStatement.h"
 #import "DLWExpression.h"
+#import "DLWDestination.h"
 
 @implementation DLWParserDelegate
 
@@ -47,6 +48,15 @@
     
     DLWRegisterExpression *expr = [DLWRegisterExpression ASTWithToken:tok];
     [a push:expr];
+}
+
+
+- (void)parser:(PKParser *)p didMatchDest:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(tok.isWord);
+
+    DLWDestination *dest = [DLWDestination ASTWithToken:tok];
+    [a push:dest];
 }
 
 @end
