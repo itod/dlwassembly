@@ -58,7 +58,7 @@
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
-    ASWord res = [ctx wordForAddress:addr];
+    ASWord res = [ctx wordForMemoryAddress:addr];
     return res;
 }
 

@@ -20,8 +20,8 @@ typedef uint16_t ASIndex;
 - (void)setUp;
 - (void)tearDown;
 
-- (ASWord)wordForAddress:(ASIndex)addr;
-- (void)setWord:(ASWord)word forAddress:(ASIndex)addr;
+- (ASWord)wordForMemoryAddress:(ASIndex)addr;
+- (void)setWord:(ASWord)word forMemoryAddress:(ASIndex)addr;
 
 @property (nonatomic, assign) ASWord registerA;
 @property (nonatomic, assign) ASWord registerB;

@@ -45,7 +45,7 @@
 
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
-    [ctx setWord:word forAddress:addr];
+    [ctx setWord:word forMemoryAddress:addr];
 }
 
 @end

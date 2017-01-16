@@ -153,7 +153,7 @@
 - (void)testLoadInstruction {
     NSString *str = @"load #12, A;";
 
-    [ctx setWord:47 forAddress:12];
+    [ctx setWord:47 forMemoryAddress:12];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
@@ -170,7 +170,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASWord)10, [ctx wordForAddress:42]);
+    TDEquals((ASWord)10, [ctx wordForMemoryAddress:42]);
 }
 
 @end

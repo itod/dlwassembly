@@ -35,14 +35,14 @@
 }
 
 
-- (ASWord)wordForAddress:(ASIndex)addr {
+- (ASWord)wordForMemoryAddress:(ASIndex)addr {
     TDAssert(_storage);
     ASWord res = _storage[addr];
     return res;
 }
 
 
-- (void)setWord:(ASWord)word forAddress:(ASIndex)addr {
+- (void)setWord:(ASWord)word forMemoryAddress:(ASIndex)addr {
     TDAssert(_storage);
     _storage[addr] = word;
 }
