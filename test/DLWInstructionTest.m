@@ -242,4 +242,21 @@
     TDEquals((ASWord)val, [ctx wordForMemoryAddress:addr]);
 }
 
+
+- (void)testStore_B_oC102_A {
+    NSString *str = @"store B, #(C + 102);";
+    
+    ASWord val = 44;
+    ASIndex addr = 67;
+    ASIndex offset = 102;
+    
+    ctx.registerB = val;
+    ctx.registerC = addr;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)val, [ctx wordForMemoryAddress:(addr + offset)]);
+}
+
 @end
