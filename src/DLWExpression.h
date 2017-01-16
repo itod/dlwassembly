@@ -27,6 +27,6 @@
 
 @end
 
-@interface DLWInderectionExpression : DLWExpression
+@interface DLWIndirectionExpression : DLWExpression
 
 @end

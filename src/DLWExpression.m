@@ -64,7 +64,7 @@
 
 @end
 
-@implementation DLWInderectionExpression
+@implementation DLWIndirectionExpression
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = 0;

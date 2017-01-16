@@ -117,7 +117,7 @@
     PKToken *tok = [a pop];
     TDAssert(tok.isWord);
     
-    DLWExpression *addr = [DLWInderectionExpression ASTWithToken:tok];
+    DLWExpression *addr = [DLWIndirectionExpression ASTWithToken:tok];
     [a push:addr];
 }
 
