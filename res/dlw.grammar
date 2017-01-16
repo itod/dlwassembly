@@ -34,7 +34,7 @@ stmt
 addStmt     = 'add' mathSrc ','! mathSrc ','! regDest ';'!;
 subStmt     = 'sub' mathSrc ','! mathSrc ','! regDest ';'!;
 
-loadStmt    = 'load'  addrExpr ','! regDest ';'!;
+loadStmt    = 'load'  loadSrc ','! regDest ';'!;
 storeStmt   = 'store' storeSrc ','! storeDest ';'!;
 
 jumpStmt    = 'jump'  loc ';'!;
@@ -43,6 +43,7 @@ jumpnStmt   = 'jumpn' loc ';'!;
 jumpoStmt   = 'jumpo' loc ';'!;
 
 mathSrc = litExpr | regExpr;
+loadSrc = addrExpr | refExpr;
 storeSrc = litExpr | regExpr;
 storeDest = addrDest | refDest | offsetDest;
 

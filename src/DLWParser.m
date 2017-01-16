@@ -152,7 +152,7 @@
 - (void)loadStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_LOAD discard:NO]; 
-    [self addrExpr_]; 
+    [self loadSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
@@ -218,6 +218,19 @@
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchMathSrc:)];
+}
+
+- (void)loadSrc_ {
+    
+    if ([self speculate:^{ [self addrExpr_]; }]) {
+        [self addrExpr_]; 
+    } else if ([self speculate:^{ [self refExpr_]; }]) {
+        [self refExpr_]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'loadSrc'."];
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchLoadSrc:)];
 }
 
 - (void)storeSrc_ {
