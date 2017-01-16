@@ -30,3 +30,7 @@
 @interface DLWIndirectionExpression : DLWExpression
 
 @end
+
+@interface DLWOffsetExpression : DLWExpression
+
+@end

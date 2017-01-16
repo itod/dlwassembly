@@ -122,6 +122,22 @@
 }
 
 
+- (void)parser:(PKParser *)p didMatchOffsetExpr:(PKAssembly *)a {
+    DLWLiteralExpression *lit = [a pop];
+    TDAssert([lit isKindOfClass:[DLWLiteralExpression class]]);
+
+    DLWRegisterExpression *reg = [a pop];
+    TDAssert([reg isKindOfClass:[DLWRegisterExpression class]]);
+    
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@"("]);
+    
+    DLWExpression *offset = [DLWOffsetExpression ASTWithToken:tok];
+    
+    [a push:offset];
+}
+
+
 #pragma mark -
 #pragma mark Destination
 

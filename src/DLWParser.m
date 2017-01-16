@@ -371,10 +371,10 @@
 - (void)offset_ {
     
     [self match:DLWPARSER_TOKEN_KIND_POUND discard:YES]; 
-    [self match:DLWPARSER_TOKEN_KIND_OPEN_PAREN discard:YES]; 
-    [self reg_]; 
+    [self match:DLWPARSER_TOKEN_KIND_OPEN_PAREN discard:NO]; 
+    [self regExpr_]; 
     [self match:DLWPARSER_TOKEN_KIND_PLUS discard:YES]; 
-    [self lit_]; 
+    [self litExpr_]; 
     [self match:DLWPARSER_TOKEN_KIND_CLOSE_PAREN discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchOffset:)];

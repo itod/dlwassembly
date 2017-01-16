@@ -62,7 +62,7 @@ lit = Number;
 reg = 'A' | 'B' | 'C' | 'D';
 addr = '#'! Number;
 ref = '#'! reg;
-offset = '#'! '('! reg '+'! lit ')'!;
+offset = '#'! '(' regExpr '+'! litExpr ')'!;
 
 label = { islower([LS(1) characterAtIndex:0]) }? Word;
 loc = label | addr | ref | offset;
