@@ -14,27 +14,33 @@
 #import "DLWDestination.h"
 
 @interface DLWParserTest : XCTestCase
-
+@property (retain) DLWParserDelegate *del;
+@property (retain) DLWParser *p;
 @end
 
 @implementation DLWParserTest
 
+@synthesize del=del;
+@synthesize p=p;
+
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.del = [[[DLWParserDelegate alloc] init] autorelease];
+    self.p = [[[DLWParser alloc] initWithDelegate:del] autorelease];
+    
 }
 
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.del = nil;
+    self.p = nil;
+    
     [super tearDown];
 }
 
 
 - (void)testAddInstruction {
-    id d = [[[DLWParserDelegate alloc] init] autorelease];
-    DLWParser *p = [[[DLWParser alloc] initWithDelegate:d] autorelease];
-    
     NSString *str = @"add 1, 2, A;";
     
     NSError *err = nil;
@@ -52,22 +58,10 @@
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
     }
-    
-    {
-        DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
-        DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
-        
-        [v visit:prog];
-        
-        TDEquals((ASWord)3, ctx.registerA);
-    }
 }
 
 
 - (void)testSubInstruction {
-    id d = [[[DLWParserDelegate alloc] init] autorelease];
-    DLWParser *p = [[[DLWParser alloc] initWithDelegate:d] autorelease];
-    
     NSString *str = @"sub 2, 1, B;";
     
     NSError *err = nil;
@@ -84,15 +78,6 @@
         TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
-    }
-    
-    {
-        DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
-        DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
-        
-        [v visit:prog];
-        
-        TDEquals((ASWord)1, ctx.registerB);
     }
 }
 
