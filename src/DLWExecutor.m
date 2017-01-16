@@ -36,7 +36,19 @@
     NSParameterAssert(program);
     TDAssert(_context);
 
-    [_context prepare];
+    [_context setUp];
+    
+    for (DLWStatement *stmt in program) {
+        [stmt executeInContext:_context];
+    }
+    
+    [_context tearDown];
+}
+
+
+- (void)_debugExecute:(NSArray *)program {
+    NSParameterAssert(program);
+    TDAssert(_context);
     
     for (DLWStatement *stmt in program) {
         [stmt executeInContext:_context];

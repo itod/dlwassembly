@@ -13,6 +13,10 @@
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 
+@interface DLWExecutor ()
+- (void)_debugExecute:(NSArray *)program;
+@end
+
 @interface DLWInstructionTest : XCTestCase
 @property (retain) DLWParserDelegate *del;
 @property (retain) DLWParser *p;
@@ -35,10 +39,14 @@
     
     self.ctx = [[[DLWContext alloc] init] autorelease];
     self.exec = [[[DLWExecutor alloc] initWithContext:ctx] autorelease];
+
+    [ctx setUp];
 }
 
 
 - (void)tearDown {
+    [ctx tearDown];
+
     self.del = nil;
     self.p = nil;
     self.ctx = nil;
@@ -52,7 +60,7 @@
     NSString *str = @"add 1, 2, A;";
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec execute:prog];
+    [exec _debugExecute:prog];
     
     TDEquals((ASWord)3, ctx.registerA);
 }
@@ -62,7 +70,7 @@
     NSString *str = @"sub 2, 1, B;";
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec execute:prog];
+    [exec _debugExecute:prog];
     
     TDEquals((ASWord)1, ctx.registerB);
 }
@@ -70,11 +78,11 @@
 
 - (void)testLoadInstruction {
     NSString *str = @"load #12, A;";
-    
+
     [ctx setWord:47 forAddress:12];
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec execute:prog];
+    [exec _debugExecute:prog];
     
     TDEquals((ASWord)47, ctx.registerA);
 }

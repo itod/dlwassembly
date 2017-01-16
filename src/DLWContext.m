@@ -8,7 +8,9 @@
 
 #import <DLWAssembly/DLWContext.h>
 
-@implementation DLWContext
+@implementation DLWContext {
+    ASWord *_storage;
+}
 
 - (void)dealloc {
     self.labelTable = nil;
@@ -16,18 +18,34 @@
 }
 
 
-- (void)prepare {
+- (void)setUp {
     self.labelTable = [NSMutableDictionary dictionary];
+    
+    size_t count = pow(2, 16);
+//    _storage = calloc(count, sizeof(ASWord));
+    _storage = malloc(count * sizeof(ASWord));
+    TDAssert(_storage);
+}
+
+
+- (void)tearDown {
+    TDAssert(_storage);
+    free(_storage);
+
+    self.labelTable = nil;
 }
 
 
 - (ASWord)wordForAddress:(ASIndex)addr {
-    return 0;
+    TDAssert(_storage);
+    ASWord res = _storage[addr];
+    return res;
 }
 
 
 - (void)setWord:(ASWord)word forAddress:(ASIndex)addr {
-    
+    TDAssert(_storage);
+    _storage[addr] = word;
 }
 
 @end

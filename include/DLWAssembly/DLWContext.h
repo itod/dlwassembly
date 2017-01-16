@@ -13,11 +13,12 @@ typedef uint16_t ASWord;
 typedef uint32_t ASDword;
 typedef  int32_t ASInteger;
 typedef  uint8_t ASSize;
-typedef  uint8_t ASIndex;
+typedef uint16_t ASIndex;
 
 @interface DLWContext : NSObject
 
-- (void)prepare;
+- (void)setUp;
+- (void)tearDown;
 
 - (ASWord)wordForAddress:(ASIndex)addr;
 - (void)setWord:(ASWord)word forAddress:(ASIndex)addr;
