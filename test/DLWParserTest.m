@@ -9,6 +9,8 @@
 #import "DLWTestScaffold.h"
 #import "DLWParser.h"
 #import "DLWParserDelegate.h"
+#import "DLWStatement.h"
+#import "DLWExpression.h"
 
 @interface DLWParserTest : XCTestCase
 
@@ -38,7 +40,16 @@
     TDNotNil(prog);
     TDTrue([prog isKindOfClass:[NSArray class]]);
     
+    TDEquals(1, [prog count]);
     
+    {
+        DLWStatement *stmt = prog[0];
+        TDEqualObjects([stmt class], [DLWAddStatement class]);
+        TDEquals(3, [stmt.children count]);
+        TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
+        TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
+        TDEqualObjects([stmt.children[2] class], [DLWRegisterExpression class]);
+    }
     
 
 //    DLWContext *ctx = [[[DLWContext alloc] init] autorelease];

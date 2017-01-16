@@ -12,7 +12,13 @@
 //@class DLWContext;
 
 @interface DLWExpression : PKAST
-
 - (ASWord)evaluateInContext:(DLWContext *)ctx;
+@end
+
+@interface DLWLiteralExpression : DLWExpression
+
+@end
+
+@interface DLWRegisterExpression : DLWExpression
 
 @end
