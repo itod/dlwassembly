@@ -91,7 +91,7 @@
 
 - (void)prog_ {
     
-    while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
+    while ([self speculate:^{ [self stmt_]; }]) {
         [self stmt_]; 
     }
 
@@ -126,9 +126,9 @@
 - (void)addStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_ADD discard:NO]; 
-    [self src_]; 
+    [self operand_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self src_]; 
+    [self operand_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
@@ -139,9 +139,9 @@
 - (void)subStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SUB discard:NO]; 
-    [self src_]; 
+    [self operand_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self src_]; 
+    [self operand_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
     [self dest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
@@ -207,23 +207,17 @@
     [self fireDelegateSelector:@selector(parser:didMatchJumpoStmt:)];
 }
 
-- (void)src_ {
+- (void)operand_ {
     
-    if ([self speculate:^{ [self lit_]; }]) {
+    if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
         [self lit_]; 
-    } else if ([self speculate:^{ [self reg_]; }]) {
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_A, DLWPARSER_TOKEN_KIND_B, DLWPARSER_TOKEN_KIND_C, DLWPARSER_TOKEN_KIND_D, 0]) {
         [self reg_]; 
-    } else if ([self speculate:^{ [self addr_]; }]) {
-        [self addr_]; 
-    } else if ([self speculate:^{ [self ref_]; }]) {
-        [self ref_]; 
-    } else if ([self speculate:^{ [self offset_]; }]) {
-        [self offset_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'src'."];
+        [self raise:@"No viable alternative found in rule 'operand'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchSrc:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOperand:)];
 }
 
 - (void)dest_ {
@@ -289,6 +283,8 @@
         [self label_]; 
     } else if ([self speculate:^{ [self addr_]; }]) {
         [self addr_]; 
+    } else if ([self speculate:^{ [self ref_]; }]) {
+        [self ref_]; 
     } else if ([self speculate:^{ [self offset_]; }]) {
         [self offset_]; 
     } else {
