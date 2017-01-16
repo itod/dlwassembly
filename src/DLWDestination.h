@@ -12,5 +12,5 @@
 //@class DLWContext;
 
 @interface DLWDestination : PKAST
-- (void)store:(ASWord)val inContext:(DLWContext *)ctx;
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx;
 @end

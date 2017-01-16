@@ -17,6 +17,8 @@ typedef  uint8_t ASIndex;
 
 @interface DLWContext : NSObject
 
+- (void)prepare;
+
 - (ASWord)wordForAddress:(ASIndex)addr;
 - (void)setWord:(ASWord)word forAddress:(ASIndex)addr;
 
@@ -24,4 +26,6 @@ typedef  uint8_t ASIndex;
 @property (nonatomic, assign) ASWord registerB;
 @property (nonatomic, assign) ASWord registerC;
 @property (nonatomic, assign) ASWord registerD;
+
+@property (nonatomic, retain) NSMutableDictionary *labelTable;
 @end

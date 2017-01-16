@@ -11,19 +11,19 @@
 
 @implementation DLWDestination
 
-- (void)store:(ASWord)val inContext:(DLWContext *)ctx {
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
     switch (self.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
-            ctx.registerA = val;
+            ctx.registerA = word;
             break;
         case DLWPARSER_TOKEN_KIND_B:
-            ctx.registerB = val;
+            ctx.registerB = word;
             break;
         case DLWPARSER_TOKEN_KIND_C:
-            ctx.registerC = val;
+            ctx.registerC = word;
             break;
         case DLWPARSER_TOKEN_KIND_D:
-            ctx.registerD = val;
+            ctx.registerD = word;
             break;
         default:
             TDAssert(0);

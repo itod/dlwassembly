@@ -35,6 +35,8 @@
 - (void)visit:(NSArray *)program {
     NSParameterAssert(program);
     TDAssert(_context);
+
+    [_context prepare];
     
     for (DLWStatement *stmt in program) {
         [stmt executeInContext:_context];

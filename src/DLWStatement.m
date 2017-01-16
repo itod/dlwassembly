@@ -30,7 +30,7 @@
     ASWord res = arg0 + arg1;
     
     DLWDestination *dest = self.children[2];
-    [dest store:res inContext:ctx];
+    [dest setWord:res inContext:ctx];
 }
 
 @end
@@ -45,7 +45,7 @@
     ASWord res = arg0 - arg1;
     
     DLWDestination *dest = self.children[2];
-    [dest store:res inContext:ctx];
+    [dest setWord:res inContext:ctx];
 }
 
 @end

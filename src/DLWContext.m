@@ -10,6 +10,17 @@
 
 @implementation DLWContext
 
+- (void)dealloc {
+    self.labelTable = nil;
+    [super dealloc];
+}
+
+
+- (void)prepare {
+    self.labelTable = [NSMutableDictionary dictionary];
+}
+
+
 - (ASWord)wordForAddress:(ASIndex)addr {
     return 0;
 }
