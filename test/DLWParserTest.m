@@ -61,4 +61,37 @@
     }
 }
 
+
+- (void)testSubInstruction {
+    id d = [[[DLWParserDelegate alloc] init] autorelease];
+    DLWParser *p = [[[DLWParser alloc] initWithDelegate:d] autorelease];
+    
+    NSString *str = @"sub 2, 1, B;";
+    
+    NSError *err = nil;
+    NSArray *prog = [p parseString:str error:&err];
+    TDNil(err);
+    TDNotNil(prog);
+    TDTrue([prog isKindOfClass:[NSArray class]]);
+    TDEquals(1, [prog count]);
+    
+    {
+        DLWStatement *stmt = prog[0];
+        TDEqualObjects([stmt class], [DLWSubStatement class]);
+        TDEquals(3, [stmt.children count]);
+        TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
+        TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
+        TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
+    }
+    
+    {
+        DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
+        DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
+        
+        [v visit:prog];
+        
+        TDEquals((ASWord)1, ctx.registerB);
+    }
+}
+
 @end

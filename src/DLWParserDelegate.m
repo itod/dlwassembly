@@ -23,7 +23,24 @@
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"add"]);
-    DLWAddStatement *stmt = [DLWAddStatement ASTWithToken:tok];
+    DLWStatement *stmt = [DLWAddStatement ASTWithToken:tok];
+    [stmt addChild:arg0];
+    [stmt addChild:arg1];
+    [stmt addChild:arg2];
+    
+    TDAssert(a.target);
+    [a.target addObject:stmt];
+}
+
+
+- (void)parser:(PKParser *)p didMatchSubStmt:(PKAssembly *)a {
+    DLWExpression *arg2 = [a pop];
+    DLWExpression *arg1 = [a pop];
+    DLWExpression *arg0 = [a pop];
+    
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@"sub"]);
+    DLWStatement *stmt = [DLWSubStatement ASTWithToken:tok];
     [stmt addChild:arg0];
     [stmt addChild:arg1];
     [stmt addChild:arg2];
