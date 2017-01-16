@@ -56,7 +56,7 @@
 }
 
 
-- (void)testAddInstruction {
+- (void)testAdd_1_2_A {
     NSString *str = @"add 1, 2, A;";
     
     NSArray *prog = [p parseString:str error:nil];
@@ -66,13 +66,87 @@
 }
 
 
-- (void)testSubInstruction {
+- (void)testAdd_A_B_C {
+    NSString *str = @"add A, B, C;";
+    
+    ctx.registerA = 10;
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)12, ctx.registerC);
+}
+
+
+- (void)testAdd_A_1_C {
+    NSString *str = @"add A, 1, C;";
+    
+    ctx.registerA = 10;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)11, ctx.registerC);
+}
+
+
+- (void)testSub_2_1_B {
     NSString *str = @"sub 2, 1, B;";
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
     TDEquals((ASWord)1, ctx.registerB);
+}
+
+
+- (void)testSub_A_B_C {
+    NSString *str = @"sub A, B, C;";
+    
+    ctx.registerA = 10;
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)8, ctx.registerC);
+}
+
+
+- (void)testAdd_5_B_C {
+    NSString *str = @"add 5, B, C;";
+    
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)7, ctx.registerC);
+}
+
+
+- (void)testSub_A_1_C {
+    NSString *str = @"sub A, 1, C;";
+    
+    ctx.registerA = 10;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)9, ctx.registerC);
+}
+
+
+- (void)testSub_5_B_C {
+    NSString *str = @"sub 5, B, C;";
+    
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)3, ctx.registerC);
 }
 
 
