@@ -39,7 +39,6 @@
     TDNil(err);
     TDNotNil(prog);
     TDTrue([prog isKindOfClass:[NSArray class]]);
-    
     TDEquals(1, [prog count]);
     
     {
@@ -51,13 +50,14 @@
         TDEqualObjects([stmt.children[2] class], [DLWRegisterExpression class]);
     }
     
-
-//    DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
-//    DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
-//    
-//    [v visit:prog];
-//    
-//    TDEquals((ASWord)3, ctx.registerA);
+    {
+        DLWContext *ctx = [[[DLWContext alloc] init] autorelease];
+        DLWVisitor *v = [[[DLWVisitor alloc] initWithContext:ctx] autorelease];
+        
+        [v visit:prog];
+        
+        TDEquals((ASWord)3, ctx.registerA);
+    }
 }
 
 @end

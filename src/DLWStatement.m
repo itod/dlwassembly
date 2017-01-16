@@ -7,6 +7,7 @@
 //
 
 #import "DLWStatement.h"
+#import "DLWExpression.h"
 
 @class DLWContext;
 
@@ -19,6 +20,17 @@
 @end
 
 @implementation DLWAddStatement
+
+- (void)executeInContext:(DLWContext *)ctx {
+    TDAssert(3 == [self.children count]);
+    ASWord arg0 = [self.children[0] evaluateInContext:ctx];
+    ASWord arg1 = [self.children[1] evaluateInContext:ctx];
+    
+    ASWord res = arg0 + arg1;
+    
+    id *dest = self.children[2];
+    //[dest store:res];
+}
 
 @end
 

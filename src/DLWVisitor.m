@@ -8,6 +8,7 @@
 
 #import <DLWAssembly/DLWVisitor.h>
 #import <DLWAssembly/DLWContext.h>
+#import "DLWStatement.h"
 
 @interface DLWVisitor ()
 @property (nonatomic, retain) DLWContext *context;
@@ -35,6 +36,9 @@
     NSParameterAssert(program);
     TDAssert(_context);
     
+    for (DLWStatement *stmt in program) {
+        [stmt executeInContext:_context];
+    }
 }
 
 @end
