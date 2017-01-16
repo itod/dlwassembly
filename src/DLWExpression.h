@@ -26,3 +26,7 @@
 @interface DLWAddressExpression : DLWExpression
 
 @end
+
+@interface DLWInderectionExpression : DLWExpression
+
+@end

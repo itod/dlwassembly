@@ -128,7 +128,7 @@
 
 - (void)testLoad_12_A { [self testLoadInstruction:@"load 12, A;"]; }
 - (void)testLoad_a12_A { [self testLoadInstruction:@"load #12, A;"]; }
-//- (void)testLoad_rA_B { [self testLoadInstruction:@"load #A, B;"]; }
+- (void)testLoad_rA_B { [self testLoadInstruction:@"load #A, B;"]; }
 
 - (void)testStore_7_a255 { [self testStoreInstruction:@"store 7, #255;"]; }
 - (void)testStore_B_a42 { [self testStoreInstruction:@"store B, #42;"]; }

@@ -90,7 +90,7 @@
     PKToken *tok = [a pop];
     TDAssert(tok.isNumber);
     
-    DLWLiteralExpression *expr = [DLWLiteralExpression ASTWithToken:tok];
+    DLWExpression *expr = [DLWLiteralExpression ASTWithToken:tok];
     [a push:expr];
 }
 
@@ -99,7 +99,7 @@
     PKToken *tok = [a pop];
     TDAssert(tok.isWord);
     
-    DLWRegisterExpression *expr = [DLWRegisterExpression ASTWithToken:tok];
+    DLWExpression *expr = [DLWRegisterExpression ASTWithToken:tok];
     [a push:expr];
 }
 
@@ -108,7 +108,16 @@
     PKToken *tok = [a pop];
     TDAssert(tok.isNumber);
     
-    DLWAddressExpression *addr = [DLWAddressExpression ASTWithToken:tok];
+    DLWExpression *addr = [DLWAddressExpression ASTWithToken:tok];
+    [a push:addr];
+}
+
+
+- (void)parser:(PKParser *)p didMatchRefExpr:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(tok.isWord);
+    
+    DLWExpression *addr = [DLWInderectionExpression ASTWithToken:tok];
     [a push:addr];
 }
 
