@@ -27,7 +27,7 @@
 
 @end
 
-@interface DLWSaveStatement : DLWStatement
+@interface DLWStoreStatement : DLWLoadStatement
 
 @end
 

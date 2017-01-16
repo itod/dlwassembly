@@ -62,7 +62,7 @@
 
 @end
 
-@implementation DLWSaveStatement
+@implementation DLWStoreStatement
 
 @end
 

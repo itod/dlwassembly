@@ -87,4 +87,16 @@
     TDEquals((ASWord)47, ctx.registerA);
 }
 
+
+- (void)testStoreInstruction {
+    NSString *str = @"store B, #42;";
+    
+    ctx.registerB = 10;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)10, [ctx wordForAddress:42]);
+}
+
 @end

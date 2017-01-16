@@ -14,41 +14,41 @@
         
         self.startRuleName = @"prog";
         self.tokenKindTab[@"A"] = @(DLWPARSER_TOKEN_KIND_A);
-        self.tokenKindTab[@"save"] = @(DLWPARSER_TOKEN_KIND_SAVE);
-        self.tokenKindTab[@"#"] = @(DLWPARSER_TOKEN_KIND_POUND);
         self.tokenKindTab[@"add"] = @(DLWPARSER_TOKEN_KIND_ADD);
-        self.tokenKindTab[@"+"] = @(DLWPARSER_TOKEN_KIND_PLUS);
+        self.tokenKindTab[@"B"] = @(DLWPARSER_TOKEN_KIND_B);
+        self.tokenKindTab[@"#"] = @(DLWPARSER_TOKEN_KIND_POUND);
         self.tokenKindTab[@";"] = @(DLWPARSER_TOKEN_KIND_SEMI_COLON);
         self.tokenKindTab[@","] = @(DLWPARSER_TOKEN_KIND_COMMA);
-        self.tokenKindTab[@"B"] = @(DLWPARSER_TOKEN_KIND_B);
-        self.tokenKindTab[@"jump"] = @(DLWPARSER_TOKEN_KIND_JUMP);
         self.tokenKindTab[@"C"] = @(DLWPARSER_TOKEN_KIND_C);
+        self.tokenKindTab[@"jump"] = @(DLWPARSER_TOKEN_KIND_JUMP);
         self.tokenKindTab[@"D"] = @(DLWPARSER_TOKEN_KIND_D);
+        self.tokenKindTab[@"+"] = @(DLWPARSER_TOKEN_KIND_PLUS);
         self.tokenKindTab[@"jumpn"] = @(DLWPARSER_TOKEN_KIND_JUMPN);
         self.tokenKindTab[@"sub"] = @(DLWPARSER_TOKEN_KIND_SUB);
         self.tokenKindTab[@"load"] = @(DLWPARSER_TOKEN_KIND_LOAD);
-        self.tokenKindTab[@"("] = @(DLWPARSER_TOKEN_KIND_OPEN_PAREN);
         self.tokenKindTab[@"jumpz"] = @(DLWPARSER_TOKEN_KIND_JUMPZ);
+        self.tokenKindTab[@"("] = @(DLWPARSER_TOKEN_KIND_OPEN_PAREN);
         self.tokenKindTab[@")"] = @(DLWPARSER_TOKEN_KIND_CLOSE_PAREN);
+        self.tokenKindTab[@"store"] = @(DLWPARSER_TOKEN_KIND_STORE);
         self.tokenKindTab[@"jumpo"] = @(DLWPARSER_TOKEN_KIND_JUMPO);
 
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_A] = @"A";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SAVE] = @"save";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_POUND] = @"#";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_ADD] = @"add";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_PLUS] = @"+";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_B] = @"B";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_POUND] = @"#";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SEMI_COLON] = @";";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_COMMA] = @",";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_B] = @"B";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMP] = @"jump";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_C] = @"C";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMP] = @"jump";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_D] = @"D";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_PLUS] = @"+";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPN] = @"jumpn";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_SUB] = @"sub";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_LOAD] = @"load";
-        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_OPEN_PAREN] = @"(";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPZ] = @"jumpz";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_OPEN_PAREN] = @"(";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_CLOSE_PAREN] = @")";
+        self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_STORE] = @"store";
         self.tokenKindNameTab[DLWPARSER_TOKEN_KIND_JUMPO] = @"jumpo";
 
     }
@@ -106,8 +106,8 @@
         [self subStmt_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_LOAD, 0]) {
         [self loadStmt_]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_SAVE, 0]) {
-        [self saveStmt_]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_STORE, 0]) {
+        [self storeStmt_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMP, 0]) {
         [self jumpStmt_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMPZ, 0]) {
@@ -126,11 +126,11 @@
 - (void)addStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_ADD discard:NO]; 
-    [self operand_]; 
+    [self mathSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self operand_]; 
+    [self mathSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self dest_]; 
+    [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchAddStmt:)];
@@ -139,11 +139,11 @@
 - (void)subStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SUB discard:NO]; 
-    [self operand_]; 
+    [self mathSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self operand_]; 
+    [self mathSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self dest_]; 
+    [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchSubStmt:)];
@@ -152,23 +152,23 @@
 - (void)loadStmt_ {
     
     [self match:DLWPARSER_TOKEN_KIND_LOAD discard:NO]; 
-    [self addr_]; 
+    [self addrExpr_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self dest_]; 
+    [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchLoadStmt:)];
 }
 
-- (void)saveStmt_ {
+- (void)storeStmt_ {
     
-    [self match:DLWPARSER_TOKEN_KIND_SAVE discard:NO]; 
-    [self addr_]; 
+    [self match:DLWPARSER_TOKEN_KIND_STORE discard:NO]; 
+    [self storeSrc_]; 
     [self match:DLWPARSER_TOKEN_KIND_COMMA discard:YES]; 
-    [self dest_]; 
+    [self storeDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchSaveStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStoreStmt:)];
 }
 
 - (void)jumpStmt_ {
@@ -207,24 +207,108 @@
     [self fireDelegateSelector:@selector(parser:didMatchJumpoStmt:)];
 }
 
-- (void)operand_ {
+- (void)mathSrc_ {
     
     if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self lit_]; 
+        [self litExpr_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_A, DLWPARSER_TOKEN_KIND_B, DLWPARSER_TOKEN_KIND_C, DLWPARSER_TOKEN_KIND_D, 0]) {
-        [self reg_]; 
+        [self regExpr_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'operand'."];
+        [self raise:@"No viable alternative found in rule 'mathSrc'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchOperand:)];
+    [self fireDelegateSelector:@selector(parser:didMatchMathSrc:)];
 }
 
-- (void)dest_ {
+- (void)storeSrc_ {
     
-    [self regName_]; 
+    if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [self litExpr_]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_A, DLWPARSER_TOKEN_KIND_B, DLWPARSER_TOKEN_KIND_C, DLWPARSER_TOKEN_KIND_D, 0]) {
+        [self regExpr_]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'storeSrc'."];
+    }
 
-    [self fireDelegateSelector:@selector(parser:didMatchDest:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStoreSrc:)];
+}
+
+- (void)storeDest_ {
+    
+    if ([self speculate:^{ [self addrDest_]; }]) {
+        [self addrDest_]; 
+    } else if ([self speculate:^{ [self refDest_]; }]) {
+        [self refDest_]; 
+    } else if ([self speculate:^{ [self offsetDest_]; }]) {
+        [self offsetDest_]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'storeDest'."];
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchStoreDest:)];
+}
+
+- (void)litExpr_ {
+    
+    [self lit_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchLitExpr:)];
+}
+
+- (void)regExpr_ {
+    
+    [self reg_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchRegExpr:)];
+}
+
+- (void)addrExpr_ {
+    
+    [self addr_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchAddrExpr:)];
+}
+
+- (void)refExpr_ {
+    
+    [self reg_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchRefExpr:)];
+}
+
+- (void)offsetExpr_ {
+    
+    [self offset_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchOffsetExpr:)];
+}
+
+- (void)regDest_ {
+    
+    [self reg_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchRegDest:)];
+}
+
+- (void)addrDest_ {
+    
+    [self addr_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchAddrDest:)];
+}
+
+- (void)refDest_ {
+    
+    [self reg_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchRefDest:)];
+}
+
+- (void)offsetDest_ {
+    
+    [self offset_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchOffsetDest:)];
 }
 
 - (void)lit_ {
@@ -236,7 +320,17 @@
 
 - (void)reg_ {
     
-    [self regName_]; 
+    if ([self predicts:DLWPARSER_TOKEN_KIND_A, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_A discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_B, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_B discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_C, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_C discard:NO]; 
+    } else if ([self predicts:DLWPARSER_TOKEN_KIND_D, 0]) {
+        [self match:DLWPARSER_TOKEN_KIND_D discard:NO]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'reg'."];
+    }
 
     [self fireDelegateSelector:@selector(parser:didMatchReg:)];
 }
@@ -252,7 +346,7 @@
 - (void)ref_ {
     
     [self match:DLWPARSER_TOKEN_KIND_POUND discard:YES]; 
-    [self regName_]; 
+    [self reg_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchRef:)];
 }
@@ -292,23 +386,6 @@
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchLoc:)];
-}
-
-- (void)regName_ {
-    
-    if ([self predicts:DLWPARSER_TOKEN_KIND_A, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_A discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_B, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_B discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_C, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_C discard:NO]; 
-    } else if ([self predicts:DLWPARSER_TOKEN_KIND_D, 0]) {
-        [self match:DLWPARSER_TOKEN_KIND_D discard:NO]; 
-    } else {
-        [self raise:@"No viable alternative found in rule 'regName'."];
-    }
-
-    [self fireDelegateSelector:@selector(parser:didMatchRegName:)];
 }
 
 @end

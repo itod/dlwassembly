@@ -68,10 +68,25 @@
 }
 
 
+- (void)parser:(PKParser *)p didMatchStoreStmt:(PKAssembly *)a {
+    DLWDestination *arg1 = [a pop];
+    DLWExpression *arg0 = [a pop];
+    
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@"store"]);
+    DLWStatement *stmt = [DLWStoreStatement ASTWithToken:tok];
+    [stmt addChild:arg0];
+    [stmt addChild:arg1];
+    
+    TDAssert(a.target);
+    [a.target addObject:stmt];
+}
+
+
 #pragma mark -
 #pragma mark Expressions
 
-- (void)parser:(PKParser *)p didMatchLit:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchLitExpr:(PKAssembly *)a {
     PKToken *tok = [a pop];
     TDAssert(tok.isNumber);
     
@@ -80,7 +95,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchReg:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchRegExpr:(PKAssembly *)a {
     PKToken *tok = [a pop];
     TDAssert(tok.isWord);
     
@@ -89,7 +104,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchAddr:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchAddrExpr:(PKAssembly *)a {
     PKToken *tok = [a pop];
     TDAssert(tok.isNumber);
     
@@ -101,11 +116,20 @@
 #pragma mark -
 #pragma mark Destination
 
-- (void)parser:(PKParser *)p didMatchDest:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchRegDest:(PKAssembly *)a {
     PKToken *tok = [a pop];
     TDAssert(tok.isWord);
 
-    DLWDestination *dest = [DLWDestination ASTWithToken:tok];
+    DLWDestination *dest = [DLWRegisterDestination ASTWithToken:tok];
+    [a push:dest];
+}
+
+
+- (void)parser:(PKParser *)p didMatchAddrDest:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(tok.isNumber);
+    
+    DLWDestination *dest = [DLWMemoryDestination ASTWithToken:tok];
     [a push:dest];
 }
 

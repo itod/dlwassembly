@@ -14,3 +14,11 @@
 @interface DLWDestination : PKAST
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx;
 @end
+
+@interface DLWRegisterDestination : DLWDestination
+
+@end
+
+@interface DLWMemoryDestination : DLWDestination
+
+@end

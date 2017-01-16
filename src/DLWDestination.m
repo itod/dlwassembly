@@ -12,6 +12,14 @@
 @implementation DLWDestination
 
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+}
+
+@end
+
+@implementation DLWRegisterDestination
+
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
     switch (self.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
             ctx.registerA = word;
@@ -29,6 +37,15 @@
             TDAssert(0);
             break;
     }
+}
+
+@end
+
+@implementation DLWMemoryDestination
+
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
+    ASIndex addr = (ASIndex)self.token.doubleValue;
+    [ctx setWord:word forAddress:addr];
 }
 
 @end

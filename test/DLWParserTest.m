@@ -56,7 +56,7 @@
         TDEquals(3, [stmt.children count]);
         TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
-        TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
+        TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -77,7 +77,7 @@
         TDEquals(3, [stmt.children count]);
         TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
-        TDEqualObjects([stmt.children[2] class], [DLWDestination class]);
+        TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -97,7 +97,27 @@
         TDEqualObjects([stmt class], [DLWLoadStatement class]);
         TDEquals(2, [stmt.children count]);
         TDEqualObjects([stmt.children[0] class], [DLWAddressExpression class]);
-        TDEqualObjects([stmt.children[1] class], [DLWDestination class]);
+        TDEqualObjects([stmt.children[1] class], [DLWRegisterDestination class]);
+    }
+}
+
+
+- (void)testStoreInstruction {
+    NSString *str = @"store B, #42;";
+    
+    NSError *err = nil;
+    NSArray *prog = [p parseString:str error:&err];
+    TDNil(err);
+    TDNotNil(prog);
+    TDTrue([prog isKindOfClass:[NSArray class]]);
+    TDEquals(1, [prog count]);
+    
+    {
+        DLWStatement *stmt = prog[0];
+        TDEqualObjects([stmt class], [DLWStoreStatement class]);
+        TDEquals(2, [stmt.children count]);
+        TDEqualObjects([stmt.children[0] class], [DLWRegisterExpression class]);
+        TDEqualObjects([stmt.children[1] class], [DLWMemoryDestination class]);
     }
 }
 

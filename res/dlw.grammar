@@ -24,34 +24,44 @@ stmt
     = addStmt 
     | subStmt
     | loadStmt
-    | saveStmt
+    | storeStmt
     | jumpStmt
     | jumpzStmt
     | jumpnStmt
     | jumpoStmt
     ;
     
-addStmt     = 'add' operand ','! operand ','! dest ';'!;
-subStmt     = 'sub' operand ','! operand ','! dest ';'!;
+addStmt     = 'add' mathSrc ','! mathSrc ','! regDest ';'!;
+subStmt     = 'sub' mathSrc ','! mathSrc ','! regDest ';'!;
 
-loadStmt    = 'load' addr ','! dest ';'!;
-saveStmt    = 'save' addr ','! dest ';'!;
+loadStmt    = 'load'  addrExpr ','! regDest ';'!;
+storeStmt   = 'store' storeSrc ','! storeDest ';'!;
 
 jumpStmt    = 'jump'  loc ';'!;
 jumpzStmt   = 'jumpz' loc ';'!;
 jumpnStmt   = 'jumpn' loc ';'!;
 jumpoStmt   = 'jumpo' loc ';'!;
 
-operand = lit | reg;
-dest = regName;
+mathSrc = litExpr | regExpr;
+storeSrc = litExpr | regExpr;
+storeDest = addrDest | refDest | offsetDest;
+
+litExpr = lit;
+regExpr = reg;
+addrExpr = addr;
+refExpr = reg;
+offsetExpr = offset;
+
+regDest = reg;
+addrDest = addr;
+refDest = reg;
+offsetDest = offset;
 
 lit = Number;
-reg = regName;
+reg = 'A' | 'B' | 'C' | 'D';
 addr = '#'! Number;
-ref = '#'! regName;
+ref = '#'! reg;
 offset = '#'! '('! reg '+'! lit ')'!;
 
 label = { islower([LS(1) characterAtIndex:0]) }? Word;
 loc = label | addr | ref | offset;
-
-regName = 'A' | 'B' | 'C' | 'D';
