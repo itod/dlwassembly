@@ -133,7 +133,6 @@
     TDAssert([tok.stringValue isEqualToString:@"("]);
     
     DLWExpression *offset = [DLWOffsetExpression ASTWithToken:tok];
-    
     [a push:offset];
 }
 
@@ -166,5 +165,20 @@
     DLWDestination *dest = [DLWIndirectionDestination ASTWithToken:tok];
     [a push:dest];
 }
+
+- (void)parser:(PKParser *)p didMatchOffsetDest:(PKAssembly *)a {
+    DLWLiteralExpression *lit = [a pop];
+    TDAssert([lit isKindOfClass:[DLWLiteralExpression class]]);
+    
+    DLWRegisterExpression *reg = [a pop];
+    TDAssert([reg isKindOfClass:[DLWRegisterExpression class]]);
+    
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@"("]);
+    
+    DLWDestination *offset = [DLWOffsetDestination ASTWithToken:tok];
+    [a push:offset];
+}
+
 
 @end

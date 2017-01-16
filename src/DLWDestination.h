@@ -26,3 +26,7 @@
 @interface DLWIndirectionDestination : DLWDestination
 
 @end
+
+@interface DLWOffsetDestination : DLWDestination
+
+@end

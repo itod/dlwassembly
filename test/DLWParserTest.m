@@ -135,5 +135,6 @@
 - (void)testStore_B_a42 { [self testStoreInstruction:@"store B, #42;"]; }
 - (void)testStore_C_rD { [self testStoreInstruction:@"store C, #D;"]; }
 - (void)testStore_44_rA { [self testStoreInstruction:@"store 44, #A;"]; }
+- (void)testStore_B_oC102_A { [self testStoreInstruction:@"store B, #(C + 102);"]; }
 
 @end

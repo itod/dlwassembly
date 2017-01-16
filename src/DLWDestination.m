@@ -8,6 +8,7 @@
 
 #import "DLWDestination.h"
 #import "DLWParser.h"
+#import "DLWExpression.h"
 
 @implementation DLWDestination
 
@@ -73,6 +74,39 @@
             break;
     }
 
+    [ctx setWord:word forMemoryAddress:addr];
+}
+
+@end
+
+@implementation DLWOffsetDestination
+
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
+    ASIndex addr = 0;
+    
+    DLWExpression *reg = self.children[0];
+    switch (reg.token.tokenKind) {
+        case DLWPARSER_TOKEN_KIND_A:
+            addr = ctx.registerA;
+            break;
+        case DLWPARSER_TOKEN_KIND_B:
+            addr = ctx.registerB;
+            break;
+        case DLWPARSER_TOKEN_KIND_C:
+            addr = ctx.registerC;
+            break;
+        case DLWPARSER_TOKEN_KIND_D:
+            addr = ctx.registerD;
+            break;
+        default:
+            TDAssert(0);
+            break;
+    }
+    
+    DLWExpression *lit = self.children[1];
+    ASIndex offset = (ASIndex)lit.token.doubleValue; // index or word?
+    addr += offset;
+    
     [ctx setWord:word forMemoryAddress:addr];
 }
 
