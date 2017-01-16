@@ -150,27 +150,65 @@
 }
 
 
-- (void)testLoadInstruction {
+- (void)testLoad_a12_A {
     NSString *str = @"load #12, A;";
+    
+    ASIndex addr = 12;
+    ASWord val = 47;
 
-    [ctx setWord:47 forMemoryAddress:12];
+    [ctx setWord:val forMemoryAddress:addr];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASWord)47, ctx.registerA);
+    TDEquals((ASWord)val, ctx.registerA);
 }
 
 
-- (void)testStoreInstruction {
-    NSString *str = @"store B, #42;";
+- (void)testLoad_rA_B {
+    NSString *str = @"load #A, B;";
     
-    ctx.registerB = 10;
+    ASIndex addr = 17;
+    ASWord val = 3;
+    
+    ctx.registerA = addr;
+    [ctx setWord:val forMemoryAddress:addr];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASWord)10, [ctx wordForMemoryAddress:42]);
+    TDEquals((ASWord)val, ctx.registerB);
+}
+
+
+- (void)testStore_B_r42 {
+    NSString *str = @"store B, #42;";
+    
+    ASWord val = 10;
+    ASIndex addr = 42;
+
+    ctx.registerB = val;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)val, [ctx wordForMemoryAddress:addr]);
+}
+
+
+- (void)testStore_C_rD {
+    NSString *str = @"store C, #D;";
+    
+    ASWord val = 111;
+    ASIndex addr = 88;
+    
+    ctx.registerC = val;
+    ctx.registerD = addr;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)val, [ctx wordForMemoryAddress:addr]);
 }
 
 @end
