@@ -14,7 +14,7 @@
 #import "DLWDestination.h"
 
 @interface DLWExecutor ()
-- (void)_debugExecute:(NSArray *)program;
+- (void)_execute:(NSArray *)program;
 @end
 
 @interface DLWInstructionTest : XCTestCase
@@ -60,7 +60,7 @@
     NSString *str = @"add 1, 2, A;";
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec _debugExecute:prog];
+    [exec _execute:prog];
     
     TDEquals((ASWord)3, ctx.registerA);
 }
@@ -70,7 +70,7 @@
     NSString *str = @"sub 2, 1, B;";
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec _debugExecute:prog];
+    [exec _execute:prog];
     
     TDEquals((ASWord)1, ctx.registerB);
 }
@@ -82,7 +82,7 @@
     [ctx setWord:47 forAddress:12];
     
     NSArray *prog = [p parseString:str error:nil];
-    [exec _debugExecute:prog];
+    [exec _execute:prog];
     
     TDEquals((ASWord)47, ctx.registerA);
 }
