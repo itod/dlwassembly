@@ -22,3 +22,7 @@
 @interface DLWRegisterExpression : DLWExpression
 
 @end
+
+@interface DLWAddressExpression : DLWExpression
+
+@end

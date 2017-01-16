@@ -16,8 +16,11 @@
 
 @implementation DLWParserDelegate
 
+#pragma mark -
+#pragma mark Instructions
+
 - (void)parser:(PKParser *)p didMatchAddStmt:(PKAssembly *)a {
-    DLWExpression *arg2 = [a pop];
+    DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
@@ -34,7 +37,7 @@
 
 
 - (void)parser:(PKParser *)p didMatchSubStmt:(PKAssembly *)a {
-    DLWExpression *arg2 = [a pop];
+    DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
@@ -49,6 +52,24 @@
     [a.target addObject:stmt];
 }
 
+
+- (void)parser:(PKParser *)p didMatchLoadStmt:(PKAssembly *)a {
+    DLWDestination *arg1 = [a pop];
+    DLWExpression *arg0 = [a pop];
+    
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@"load"]);
+    DLWStatement *stmt = [DLWLoadStatement ASTWithToken:tok];
+    [stmt addChild:arg0];
+    [stmt addChild:arg1];
+    
+    TDAssert(a.target);
+    [a.target addObject:stmt];
+}
+
+
+#pragma mark -
+#pragma mark Expressions
 
 - (void)parser:(PKParser *)p didMatchLit:(PKAssembly *)a {
     PKToken *tok = [a pop];
@@ -67,6 +88,18 @@
     [a push:expr];
 }
 
+
+- (void)parser:(PKParser *)p didMatchAddr:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(tok.isNumber);
+    
+    DLWAddressExpression *addr = [DLWAddressExpression ASTWithToken:tok];
+    [a push:addr];
+}
+
+
+#pragma mark -
+#pragma mark Destination
 
 - (void)parser:(PKParser *)p didMatchDest:(PKAssembly *)a {
     PKToken *tok = [a pop];

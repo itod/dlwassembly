@@ -53,3 +53,13 @@
 }
 
 @end
+
+@implementation DLWAddressExpression
+
+- (ASWord)evaluateInContext:(DLWContext *)ctx {
+    ASIndex addr = (ASIndex)self.token.doubleValue;
+    ASWord res = [ctx wordForAddress:addr];
+    return res;
+}
+
+@end

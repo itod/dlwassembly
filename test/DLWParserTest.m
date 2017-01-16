@@ -81,4 +81,24 @@
     }
 }
 
+
+- (void)testLoadInstruction {
+    NSString *str = @"load #12, A;";
+    
+    NSError *err = nil;
+    NSArray *prog = [p parseString:str error:&err];
+    TDNil(err);
+    TDNotNil(prog);
+    TDTrue([prog isKindOfClass:[NSArray class]]);
+    TDEquals(1, [prog count]);
+    
+    {
+        DLWStatement *stmt = prog[0];
+        TDEqualObjects([stmt class], [DLWLoadStatement class]);
+        TDEquals(2, [stmt.children count]);
+        TDEqualObjects([stmt.children[0] class], [DLWAddressExpression class]);
+        TDEqualObjects([stmt.children[1] class], [DLWDestination class]);
+    }
+}
+
 @end

@@ -52,6 +52,14 @@
 
 @implementation DLWLoadStatement
 
+- (void)executeInContext:(DLWContext *)ctx {
+    TDAssert(2 == [self.children count]);
+    ASWord val = [self.children[0] evaluateInContext:ctx];
+    DLWDestination *dest = self.children[1];
+    
+    [dest setWord:val inContext:ctx];
+}
+
 @end
 
 @implementation DLWSaveStatement

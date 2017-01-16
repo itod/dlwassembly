@@ -67,4 +67,16 @@
     TDEquals((ASWord)1, ctx.registerB);
 }
 
+
+- (void)testLoadInstruction {
+    NSString *str = @"load #12, A;";
+    
+    [ctx setWord:47 forAddress:12];
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec execute:prog];
+    
+    TDEquals((ASWord)47, ctx.registerA);
+}
+
 @end
