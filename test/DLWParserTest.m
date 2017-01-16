@@ -126,7 +126,7 @@
 - (void)testSub_5_B_C { [self testSubInstruction:@"sub 5, B, C;"]; }
 
 
-//- (void)testLoad_12_A { [self testLoadInstruction:@"load 12, A;"]; }
+- (void)testLoad_12_A { [self testLoadInstruction:@"load 12, A;"]; }
 - (void)testLoad_a12_A { [self testLoadInstruction:@"load #12, A;"]; }
 //- (void)testLoad_rA_B { [self testLoadInstruction:@"load #A, B;"]; }
 

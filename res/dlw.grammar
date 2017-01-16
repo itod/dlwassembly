@@ -43,7 +43,7 @@ jumpnStmt   = 'jumpn' loc ';'!;
 jumpoStmt   = 'jumpo' loc ';'!;
 
 mathSrc = litExpr | regExpr;
-loadSrc = addrExpr | refExpr;
+loadSrc = litExpr | addrExpr | refExpr;
 storeSrc = litExpr | regExpr;
 storeDest = addrDest | refDest | offsetDest;
 

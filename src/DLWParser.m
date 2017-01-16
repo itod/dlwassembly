@@ -222,7 +222,9 @@
 
 - (void)loadSrc_ {
     
-    if ([self speculate:^{ [self addrExpr_]; }]) {
+    if ([self speculate:^{ [self litExpr_]; }]) {
+        [self litExpr_]; 
+    } else if ([self speculate:^{ [self addrExpr_]; }]) {
         [self addrExpr_]; 
     } else if ([self speculate:^{ [self refExpr_]; }]) {
         [self refExpr_]; 
