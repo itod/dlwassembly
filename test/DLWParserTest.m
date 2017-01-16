@@ -52,8 +52,8 @@
         DLWStatement *stmt = prog[0];
         TDEqualObjects([stmt class], [DLWAddStatement class]);
         TDEquals(3, [stmt.children count]);
-        TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
-        TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
+        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([stmt.children[1] isKindOfClass:[DLWExpression class]]);
         TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
     
@@ -72,15 +72,18 @@
         DLWStatement *stmt = prog[0];
         TDEqualObjects([stmt class], [DLWSubStatement class]);
         TDEquals(3, [stmt.children count]);
-        TDEqualObjects([stmt.children[0] class], [DLWLiteralExpression class]);
-        TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
+        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([stmt.children[1] isKindOfClass:[DLWExpression class]]);
         TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
 }
 
 
 - (void)testAdd_1_2_A { [self testAddInstruction:@"add 1, 2, A;"]; }
+- (void)testAdd_A_B_C { [self testAddInstruction:@"add A, B, C;"]; }
+
 - (void)testSub_2_1_B { [self testSubInstruction:@"sub 2, 1, B;"]; }
+- (void)testSub_A_B_C { [self testSubInstruction:@"sub A, B, C;"]; }
 
 
 - (void)testLoadInstruction {
