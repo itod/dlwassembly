@@ -133,6 +133,9 @@
     TDAssert([tok.stringValue isEqualToString:@"("]);
     
     DLWExpression *offset = [DLWOffsetExpression ASTWithToken:tok];
+    [offset addChild:reg];
+    [offset addChild:lit];
+
     [a push:offset];
 }
 
@@ -177,6 +180,9 @@
     TDAssert([tok.stringValue isEqualToString:@"("]);
     
     DLWDestination *offset = [DLWOffsetDestination ASTWithToken:tok];
+    [offset addChild:reg];
+    [offset addChild:lit];
+
     [a push:offset];
 }
 

@@ -164,6 +164,22 @@
     TDEquals((ASWord)val, ctx.registerA);
 }
 
+- (void)testLoad_oD108_A {
+    NSString *str = @"load #(D + 108), A;";
+    
+    ASIndex offset = 108;
+    ASIndex addr = 12;
+    ASWord val = 47;
+    
+    ctx.registerD = addr;
+    [ctx setWord:val forMemoryAddress:(addr + offset)];
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)val, ctx.registerA);
+}
+
 
 - (void)testLoad_rA_B {
     NSString *str = @"load #A, B;";

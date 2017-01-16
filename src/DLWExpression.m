@@ -99,6 +99,8 @@
     ASIndex addr = 0;
     
     DLWExpression *regExpr = self.children[0];
+    TDAssert([regExpr isKindOfClass:[DLWRegisterExpression class]]);
+    
     switch (regExpr.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
             addr = ctx.registerA;
@@ -118,6 +120,8 @@
     }
     
     DLWExpression *litExpr = self.children[1];
+    TDAssert([litExpr isKindOfClass:[DLWLiteralExpression class]]);
+
     ASIndex offset = (ASIndex)litExpr.token.doubleValue; // index or word?
     addr += offset;
     
