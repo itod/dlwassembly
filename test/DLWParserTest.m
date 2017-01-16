@@ -81,9 +81,13 @@
 
 - (void)testAdd_1_2_A { [self testAddInstruction:@"add 1, 2, A;"]; }
 - (void)testAdd_A_B_C { [self testAddInstruction:@"add A, B, C;"]; }
+- (void)testAdd_A_1_C { [self testAddInstruction:@"add A, 1, C;"]; }
+- (void)testAdd_5_B_C { [self testAddInstruction:@"add 5, B, C;"]; }
 
 - (void)testSub_2_1_B { [self testSubInstruction:@"sub 2, 1, B;"]; }
 - (void)testSub_A_B_C { [self testSubInstruction:@"sub A, B, C;"]; }
+- (void)testSub_A_1_C { [self testSubInstruction:@"sub A, 1, C;"]; }
+- (void)testSub_5_B_C { [self testSubInstruction:@"sub 5, B, C;"]; }
 
 
 - (void)testLoadInstruction {

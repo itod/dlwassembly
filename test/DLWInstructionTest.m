@@ -91,6 +91,18 @@
 }
 
 
+- (void)testAdd_5_B_C {
+    NSString *str = @"add 5, B, C;";
+    
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)7, ctx.registerC);
+}
+
+
 - (void)testSub_2_1_B {
     NSString *str = @"sub 2, 1, B;";
     
@@ -111,18 +123,6 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)8, ctx.registerC);
-}
-
-
-- (void)testAdd_5_B_C {
-    NSString *str = @"add 5, B, C;";
-    
-    ctx.registerB = 2;
-    
-    NSArray *prog = [p parseString:str error:nil];
-    [exec _execute:prog];
-    
-    TDEquals((ASWord)7, ctx.registerC);
 }
 
 
