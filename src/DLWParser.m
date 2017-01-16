@@ -91,7 +91,7 @@
 
 - (void)prog_ {
     
-    while ([self speculate:^{ [self stmt_]; }]) {
+    while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
         [self stmt_]; 
     }
 
@@ -252,7 +252,7 @@
 - (void)ref_ {
     
     [self match:DLWPARSER_TOKEN_KIND_POUND discard:YES]; 
-    [self reg_]; 
+    [self regName_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchRef:)];
 }

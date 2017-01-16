@@ -48,7 +48,7 @@ dest = regName;
 lit = Number;
 reg = regName;
 addr = '#'! Number;
-ref = '#'! reg;
+ref = '#'! regName;
 offset = '#'! '('! reg '+'! lit ')'!;
 
 label = { islower([LS(1) characterAtIndex:0]) }? Word;
