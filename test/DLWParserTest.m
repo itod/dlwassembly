@@ -40,9 +40,7 @@
 }
 
 
-- (void)testAddInstruction {
-    NSString *str = @"add 1, 2, A;";
-    
+- (void)testAddInstruction:(NSString *)str {
     NSError *err = nil;
     NSArray *prog = [p parseString:str error:&err];
     TDNil(err);
@@ -58,12 +56,11 @@
         TDEqualObjects([stmt.children[1] class], [DLWLiteralExpression class]);
         TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
+    
 }
 
 
-- (void)testSubInstruction {
-    NSString *str = @"sub 2, 1, B;";
-    
+- (void)testSubInstruction:(NSString *)str {
     NSError *err = nil;
     NSArray *prog = [p parseString:str error:&err];
     TDNil(err);
@@ -80,6 +77,10 @@
         TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
     }
 }
+
+
+- (void)testAdd_1_2_A { [self testAddInstruction:@"add 1, 2, A;"]; }
+- (void)testSub_2_1_B { [self testSubInstruction:@"sub 2, 1, B;"]; }
 
 
 - (void)testLoadInstruction {
