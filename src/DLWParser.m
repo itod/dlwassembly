@@ -92,7 +92,7 @@
 - (void)prog_ {
     
     while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-        [self stmt_]; 
+        [self stmt_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchProg:)];
@@ -271,7 +271,7 @@
 
 - (void)refExpr_ {
     
-    [self reg_]; 
+    [self ref_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchRefExpr:)];
 }

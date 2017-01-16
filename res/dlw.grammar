@@ -49,7 +49,7 @@ storeDest = addrDest | refDest | offsetDest;
 litExpr = lit;
 regExpr = reg;
 addrExpr = addr;
-refExpr = reg;
+refExpr = ref;
 offsetExpr = offset;
 
 regDest = reg;
