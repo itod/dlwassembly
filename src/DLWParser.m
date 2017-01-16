@@ -314,7 +314,7 @@
 
 - (void)refDest_ {
     
-    [self reg_]; 
+    [self ref_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchRefDest:)];
 }

@@ -22,3 +22,7 @@
 @interface DLWMemoryDestination : DLWDestination
 
 @end
+
+@interface DLWIndirectionDestination : DLWDestination
+
+@end

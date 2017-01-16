@@ -110,7 +110,7 @@
         TDEqualObjects([stmt class], [DLWStoreStatement class]);
         TDEquals(2, [stmt.children count]);
         TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([stmt.children[1] class], [DLWMemoryDestination class]);
+        TDTrue([stmt.children[1] isKindOfClass:[DLWDestination class]]);
     }
 }
 
@@ -132,5 +132,6 @@
 
 - (void)testStore_7_a255 { [self testStoreInstruction:@"store 7, #255;"]; }
 - (void)testStore_B_a42 { [self testStoreInstruction:@"store B, #42;"]; }
+- (void)testStore_C_rD { [self testStoreInstruction:@"store C, #D;"]; }
 
 @end

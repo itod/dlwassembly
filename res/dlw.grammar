@@ -55,7 +55,7 @@ offsetExpr = offset;
 
 regDest = reg;
 addrDest = addr;
-refDest = reg;
+refDest = ref;
 offsetDest = offset;
 
 lit = Number;

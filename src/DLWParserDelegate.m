@@ -142,4 +142,13 @@
     [a push:dest];
 }
 
+
+- (void)parser:(PKParser *)p didMatchRefDest:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(tok.isWord);
+    
+    DLWDestination *dest = [DLWIndirectionDestination ASTWithToken:tok];
+    [a push:dest];
+}
+
 @end

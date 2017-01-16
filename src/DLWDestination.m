@@ -49,3 +49,32 @@
 }
 
 @end
+
+@implementation DLWIndirectionDestination
+
+- (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
+    ASIndex addr = 0;
+    
+    switch (self.token.tokenKind) {
+        case DLWPARSER_TOKEN_KIND_A:
+            addr = ctx.registerA;
+            break;
+        case DLWPARSER_TOKEN_KIND_B:
+            addr = ctx.registerB;
+            break;
+        case DLWPARSER_TOKEN_KIND_C:
+            addr = ctx.registerC;
+            break;
+        case DLWPARSER_TOKEN_KIND_D:
+            addr = ctx.registerD;
+            break;
+        default:
+            TDAssert(0);
+            break;
+    }
+
+    [ctx setWord:word forMemoryAddress:addr];
+}
+
+@end
+
