@@ -1,5 +1,5 @@
 //
-//  DLWStatement.h
+//  DLWInstruction.h
 //  DLWAssembly
 //
 //  Created by Todd Ditchendorf on 15.01.17.
@@ -11,28 +11,28 @@
 
 //@class DLWContext;
 
-@interface DLWStatement : PKAST
+@interface DLWInstruction : PKAST
 - (BOOL)isImmediate;
 - (void)executeInContext:(DLWContext *)ctx;
 @end
 
-@interface DLWAddStatement : DLWStatement
+@interface DLWAddInstruction : DLWInstruction
 
 @end
 
-@interface DLWSubStatement : DLWAddStatement
+@interface DLWSubInstruction : DLWAddInstruction
 
 @end
 
-@interface DLWLoadStatement : DLWStatement
+@interface DLWLoadInstruction : DLWInstruction
 
 @end
 
-@interface DLWStoreStatement : DLWLoadStatement
+@interface DLWStoreInstruction : DLWLoadInstruction
 
 @end
 
-@interface DLWJumpStatement : DLWStatement
+@interface DLWJumpInstruction : DLWInstruction
 
 @end
 

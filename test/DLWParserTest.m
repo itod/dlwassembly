@@ -9,7 +9,7 @@
 #import "DLWTestScaffold.h"
 #import "DLWParser.h"
 #import "DLWParserDelegate.h"
-#import "DLWStatement.h"
+#import "DLWInstruction.h"
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 
@@ -49,12 +49,12 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWStatement *stmt = prog[0];
-        TDEqualObjects([stmt class], [DLWAddStatement class]);
-        TDEquals(3, [stmt.children count]);
-        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([stmt.children[1] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
+        DLWInstruction *Instruction = prog[0];
+        TDEqualObjects([Instruction class], [DLWAddInstruction class]);
+        TDEquals(3, [Instruction.children count]);
+        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([Instruction.children[1] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([Instruction.children[2] class], [DLWRegisterDestination class]);
     }
     
 }
@@ -69,12 +69,12 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWStatement *stmt = prog[0];
-        TDEqualObjects([stmt class], [DLWSubStatement class]);
-        TDEquals(3, [stmt.children count]);
-        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([stmt.children[1] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([stmt.children[2] class], [DLWRegisterDestination class]);
+        DLWInstruction *Instruction = prog[0];
+        TDEqualObjects([Instruction class], [DLWSubInstruction class]);
+        TDEquals(3, [Instruction.children count]);
+        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([Instruction.children[1] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([Instruction.children[2] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -88,11 +88,11 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWStatement *stmt = prog[0];
-        TDEqualObjects([stmt class], [DLWLoadStatement class]);
-        TDEquals(2, [stmt.children count]);
-        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([stmt.children[1] class], [DLWRegisterDestination class]);
+        DLWInstruction *Instruction = prog[0];
+        TDEqualObjects([Instruction class], [DLWLoadInstruction class]);
+        TDEquals(2, [Instruction.children count]);
+        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([Instruction.children[1] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -106,11 +106,11 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWStatement *stmt = prog[0];
-        TDEqualObjects([stmt class], [DLWStoreStatement class]);
-        TDEquals(2, [stmt.children count]);
-        TDTrue([stmt.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([stmt.children[1] isKindOfClass:[DLWDestination class]]);
+        DLWInstruction *Instruction = prog[0];
+        TDEqualObjects([Instruction class], [DLWStoreInstruction class]);
+        TDEquals(2, [Instruction.children count]);
+        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([Instruction.children[1] isKindOfClass:[DLWDestination class]]);
     }
 }
 

@@ -9,7 +9,7 @@
 #import "DLWTestScaffold.h"
 #import "DLWParser.h"
 #import "DLWParserDelegate.h"
-#import "DLWStatement.h"
+#import "DLWInstruction.h"
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 

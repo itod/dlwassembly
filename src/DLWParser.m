@@ -92,38 +92,38 @@
 - (void)prog_ {
     
     while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-        [self stmt_];
+        [self instruction_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchProg:)];
 }
 
-- (void)stmt_ {
+- (void)instruction_ {
     
     if ([self predicts:DLWPARSER_TOKEN_KIND_ADD, 0]) {
-        [self addStmt_]; 
+        [self addInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_SUB, 0]) {
-        [self subStmt_]; 
+        [self subInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_LOAD, 0]) {
-        [self loadStmt_]; 
+        [self loadInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_STORE, 0]) {
-        [self storeStmt_]; 
+        [self storeInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMP, 0]) {
-        [self jumpStmt_]; 
+        [self jumpInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMPZ, 0]) {
-        [self jumpzStmt_]; 
+        [self jumpzInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMPN, 0]) {
-        [self jumpnStmt_]; 
+        [self jumpnInstruction_]; 
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMPO, 0]) {
-        [self jumpoStmt_]; 
+        [self jumpoInstruction_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'stmt'."];
+        [self raise:@"No viable alternative found in rule 'Instruction'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchInstruction:)];
 }
 
-- (void)addStmt_ {
+- (void)addInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_ADD discard:NO]; 
     [self mathSrc_]; 
@@ -133,10 +133,10 @@
     [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchAddStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAddInstruction:)];
 }
 
-- (void)subStmt_ {
+- (void)subInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_SUB discard:NO]; 
     [self mathSrc_]; 
@@ -146,10 +146,10 @@
     [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchSubStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSubInstruction:)];
 }
 
-- (void)loadStmt_ {
+- (void)loadInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_LOAD discard:NO]; 
     [self loadSrc_]; 
@@ -157,10 +157,10 @@
     [self regDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchLoadStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLoadInstruction:)];
 }
 
-- (void)storeStmt_ {
+- (void)storeInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_STORE discard:NO]; 
     [self storeSrc_]; 
@@ -168,43 +168,43 @@
     [self storeDest_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchStoreStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStoreInstruction:)];
 }
 
-- (void)jumpStmt_ {
+- (void)jumpInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMP discard:NO]; 
     [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchJumpStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchJumpInstruction:)];
 }
 
-- (void)jumpzStmt_ {
+- (void)jumpzInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPZ discard:NO]; 
     [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchJumpzStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchJumpzInstruction:)];
 }
 
-- (void)jumpnStmt_ {
+- (void)jumpnInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPN discard:NO]; 
     [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchJumpnStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchJumpnInstruction:)];
 }
 
-- (void)jumpoStmt_ {
+- (void)jumpoInstruction_ {
     
     [self match:DLWPARSER_TOKEN_KIND_JUMPO discard:NO]; 
     [self loc_]; 
     [self match:DLWPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchJumpoStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchJumpoInstruction:)];
 }
 
 - (void)mathSrc_ {

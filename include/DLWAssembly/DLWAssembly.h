@@ -14,7 +14,7 @@ FOUNDATION_EXPORT double DLWAssemblyVersionNumber;
 //! Project version string for DLWAssembly.
 FOUNDATION_EXPORT const unsigned char DLWAssemblyVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <DLWAssembly/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using Instructions like #import <DLWAssembly/PublicHeader.h>
 
 
 #import <DLWAssembly/DLWContext.h>

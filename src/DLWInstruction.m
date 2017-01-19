@@ -1,18 +1,18 @@
 //
-//  DLWStatement.m
+//  DLWInstruction.m
 //  DLWAssembly
 //
 //  Created by Todd Ditchendorf on 15.01.17.
 //  Copyright © 2017 Celestial Teapot. All rights reserved.
 //
 
-#import "DLWStatement.h"
+#import "DLWInstruction.h"
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 
 @class DLWContext;
 
-@implementation DLWStatement
+@implementation DLWInstruction
 
 - (BOOL)isImmediate {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation DLWAddStatement
+@implementation DLWAddInstruction
 
 - (BOOL)isImmediate {
     return [self.children[0] isKindOfClass:[DLWLiteralExpression class]] || [self.children[1] isKindOfClass:[DLWLiteralExpression class]];
@@ -46,7 +46,7 @@
 
 @end
 
-@implementation DLWSubStatement
+@implementation DLWSubInstruction
 
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(3 == [self.children count]);
@@ -61,7 +61,7 @@
 
 @end
 
-@implementation DLWLoadStatement
+@implementation DLWLoadInstruction
 
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(2 == [self.children count]);
@@ -73,11 +73,11 @@
 
 @end
 
-@implementation DLWStoreStatement
+@implementation DLWStoreInstruction
 
 @end
 
-@implementation DLWJumpStatement
+@implementation DLWJumpInstruction
 
 @end
 

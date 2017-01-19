@@ -8,7 +8,7 @@
 
 #import <DLWAssembly/DLWExecutor.h>
 #import <DLWAssembly/DLWContext.h>
-#import "DLWStatement.h"
+#import "DLWInstruction.h"
 
 @interface DLWExecutor ()
 @property (nonatomic, retain) DLWContext *context;
@@ -48,8 +48,8 @@
     NSParameterAssert(program);
     TDAssert(_context);
     
-    for (DLWStatement *stmt in program) {
-        [stmt executeInContext:_context];
+    for (DLWInstruction *Instruction in program) {
+        [Instruction executeInContext:_context];
     }
 }
 

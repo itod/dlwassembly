@@ -10,7 +10,7 @@
 #import <PEGKit/PEGKit.h>
 #import <DLWAssembly/DLWAssembly.h>
 
-#import "DLWStatement.h"
+#import "DLWInstruction.h"
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 
@@ -19,67 +19,67 @@
 #pragma mark -
 #pragma mark Instructions
 
-- (void)parser:(PKParser *)p didMatchAddStmt:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchAddInstruction:(PKAssembly *)a {
     DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"add"]);
-    DLWStatement *stmt = [DLWAddStatement ASTWithToken:tok];
-    [stmt addChild:arg0];
-    [stmt addChild:arg1];
-    [stmt addChild:arg2];
+    DLWInstruction *Instruction = [DLWAddInstruction ASTWithToken:tok];
+    [Instruction addChild:arg0];
+    [Instruction addChild:arg1];
+    [Instruction addChild:arg2];
     
     TDAssert(a.target);
-    [a.target addObject:stmt];
+    [a.target addObject:Instruction];
 }
 
 
-- (void)parser:(PKParser *)p didMatchSubStmt:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchSubInstruction:(PKAssembly *)a {
     DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"sub"]);
-    DLWStatement *stmt = [DLWSubStatement ASTWithToken:tok];
-    [stmt addChild:arg0];
-    [stmt addChild:arg1];
-    [stmt addChild:arg2];
+    DLWInstruction *Instruction = [DLWSubInstruction ASTWithToken:tok];
+    [Instruction addChild:arg0];
+    [Instruction addChild:arg1];
+    [Instruction addChild:arg2];
     
     TDAssert(a.target);
-    [a.target addObject:stmt];
+    [a.target addObject:Instruction];
 }
 
 
-- (void)parser:(PKParser *)p didMatchLoadStmt:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchLoadInstruction:(PKAssembly *)a {
     DLWDestination *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"load"]);
-    DLWStatement *stmt = [DLWLoadStatement ASTWithToken:tok];
-    [stmt addChild:arg0];
-    [stmt addChild:arg1];
+    DLWInstruction *Instruction = [DLWLoadInstruction ASTWithToken:tok];
+    [Instruction addChild:arg0];
+    [Instruction addChild:arg1];
     
     TDAssert(a.target);
-    [a.target addObject:stmt];
+    [a.target addObject:Instruction];
 }
 
 
-- (void)parser:(PKParser *)p didMatchStoreStmt:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchStoreInstruction:(PKAssembly *)a {
     DLWDestination *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"store"]);
-    DLWStatement *stmt = [DLWStoreStatement ASTWithToken:tok];
-    [stmt addChild:arg0];
-    [stmt addChild:arg1];
+    DLWInstruction *Instruction = [DLWStoreInstruction ASTWithToken:tok];
+    [Instruction addChild:arg0];
+    [Instruction addChild:arg1];
     
     TDAssert(a.target);
-    [a.target addObject:stmt];
+    [a.target addObject:Instruction];
 }
 
 
