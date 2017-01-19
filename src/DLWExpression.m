@@ -11,6 +11,11 @@
 
 @implementation DLWExpression
 
+- (BOOL)isLiteral {
+    return NO;
+}
+
+
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;
@@ -19,6 +24,11 @@
 @end
 
 @implementation DLWLiteralExpression
+
+- (BOOL)isLiteral {
+    return YES;
+}
+
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     return (ASWord)self.token.doubleValue;

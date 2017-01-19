@@ -12,6 +12,7 @@
 //@class DLWContext;
 
 @interface DLWExpression : PKAST
+- (BOOL)isLiteral;
 - (ASWord)evaluateInContext:(DLWContext *)ctx;
 @end
 

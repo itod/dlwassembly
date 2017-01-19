@@ -28,7 +28,7 @@
 @implementation DLWAddInstruction
 
 - (BOOL)isImmediate {
-    return [self.children[0] isKindOfClass:[DLWLiteralExpression class]] || [self.children[1] isKindOfClass:[DLWLiteralExpression class]];
+    return [self.children[0] isLiteral] || [self.children[1] isLiteral];
 }
 
 
