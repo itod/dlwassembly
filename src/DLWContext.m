@@ -21,7 +21,7 @@
 - (void)setUp {
     self.labelTable = [NSMutableDictionary dictionary];
     
-    size_t count = pow(2, 16);
+    size_t count = pow(2, 8);
     _storage = calloc(count, sizeof(ASWord));
     TDAssert(_storage);
 }
