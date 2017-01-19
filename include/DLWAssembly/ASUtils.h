@@ -8,8 +8,6 @@
 
 #import <DLWAssembly/ASTypes.h>
 
-#define ASAssertMainThread() NSAssert1([NSThread isMainThread], @"%s should be called on the main thread only.", __PRETTY_FUNCTION__);
-
 extern const ASIndex ASNotFound;
 
 extern NSString *ASHexStringFromByte(ASByte byte);

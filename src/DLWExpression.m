@@ -17,6 +17,12 @@
 }
 
 
+- (ASSize)numBits {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return 0;
+}
+
+
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;
@@ -26,9 +32,8 @@
 
 @implementation DLWLiteralExpression
 
-- (BOOL)isLiteral {
-    return YES;
-}
+- (BOOL)isLiteral { return YES; }
+- (ASSize)numBits { return 8; }
 
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
@@ -38,6 +43,9 @@
 @end
 
 @implementation DLWRegisterExpression
+
+- (ASSize)numBits { return 2; }
+
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASWord res = 0;
@@ -67,6 +75,9 @@
 
 @implementation DLWAddressExpression
 
+- (ASSize)numBits { return 8; }
+
+
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
     ASWord res = [ctx wordForMemoryAddress:addr];
@@ -76,6 +87,9 @@
 @end
 
 @implementation DLWIndirectionExpression
+
+- (ASSize)numBits { return 2; }
+
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = 0;
@@ -105,6 +119,9 @@
 @end
 
 @implementation DLWOffsetExpression
+
+- (ASSize)numBits { return 10; }
+
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = 0;
