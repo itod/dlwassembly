@@ -34,10 +34,11 @@
     TDFalse([stor boolForBitAtIndex:0]);
     TDFalse([stor boolForBitAtIndex:1]);
     TDFalse([stor boolForBitAtIndex:2]);
-    
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0000", [stor asBinaryString]);
+    TDFalse([stor boolForBitAtIndex:3]);
+
+    TDEqualObjects(@"%0000_0000", [stor asBinaryString]);
     TDEqualObjects(@"0", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0000", [stor asHexString]);
+    TDEqualObjects(@"$00", [stor asHexString]);
 }
 
 
@@ -48,10 +49,11 @@
     TDTrue([stor boolForBitAtIndex:0]);
     TDFalse([stor boolForBitAtIndex:1]);
     TDFalse([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0001", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0001", [stor asBinaryString]);
     TDEqualObjects(@"1", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0001", [stor asHexString]);
+    TDEqualObjects(@"$01", [stor asHexString]);
 }
 
 
@@ -62,10 +64,11 @@
     TDFalse([stor boolForBitAtIndex:0]);
     TDTrue([stor boolForBitAtIndex:1]);
     TDFalse([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0010", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0010", [stor asBinaryString]);
     TDEqualObjects(@"2", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0002", [stor asHexString]);
+    TDEqualObjects(@"$02", [stor asHexString]);
 }
 
 
@@ -76,10 +79,11 @@
     TDTrue([stor boolForBitAtIndex:0]);
     TDTrue([stor boolForBitAtIndex:1]);
     TDFalse([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0011", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0011", [stor asBinaryString]);
     TDEqualObjects(@"3", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0003", [stor asHexString]);
+    TDEqualObjects(@"$03", [stor asHexString]);
 }
 
 
@@ -91,9 +95,9 @@
     TDFalse([stor boolForBitAtIndex:1]);
     TDTrue([stor boolForBitAtIndex:2]);
 
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0100", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0100", [stor asBinaryString]);
     TDEqualObjects(@"4", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0004", [stor asHexString]);
+    TDEqualObjects(@"$04", [stor asHexString]);
 }
 
 
@@ -104,10 +108,11 @@
     TDTrue([stor boolForBitAtIndex:0]);
     TDFalse([stor boolForBitAtIndex:1]);
     TDTrue([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0101", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0101", [stor asBinaryString]);
     TDEqualObjects(@"5", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0005", [stor asHexString]);
+    TDEqualObjects(@"$05", [stor asHexString]);
 }
 
 
@@ -118,10 +123,11 @@
     TDFalse([stor boolForBitAtIndex:0]);
     TDTrue([stor boolForBitAtIndex:1]);
     TDTrue([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0110", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0110", [stor asBinaryString]);
     TDEqualObjects(@"6", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0006", [stor asHexString]);
+    TDEqualObjects(@"$06", [stor asHexString]);
 }
 
 
@@ -132,10 +138,26 @@
     TDTrue([stor boolForBitAtIndex:0]);
     TDTrue([stor boolForBitAtIndex:1]);
     TDTrue([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolForBitAtIndex:3]);
     
-    TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0111", [stor asBinaryString]);
+    TDEqualObjects(@"%0000_0111", [stor asBinaryString]);
     TDEqualObjects(@"7", [stor asDecimalString]);
-    TDEqualObjects(@"$0000_0007", [stor asHexString]);
+    TDEqualObjects(@"$07", [stor asHexString]);
+}
+
+
+- (void)testByte8 {
+    ASByte val = 8;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDFalse([stor boolForBitAtIndex:0]);
+    TDFalse([stor boolForBitAtIndex:1]);
+    TDFalse([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDEqualObjects(@"%0000_1000", [stor asBinaryString]);
+    TDEqualObjects(@"8", [stor asDecimalString]);
+    TDEqualObjects(@"$08", [stor asHexString]);
 }
 
 

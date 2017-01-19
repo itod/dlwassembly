@@ -56,13 +56,44 @@
 
 
 - (NSString *)asHexString {
-    NSString *str = ASHexStringFromDword(self.dwordValue);
+    NSString *str = nil;
+    
+    switch (self.numBytes) {
+        case 1:
+            str = ASHexStringFromByte(self.byteValue);
+            break;
+        case 2:
+            str = ASHexStringFromWord(self.wordValue);
+            break;
+        case 4:
+            str = ASHexStringFromDword(self.dwordValue);
+            break;
+        default:
+            break;
+    }
+    
     return str;
 }
 
 
 - (NSString *)asBinaryString {
-    return ASBinaryStringFromDword(self.dwordValue);
+    NSString *str = nil;
+    
+    switch (self.numBytes) {
+        case 1:
+            str = ASBinaryStringFromByte(self.byteValue);
+            break;
+        case 2:
+            str = ASBinaryStringFromWord(self.wordValue);
+            break;
+        case 4:
+            str = ASBinaryStringFromDword(self.dwordValue);
+            break;
+        default:
+            break;
+    }
+    
+    return str;
 }
 
 
