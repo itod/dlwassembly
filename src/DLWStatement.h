@@ -12,6 +12,7 @@
 //@class DLWContext;
 
 @interface DLWStatement : PKAST
+- (BOOL)isImmediate;
 - (void)executeInContext:(DLWContext *)ctx;
 @end
 
@@ -19,7 +20,7 @@
 
 @end
 
-@interface DLWSubStatement : DLWStatement
+@interface DLWSubStatement : DLWAddStatement
 
 @end
 

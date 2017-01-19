@@ -73,6 +73,7 @@
     ctx.registerB = 2;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)12, ctx.registerC);
@@ -85,6 +86,7 @@
     ctx.registerA = 10;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)11, ctx.registerC);
@@ -97,6 +99,7 @@
     ctx.registerB = 2;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)7, ctx.registerC);
@@ -120,6 +123,7 @@
     ctx.registerB = 2;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)8, ctx.registerC);
@@ -132,6 +136,7 @@
     ctx.registerA = 10;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)9, ctx.registerC);
@@ -144,6 +149,7 @@
     ctx.registerB = 2;
     
     NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
     TDEquals((ASWord)3, ctx.registerC);

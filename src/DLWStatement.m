@@ -14,6 +14,12 @@
 
 @implementation DLWStatement
 
+- (BOOL)isImmediate {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return NO;
+}
+
+
 - (void)executeInContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
 }
@@ -21,6 +27,11 @@
 @end
 
 @implementation DLWAddStatement
+
+- (BOOL)isImmediate {
+    return [self.children[0] isKindOfClass:[DLWLiteralExpression class]] || [self.children[1] isKindOfClass:[DLWLiteralExpression class]];
+}
+
 
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(3 == [self.children count]);
