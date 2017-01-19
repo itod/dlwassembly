@@ -7,11 +7,12 @@
 //
 
 #import <PEGKit/PEGKit.h>
-#import <DLWAssembly/DLWContext.h>
+#import <DLWAssembly/ASTypes.h>
 
-//@class DLWContext;
+@class DLWContext;
 
 @interface DLWInstruction : PKAST
+- (ASWord)byteCode;
 - (ASByte)opCode;
 - (BOOL)isImmediate;
 - (void)executeInContext:(DLWContext *)ctx;

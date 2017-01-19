@@ -7,9 +7,9 @@
 //
 
 #import <PEGKit/PEGKit.h>
-#import <DLWAssembly/DLWContext.h>
+#import <DLWAssembly/ASTypes.h>
 
-//@class DLWContext;
+@class DLWContext;
 
 @interface DLWExpression : PKAST
 - (BOOL)isLiteral;

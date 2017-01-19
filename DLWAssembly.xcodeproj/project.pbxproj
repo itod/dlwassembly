@@ -24,6 +24,9 @@
 		D36319F41E2C498900E7916C /* DLWDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319F21E2C498900E7916C /* DLWDestination.h */; };
 		D36319F51E2C498900E7916C /* DLWDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319F31E2C498900E7916C /* DLWDestination.m */; };
 		D36319F71E2D2F0100E7916C /* DLWInstructionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319F61E2D2F0100E7916C /* DLWInstructionTest.m */; };
+		D36319F91E316C3600E7916C /* ASUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D36319F81E316C3600E7916C /* ASUtils.m */; };
+		D36319FC1E316C4F00E7916C /* ASTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319FA1E316C4F00E7916C /* ASTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36319FD1E316C4F00E7916C /* ASUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319FB1E316C4F00E7916C /* ASUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -129,6 +132,9 @@
 		D36319F21E2C498900E7916C /* DLWDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLWDestination.h; path = src/DLWDestination.h; sourceTree = SOURCE_ROOT; };
 		D36319F31E2C498900E7916C /* DLWDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLWDestination.m; path = src/DLWDestination.m; sourceTree = SOURCE_ROOT; };
 		D36319F61E2D2F0100E7916C /* DLWInstructionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DLWInstructionTest.m; path = test/DLWInstructionTest.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D36319F81E316C3600E7916C /* ASUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASUtils.m; path = src/ASUtils.m; sourceTree = SOURCE_ROOT; };
+		D36319FA1E316C4F00E7916C /* ASTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTypes.h; path = include/DLWAssembly/ASTypes.h; sourceTree = SOURCE_ROOT; };
+		D36319FB1E316C4F00E7916C /* ASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASUtils.h; path = include/DLWAssembly/ASUtils.h; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -227,6 +233,9 @@
 		D38C06471E2C03CD00EB3EA5 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				D36319FA1E316C4F00E7916C /* ASTypes.h */,
+				D36319FB1E316C4F00E7916C /* ASUtils.h */,
+				D36319F81E316C3600E7916C /* ASUtils.m */,
 				D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */,
 				D36319D81E2C1D7D00E7916C /* DLWContext.h */,
 				D36319D91E2C1D7D00E7916C /* DLWContext.m */,
@@ -260,7 +269,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36319FC1E316C4F00E7916C /* ASTypes.h in Headers */,
 				D36319D61E2C1D2300E7916C /* DLWExpression.h in Headers */,
+				D36319FD1E316C4F00E7916C /* ASUtils.h in Headers */,
 				D36319DA1E2C1D7D00E7916C /* DLWContext.h in Headers */,
 				D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */,
 				D36319E41E2C3C2500E7916C /* DLWExecutor.h in Headers */,
@@ -447,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36319F51E2C498900E7916C /* DLWDestination.m in Sources */,
+				D36319F91E316C3600E7916C /* ASUtils.m in Sources */,
 				D36319E51E2C3C2500E7916C /* DLWExecutor.m in Sources */,
 				D36319E11E2C1ED300E7916C /* DLWParserDelegate.m in Sources */,
 				D36319D71E2C1D2300E7916C /* DLWExpression.m in Sources */,

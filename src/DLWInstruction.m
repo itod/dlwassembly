@@ -14,6 +14,12 @@
 
 @implementation DLWInstruction
 
+- (ASWord)byteCode {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return 0;
+}
+
+
 - (ASByte)opCode {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;

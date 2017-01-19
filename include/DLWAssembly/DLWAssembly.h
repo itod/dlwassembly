@@ -17,5 +17,7 @@ FOUNDATION_EXPORT const unsigned char DLWAssemblyVersionString[];
 // In this header, you should import all the public headers of your framework using Instructions like #import <DLWAssembly/PublicHeader.h>
 
 
+#import <DLWAssembly/ASTypes.h>
+#import <DLWAssembly/ASUtils.h>
 #import <DLWAssembly/DLWContext.h>
 #import <DLWAssembly/DLWExecutor.h>

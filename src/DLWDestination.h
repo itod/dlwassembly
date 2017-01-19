@@ -7,9 +7,9 @@
 //
 
 #import <PEGKit/PEGKit.h>
-#import <DLWAssembly/DLWContext.h>
+#import <DLWAssembly/ASTypes.h>
 
-//@class DLWContext;
+@class DLWContext;
 
 @interface DLWDestination : PKAST
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx;

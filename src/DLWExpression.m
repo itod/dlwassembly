@@ -8,6 +8,7 @@
 
 #import "DLWExpression.h"
 #import "DLWParser.h"
+#import <DLWAssembly/DLWContext.h>
 
 @implementation DLWExpression
 

@@ -9,6 +9,7 @@
 #import "DLWDestination.h"
 #import "DLWParser.h"
 #import "DLWExpression.h"
+#import <DLWAssembly/DLWContext.h>
 
 @implementation DLWDestination
 
