@@ -19,21 +19,30 @@
 }
 
 
-- (id)initWithByte:(ASByte)byte {
-    self.numBytes = 1;
-    return [self initWithDword:byte];
++ (instancetype)storageWithByte:(ASByte)byte { return [[[self alloc] initWithByte:byte] autorelease]; }
++ (instancetype)storageWithWord:(ASWord)word { return [[[self alloc] initWithWord:word] autorelease]; }
++ (instancetype)storageWithDword:(ASDword)dword { return [[[self alloc] initWithDword:dword] autorelease]; }
+
+
+- (instancetype)initWithByte:(ASByte)byte {
+    return [self initWithDword:byte numBytes:1];
 }
 
 
-- (id)initWithWord:(ASWord)word {
-    self.numBytes = 2;
-    return [self initWithDword:word];
+- (instancetype)initWithWord:(ASWord)word {
+    return [self initWithDword:word numBytes:2];
 }
 
 
-- (id)initWithDword:(ASDword)dword {
+- (instancetype)initWithDword:(ASDword)dword {
+    return [self initWithDword:dword numBytes:4];
+}
+
+
+- (instancetype)initWithDword:(ASDword)dword numBytes:(ASSize)numBytes {
     self = [super init];
     if (self) {
+        self.numBytes = numBytes;
         [self setDword:dword atIndex:0];
     }
     return self;

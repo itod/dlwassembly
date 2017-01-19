@@ -19,5 +19,6 @@ FOUNDATION_EXPORT const unsigned char DLWAssemblyVersionString[];
 
 #import <DLWAssembly/ASTypes.h>
 #import <DLWAssembly/ASUtils.h>
+#import <DLWAssembly/ASMutableStorage.h>
 #import <DLWAssembly/DLWContext.h>
 #import <DLWAssembly/DLWExecutor.h>

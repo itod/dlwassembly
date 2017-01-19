@@ -11,9 +11,13 @@
 
 @interface ASStorage : NSObject
 
-- (id)initWithByte:(ASByte)byte;
-- (id)initWithWord:(ASWord)word;
-- (id)initWithDword:(ASDword)dword;
++ (instancetype)storageWithByte:(ASByte)byte;
++ (instancetype)storageWithWord:(ASWord)word;
++ (instancetype)storageWithDword:(ASDword)dword;
+
+- (instancetype)initWithByte:(ASByte)byte;
+- (instancetype)initWithWord:(ASWord)word;
+- (instancetype)initWithDword:(ASDword)dword;
 
 - (NSString *)asDecimalString;
 - (NSString *)asHexString;
