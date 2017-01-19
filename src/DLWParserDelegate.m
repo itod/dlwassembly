@@ -19,7 +19,7 @@
 #pragma mark -
 #pragma mark Instructions
 
-- (void)parser:(PKParser *)p didMatchAddInstruction:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchAddInstr:(PKAssembly *)a {
     DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
@@ -36,7 +36,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchSubInstruction:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchSubInstr:(PKAssembly *)a {
     DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
@@ -53,7 +53,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchLoadInstruction:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchLoadInstr:(PKAssembly *)a {
     DLWDestination *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
@@ -68,7 +68,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchStoreInstruction:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchStoreInstr:(PKAssembly *)a {
     DLWDestination *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
