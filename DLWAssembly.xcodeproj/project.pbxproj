@@ -28,6 +28,10 @@
 		D36319FC1E316C4F00E7916C /* ASTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319FA1E316C4F00E7916C /* ASTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D36319FF1E316D4C00E7916C /* DLWAssembly-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D36319FE1E316D4C00E7916C /* DLWAssembly-Prefix.pch */; };
 		D3631A001E316E6C00E7916C /* ASUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D36319FB1E316C4F00E7916C /* ASUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3631A051E316F2A00E7916C /* ASMutableStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D3631A011E316F2A00E7916C /* ASMutableStorage.h */; };
+		D3631A061E316F2A00E7916C /* ASMutableStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D3631A021E316F2A00E7916C /* ASMutableStorage.m */; };
+		D3631A071E316F2A00E7916C /* ASStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D3631A031E316F2A00E7916C /* ASStorage.h */; };
+		D3631A081E316F2A00E7916C /* ASStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D3631A041E316F2A00E7916C /* ASStorage.m */; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,6 +141,10 @@
 		D36319FA1E316C4F00E7916C /* ASTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTypes.h; path = include/DLWAssembly/ASTypes.h; sourceTree = SOURCE_ROOT; };
 		D36319FB1E316C4F00E7916C /* ASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASUtils.h; path = include/DLWAssembly/ASUtils.h; sourceTree = SOURCE_ROOT; };
 		D36319FE1E316D4C00E7916C /* DLWAssembly-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DLWAssembly-Prefix.pch"; path = "src/DLWAssembly-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		D3631A011E316F2A00E7916C /* ASMutableStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASMutableStorage.h; path = src/ASMutableStorage.h; sourceTree = SOURCE_ROOT; };
+		D3631A021E316F2A00E7916C /* ASMutableStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASMutableStorage.m; path = src/ASMutableStorage.m; sourceTree = SOURCE_ROOT; };
+		D3631A031E316F2A00E7916C /* ASStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASStorage.h; path = src/ASStorage.h; sourceTree = SOURCE_ROOT; };
+		D3631A041E316F2A00E7916C /* ASStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASStorage.m; path = src/ASStorage.m; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -212,6 +220,20 @@
 			name = AST;
 			sourceTree = "<group>";
 		};
+		D3631A091E316F3100E7916C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D36319FA1E316C4F00E7916C /* ASTypes.h */,
+				D36319FB1E316C4F00E7916C /* ASUtils.h */,
+				D36319F81E316C3600E7916C /* ASUtils.m */,
+				D3631A031E316F2A00E7916C /* ASStorage.h */,
+				D3631A041E316F2A00E7916C /* ASStorage.m */,
+				D3631A011E316F2A00E7916C /* ASMutableStorage.h */,
+				D3631A021E316F2A00E7916C /* ASMutableStorage.m */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 		D38C063B1E2C03CD00EB3EA5 = {
 			isa = PBXGroup;
 			children = (
@@ -235,10 +257,8 @@
 		D38C06471E2C03CD00EB3EA5 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				D36319FA1E316C4F00E7916C /* ASTypes.h */,
-				D36319FB1E316C4F00E7916C /* ASUtils.h */,
-				D36319F81E316C3600E7916C /* ASUtils.m */,
 				D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */,
+				D3631A091E316F3100E7916C /* Storage */,
 				D36319D81E2C1D7D00E7916C /* DLWContext.h */,
 				D36319D91E2C1D7D00E7916C /* DLWContext.m */,
 				D36319E21E2C3C2500E7916C /* DLWExecutor.h */,
@@ -275,12 +295,14 @@
 				D36319FC1E316C4F00E7916C /* ASTypes.h in Headers */,
 				D36319D61E2C1D2300E7916C /* DLWExpression.h in Headers */,
 				D36319DA1E2C1D7D00E7916C /* DLWContext.h in Headers */,
+				D3631A051E316F2A00E7916C /* ASMutableStorage.h in Headers */,
 				D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */,
 				D36319E41E2C3C2500E7916C /* DLWExecutor.h in Headers */,
 				D36319C91E2C0D7E00E7916C /* DLWParser.h in Headers */,
 				D3631A001E316E6C00E7916C /* ASUtils.h in Headers */,
 				D36319E01E2C1ED300E7916C /* DLWParserDelegate.h in Headers */,
 				D36319D21E2C1D0D00E7916C /* DLWInstruction.h in Headers */,
+				D3631A071E316F2A00E7916C /* ASStorage.h in Headers */,
 				D36319F41E2C498900E7916C /* DLWDestination.h in Headers */,
 				D36319FF1E316D4C00E7916C /* DLWAssembly-Prefix.pch in Headers */,
 			);
@@ -464,7 +486,9 @@
 				D36319F51E2C498900E7916C /* DLWDestination.m in Sources */,
 				D36319F91E316C3600E7916C /* ASUtils.m in Sources */,
 				D36319E51E2C3C2500E7916C /* DLWExecutor.m in Sources */,
+				D3631A081E316F2A00E7916C /* ASStorage.m in Sources */,
 				D36319E11E2C1ED300E7916C /* DLWParserDelegate.m in Sources */,
+				D3631A061E316F2A00E7916C /* ASMutableStorage.m in Sources */,
 				D36319D71E2C1D2300E7916C /* DLWExpression.m in Sources */,
 				D36319CA1E2C0D7E00E7916C /* DLWParser.m in Sources */,
 				D36319D31E2C1D0D00E7916C /* DLWInstruction.m in Sources */,
