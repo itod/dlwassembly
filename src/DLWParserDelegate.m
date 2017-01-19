@@ -24,6 +24,10 @@
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
     
+    if ([arg0 isLiteral] && [arg1 isLiteral]) {
+        [p raise:@"`add` instruction with `immediate` mode allows only one literal source operand."];
+    }
+    
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"add"]);
     DLWInstruction *Instruction = [DLWAddInstruction ASTWithToken:tok];
@@ -40,6 +44,10 @@
     DLWDestination *arg2 = [a pop];
     DLWExpression *arg1 = [a pop];
     DLWExpression *arg0 = [a pop];
+    
+    if ([arg0 isLiteral] && [arg1 isLiteral]) {
+        [p raise:@"`sub` instruction with `immediate` mode allows only one literal source operand."];
+    }
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"sub"]);

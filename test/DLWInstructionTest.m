@@ -56,14 +56,14 @@
 }
 
 
-- (void)testAdd_1_2_A {
-    NSString *str = @"add 1, 2, A;";
-    
-    NSArray *prog = [p parseString:str error:nil];
-    [exec _execute:prog];
-    
-    TDEquals((ASWord)3, ctx.registerA);
-}
+//- (void)testAdd_1_2_A {
+//    NSString *str = @"add 1, 2, A;";
+//    
+//    NSArray *prog = [p parseString:str error:nil];
+//    [exec _execute:prog];
+//    
+//    TDEquals((ASWord)3, ctx.registerA);
+//}
 
 
 - (void)testAdd_A_B_C {
@@ -106,14 +106,14 @@
 }
 
 
-- (void)testSub_2_1_B {
-    NSString *str = @"sub 2, 1, B;";
-    
-    NSArray *prog = [p parseString:str error:nil];
-    [exec _execute:prog];
-    
-    TDEquals((ASWord)1, ctx.registerB);
-}
+//- (void)testSub_2_1_B {
+//    NSString *str = @"sub 2, 1, B;";
+//    
+//    NSArray *prog = [p parseString:str error:nil];
+//    [exec _execute:prog];
+//    
+//    TDEquals((ASWord)1, ctx.registerB);
+//}
 
 
 - (void)testSub_A_B_C {
