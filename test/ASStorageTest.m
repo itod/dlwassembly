@@ -27,6 +27,9 @@
 }
 
 
+#pragma mark -
+#pragma mark Bytes
+
 - (void)testByte0 {
     ASByte val = 0;
     
@@ -202,6 +205,164 @@
 }
 
 
+- (void)testByte9 {
+    ASByte val = 9;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDTrue([stor boolForBitAtIndex:0]);
+    TDFalse([stor boolForBitAtIndex:1]);
+    TDFalse([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1001", [stor asBinaryString]);
+    TDEqualObjects(@"9", [stor asDecimalString]);
+    TDEqualObjects(@"$09", [stor asHexString]);
+}
+
+
+- (void)testByte10 {
+    ASByte val = 10;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDFalse([stor boolForBitAtIndex:0]);
+    TDTrue([stor boolForBitAtIndex:1]);
+    TDFalse([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1010", [stor asBinaryString]);
+    TDEqualObjects(@"10", [stor asDecimalString]);
+    TDEqualObjects(@"$0A", [stor asHexString]);
+}
+
+
+- (void)testByte11 {
+    ASByte val = 11;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDTrue([stor boolForBitAtIndex:0]);
+    TDTrue([stor boolForBitAtIndex:1]);
+    TDFalse([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1011", [stor asBinaryString]);
+    TDEqualObjects(@"11", [stor asDecimalString]);
+    TDEqualObjects(@"$0B", [stor asHexString]);
+}
+
+
+- (void)testByte12 {
+    ASByte val = 12;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDFalse([stor boolForBitAtIndex:0]);
+    TDFalse([stor boolForBitAtIndex:1]);
+    TDTrue([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1100", [stor asBinaryString]);
+    TDEqualObjects(@"12", [stor asDecimalString]);
+    TDEqualObjects(@"$0C", [stor asHexString]);
+}
+
+
+- (void)testByte13 {
+    ASByte val = 13;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDTrue([stor boolForBitAtIndex:0]);
+    TDFalse([stor boolForBitAtIndex:1]);
+    TDTrue([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1101", [stor asBinaryString]);
+    TDEqualObjects(@"13", [stor asDecimalString]);
+    TDEqualObjects(@"$0D", [stor asHexString]);
+}
+
+
+- (void)testByte14 {
+    ASByte val = 14;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDFalse([stor boolForBitAtIndex:0]);
+    TDTrue([stor boolForBitAtIndex:1]);
+    TDTrue([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1110", [stor asBinaryString]);
+    TDEqualObjects(@"14", [stor asDecimalString]);
+    TDEqualObjects(@"$0E", [stor asHexString]);
+}
+
+
+- (void)testByte15 {
+    ASByte val = 15;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDTrue([stor boolForBitAtIndex:0]);
+    TDTrue([stor boolForBitAtIndex:1]);
+    TDTrue([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDFalse([stor boolForBitAtIndex:4]);
+    TDFalse([stor boolForBitAtIndex:5]);
+    TDFalse([stor boolForBitAtIndex:6]);
+    TDFalse([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%0000_1111", [stor asBinaryString]);
+    TDEqualObjects(@"15", [stor asDecimalString]);
+    TDEqualObjects(@"$0F", [stor asHexString]);
+}
+
+
+- (void)testByte255 {
+    ASByte val = 255;
+    
+    ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
+    TDTrue([stor boolForBitAtIndex:0]);
+    TDTrue([stor boolForBitAtIndex:1]);
+    TDTrue([stor boolForBitAtIndex:2]);
+    TDTrue([stor boolForBitAtIndex:3]);
+    
+    TDTrue([stor boolForBitAtIndex:4]);
+    TDTrue([stor boolForBitAtIndex:5]);
+    TDTrue([stor boolForBitAtIndex:6]);
+    TDTrue([stor boolForBitAtIndex:7]);
+    
+    TDEqualObjects(@"%1111_1111", [stor asBinaryString]);
+    TDEqualObjects(@"255", [stor asDecimalString]);
+    TDEqualObjects(@"$FF", [stor asHexString]);
+}
 
 
 
@@ -218,6 +379,9 @@
 
 
 
+
+#pragma mark -
+#pragma mark DWords
 
 - (void)testDword0 {
     ASDword val = 0;
