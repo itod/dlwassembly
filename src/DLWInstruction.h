@@ -12,6 +12,7 @@
 //@class DLWContext;
 
 @interface DLWInstruction : PKAST
+- (ASByte)opCode;
 - (BOOL)isImmediate;
 - (void)executeInContext:(DLWContext *)ctx;
 @end
@@ -33,6 +34,18 @@
 @end
 
 @interface DLWJumpInstruction : DLWInstruction
+
+@end
+
+@interface DLWJumpzInstruction : DLWInstruction
+
+@end
+
+@interface DLWJumpnInstruction : DLWInstruction
+
+@end
+
+@interface DLWJumpoInstruction : DLWInstruction
 
 @end
 

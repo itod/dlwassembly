@@ -14,6 +14,12 @@
 
 @implementation DLWInstruction
 
+- (ASByte)opCode {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return 0;
+}
+
+
 - (BOOL)isImmediate {
     return NO;
 }
@@ -26,6 +32,9 @@
 @end
 
 @implementation DLWAddInstruction
+
+- (ASByte)opCode { return 0; }
+
 
 - (BOOL)isImmediate {
     return [self.children[0] isLiteral] || [self.children[1] isLiteral];
@@ -47,6 +56,9 @@
 
 @implementation DLWSubInstruction
 
+- (ASByte)opCode { return 1; }
+
+
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(3 == [self.children count]);
     ASWord arg0 = [self.children[0] evaluateInContext:ctx];
@@ -62,6 +74,9 @@
 
 @implementation DLWLoadInstruction
 
+- (ASByte)opCode { return 3; }
+
+
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(2 == [self.children count]);
     ASWord val = [self.children[0] evaluateInContext:ctx];
@@ -74,9 +89,31 @@
 
 @implementation DLWStoreInstruction
 
+- (ASByte)opCode { return 4; }
+
 @end
 
 @implementation DLWJumpInstruction
+
+- (ASByte)opCode { return 5; }
+
+@end
+
+@implementation DLWJumpzInstruction
+
+- (ASByte)opCode { return 6; }
+
+@end
+
+@implementation DLWJumpnInstruction
+
+- (ASByte)opCode { return 7; }
+
+@end
+
+@implementation DLWJumpoInstruction
+
+- (ASByte)opCode { return 8; }
 
 @end
 
