@@ -18,29 +18,29 @@
     self.assembly.target = [NSMutableArray array];
 }
 
-prog = stmt*;
+prog = instr*;
 
-stmt 
-    = addStmt 
-    | subStmt
-    | loadStmt
-    | storeStmt
-    | jumpStmt
-    | jumpzStmt
-    | jumpnStmt
-    | jumpoStmt
+instr 
+    = addInstr 
+    | subInstr
+    | loadInstr
+    | storeInstr
+    | jumpInstr
+    | jumpzInstr
+    | jumpnInstr
+    | jumpoInstr
     ;
     
-addStmt     = 'add' mathSrc ','! mathSrc ','! regDest ';'!;
-subStmt     = 'sub' mathSrc ','! mathSrc ','! regDest ';'!;
+addInstr     = 'add' mathSrc ','! mathSrc ','! regDest ';'!;
+subInstr     = 'sub' mathSrc ','! mathSrc ','! regDest ';'!;
 
-loadStmt    = 'load'  loadSrc ','! regDest ';'!;
-storeStmt   = 'store' storeSrc ','! storeDest ';'!;
+loadInstr    = 'load'  loadSrc ','! regDest ';'!;
+storeInstr   = 'store' storeSrc ','! storeDest ';'!;
 
-jumpStmt    = 'jump'  loc ';'!;
-jumpzStmt   = 'jumpz' loc ';'!;
-jumpnStmt   = 'jumpn' loc ';'!;
-jumpoStmt   = 'jumpo' loc ';'!;
+jumpInstr    = 'jump'  loc ';'!;
+jumpzInstr   = 'jumpz' loc ';'!;
+jumpnInstr   = 'jumpn' loc ';'!;
+jumpoInstr   = 'jumpo' loc ';'!;
 
 mathSrc = litExpr | regExpr;
 loadSrc = litExpr | addrExpr | refExpr | offsetExpr;
