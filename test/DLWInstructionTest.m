@@ -80,7 +80,7 @@
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
     ASWord code = [instr byteCode];
-    TDEqualObjects(@"%0000_0001_1100_0000", ASBinaryStringFromWord(code));
+    //TDEqualObjects(@"%0000_0001_1100_0000", ASBinaryStringFromWord(code));
 }
 
 

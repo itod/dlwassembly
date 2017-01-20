@@ -33,6 +33,7 @@
 		D3631A071E316F2A00E7916C /* ASStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D3631A031E316F2A00E7916C /* ASStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3631A081E316F2A00E7916C /* ASStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D3631A041E316F2A00E7916C /* ASStorage.m */; };
 		D3631A0B1E31710400E7916C /* ASStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3631A0A1E31710400E7916C /* ASStorageTest.m */; };
+		D3631A0D1E31919B00E7916C /* ASStorageEditTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3631A0C1E31919B00E7916C /* ASStorageEditTest.m */; };
 		D38C064F1E2C03CD00EB3EA5 /* DLWAssembly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */; };
 		D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */; };
 		D38C06561E2C03CD00EB3EA5 /* DLWAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -147,6 +148,7 @@
 		D3631A031E316F2A00E7916C /* ASStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASStorage.h; path = include/DLWAssembly/ASStorage.h; sourceTree = SOURCE_ROOT; };
 		D3631A041E316F2A00E7916C /* ASStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASStorage.m; path = src/ASStorage.m; sourceTree = SOURCE_ROOT; };
 		D3631A0A1E31710400E7916C /* ASStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASStorageTest.m; path = test/ASStorageTest.m; sourceTree = SOURCE_ROOT; };
+		D3631A0C1E31919B00E7916C /* ASStorageEditTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASStorageEditTest.m; path = test/ASStorageEditTest.m; sourceTree = SOURCE_ROOT; };
 		D38C06451E2C03CD00EB3EA5 /* DLWAssembly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLWAssembly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C06481E2C03CD00EB3EA5 /* DLWAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLWAssembly.h; path = include/DLWAssembly/DLWAssembly.h; sourceTree = SOURCE_ROOT; };
 		D38C06491E2C03CD00EB3EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -279,6 +281,7 @@
 			children = (
 				D36319CD1E2C10EB00E7916C /* DLWTestScaffold.h */,
 				D3631A0A1E31710400E7916C /* ASStorageTest.m */,
+				D3631A0C1E31919B00E7916C /* ASStorageEditTest.m */,
 				D38C06531E2C03CD00EB3EA5 /* DLWAssemblyTests.m */,
 				D36319CB1E2C103C00E7916C /* DLWParserTest.m */,
 				D36319F61E2D2F0100E7916C /* DLWInstructionTest.m */,
@@ -505,6 +508,7 @@
 			files = (
 				D36319CE1E2C11E200E7916C /* DLWParserTest.m in Sources */,
 				D38C06541E2C03CD00EB3EA5 /* DLWAssemblyTests.m in Sources */,
+				D3631A0D1E31919B00E7916C /* ASStorageEditTest.m in Sources */,
 				D36319F71E2D2F0100E7916C /* DLWInstructionTest.m in Sources */,
 				D3631A0B1E31710400E7916C /* ASStorageTest.m in Sources */,
 			);
