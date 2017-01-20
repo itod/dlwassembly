@@ -126,4 +126,31 @@
     TDEqualObjects(@"%0000_0000_1000_0000", [stor asBinaryString]);
 }
 
+#pragma mark -
+#pragma mark Nybbles
+
+- (void)testWordNybble0 {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:0];
+    TDEqualObjects(@"%0000_0000_0000_0001", [stor asBinaryString]);
+}
+
+- (void)testWordNybble1 {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:1];
+    TDEqualObjects(@"%0000_0000_0001_0000", [stor asBinaryString]);
+}
+
+- (void)testWordNybble2 {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:2];
+    TDEqualObjects(@"%0000_0001_0000_0000", [stor asBinaryString]);
+}
+
+- (void)testWordNybble3 {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:3];
+    TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
+}
+
 @end
