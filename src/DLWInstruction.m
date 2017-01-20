@@ -47,7 +47,7 @@
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     
     // op code
-    [stor setByte:self.opCode atIndex:3];
+    [stor setNybble:self.opCode forNybbleAtIndex:3];
     
     // immediate?
     [stor setBool:self.isImmediate forBitAtIndex:15];
@@ -56,13 +56,13 @@
         
     } else {
         // src1
-        [stor setNybble:[(DLWExpression *)self.children[0] byteCode] forNybbleAtIndex:5];
+        [stor setNyblet:[(DLWExpression *)self.children[0] byteCode] forNybletAtIndex:5];
         
         // src2
-        [stor setNybble:[(DLWExpression *)self.children[1] byteCode] forNybbleAtIndex:4];
+        [stor setNyblet:[(DLWExpression *)self.children[1] byteCode] forNybletAtIndex:4];
         
         // dest
-        [stor setNybble:[(DLWExpression *)self.children[2] byteCode] forNybbleAtIndex:3];
+        [stor setNyblet:[(DLWExpression *)self.children[2] byteCode] forNybletAtIndex:3];
     }
     
     return stor.wordValue;
