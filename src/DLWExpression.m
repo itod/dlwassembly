@@ -23,6 +23,12 @@
 }
 
 
+- (ASByte)byteCode {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return 0;
+}
+
+
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;
@@ -45,6 +51,31 @@
 @implementation DLWRegisterExpression
 
 - (ASSize)numBits { return 2; }
+
+
+- (ASByte)byteCode {
+    ASByte byte = 0;
+    
+    switch (self.token.tokenKind) {
+        case DLWPARSER_TOKEN_KIND_A:
+            byte = 0;
+            break;
+        case DLWPARSER_TOKEN_KIND_B:
+            byte = 1;
+            break;
+        case DLWPARSER_TOKEN_KIND_C:
+            byte = 2;
+            break;
+        case DLWPARSER_TOKEN_KIND_D:
+            byte = 3;
+            break;
+        default:
+            TDAssert(0);
+            break;
+    }
+    
+    return byte;
+}
 
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {

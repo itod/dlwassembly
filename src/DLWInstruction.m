@@ -9,6 +9,7 @@
 #import "DLWInstruction.h"
 #import "DLWExpression.h"
 #import "DLWDestination.h"
+#import <DLWAssembly/ASMutableStorage.h>
 
 @class DLWContext;
 
@@ -40,6 +41,32 @@
 @implementation DLWAddInstruction
 
 - (ASByte)opCode { return 0; }
+
+
+- (ASWord)byteCode {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    
+    // op code
+    [stor setByte:self.opCode atIndex:3];
+    
+    // immediate?
+    [stor setBool:self.isImmediate forBitAtIndex:15];
+    
+    if (self.isImmediate) {
+        
+    } else {
+        // src1
+        [stor setNybble:[(DLWExpression *)self.children[0] byteCode] forNybbleAtIndex:5];
+        
+        // src2
+        [stor setNybble:[(DLWExpression *)self.children[1] byteCode] forNybbleAtIndex:4];
+        
+        // dest
+        [stor setNybble:[(DLWExpression *)self.children[2] byteCode] forNybbleAtIndex:3];
+    }
+    
+    return stor.wordValue;
+}
 
 
 - (BOOL)isImmediate {

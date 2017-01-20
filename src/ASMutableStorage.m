@@ -54,6 +54,23 @@
 }
 
 
+- (void)setNybble:(ASByte)byte forNybbleAtIndex:(ASIndex)idx {
+    NSParameterAssert(idx < 8);
+    
+    ASSize bitOffset = idx * 4;
+    
+    ASDword inValue = byte;
+    inValue <<= bitOffset;
+    
+    ASDword mask = 0xFFFFFFF0 << bitOffset;
+    ASDword dword = self.dwordValue;
+    dword &= mask;
+    dword |= inValue;
+    
+    self.dwordValue = dword;
+}
+
+
 - (void)setBool:(BOOL)yn forBitAtIndex:(ASIndex)idx {
     ASByte inVal = yn;
     ASDword inMask = (inVal << idx);

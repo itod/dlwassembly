@@ -13,6 +13,12 @@
 
 @implementation DLWDestination
 
+- (ASByte)byteCode {
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return 0;
+}
+
+
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
 }
@@ -20,6 +26,31 @@
 @end
 
 @implementation DLWRegisterDestination
+
+- (ASByte)byteCode {
+    ASByte byte = 0;
+    
+    switch (self.token.tokenKind) {
+        case DLWPARSER_TOKEN_KIND_A:
+            byte = 0;
+            break;
+        case DLWPARSER_TOKEN_KIND_B:
+            byte = 1;
+            break;
+        case DLWPARSER_TOKEN_KIND_C:
+            byte = 2;
+            break;
+        case DLWPARSER_TOKEN_KIND_D:
+            byte = 3;
+            break;
+        default:
+            TDAssert(0);
+            break;
+    }
+    
+    return byte;
+}
+
 
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx {
     switch (self.token.tokenKind) {

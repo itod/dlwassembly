@@ -73,10 +73,14 @@
     ctx.registerB = 2;
     
     NSArray *prog = [p parseString:str error:nil];
-    TDFalse([prog[0] isImmediate]);
-    [exec _execute:prog];
     
+    [exec _execute:prog];
     TDEquals((ASWord)12, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0000_0001_1100_0000", ASBinaryStringFromWord(code));
 }
 
 

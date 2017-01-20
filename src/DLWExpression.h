@@ -13,7 +13,8 @@
 
 @interface DLWExpression : PKAST
 - (BOOL)isLiteral;
-- (ASSize)numBits;
+//- (ASSize)numBits; // remove?
+- (ASByte)byteCode;
 - (ASWord)evaluateInContext:(DLWContext *)ctx;
 @end
 

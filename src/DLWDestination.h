@@ -12,6 +12,7 @@
 @class DLWContext;
 
 @interface DLWDestination : PKAST
+- (ASByte)byteCode;
 - (void)setWord:(ASWord)word inContext:(DLWContext *)ctx;
 @end
 
