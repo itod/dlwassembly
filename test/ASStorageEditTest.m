@@ -133,24 +133,59 @@
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 forNybbleAtIndex:0];
     TDEqualObjects(@"%0000_0000_0000_0001", [stor asBinaryString]);
+    TDEquals(1, stor.integerValue);
 }
 
 - (void)testWordNybble1 {
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 forNybbleAtIndex:1];
     TDEqualObjects(@"%0000_0000_0001_0000", [stor asBinaryString]);
+    TDEquals(16, stor.integerValue);
 }
 
 - (void)testWordNybble2 {
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 forNybbleAtIndex:2];
     TDEqualObjects(@"%0000_0001_0000_0000", [stor asBinaryString]);
+    TDEquals(256, stor.integerValue);
 }
 
 - (void)testWordNybble3 {
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 forNybbleAtIndex:3];
     TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
+    TDEquals(4096, stor.integerValue);
+}
+
+#pragma mark -
+#pragma mark Instructions
+
+- (void)testSub_C_7_B {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:3]; // SUB
+    TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
+    [stor setBool:YES forBitAtIndex:15]; // immedate
+    TDEqualObjects(@"%1001_0000_0000_0000", [stor asBinaryString]);
+    [stor setNybble:9 forNybbleAtIndex:2]; // C src, B dest
+    TDEqualObjects(@"%1001_1001_0000_0000", [stor asBinaryString]);
+    [stor setByte:7 atIndex:0]; // 7 arg
+    TDEqualObjects(@"%1001_1001_0000_0111", [stor asBinaryString]);
+    
+}
+
+- (void)testSub_C_7_B_ {
+    ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
+    [stor setNybble:1 forNybbleAtIndex:3]; // SUB
+    TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
+    [stor setBool:YES forBitAtIndex:15]; // immedate
+    TDEqualObjects(@"%1001_0000_0000_0000", [stor asBinaryString]);
+    [stor setNyblet:2 forNybletAtIndex:5]; // C src
+    TDEqualObjects(@"%1001_1000_0000_0000", [stor asBinaryString]);
+    [stor setNyblet:1 forNybletAtIndex:4]; // B dest
+    TDEqualObjects(@"%1001_1001_0000_0000", [stor asBinaryString]);
+    [stor setByte:7 atIndex:0]; // 7 arg
+    TDEqualObjects(@"%1001_1001_0000_0111", [stor asBinaryString]);
+    
 }
 
 @end
