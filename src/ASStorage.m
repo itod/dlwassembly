@@ -10,7 +10,7 @@
 #import <DLWAssembly/ASUtils.h>
 
 @interface ASStorage ()
-- (void)setDword:(ASDword)dword atIndex:(ASIndex)idx;
+- (void)setDword:(ASDword)dword atByteIndex:(ASIndex)idx;
 @property (nonatomic, assign, readwrite) ASSize numBytes;
 @end
 
@@ -43,7 +43,7 @@
     self = [super init];
     if (self) {
         self.numBytes = numBytes;
-        [self setDword:dword atIndex:0];
+        [self setDword:dword atByteIndex:0];
     }
     return self;
 }
@@ -97,7 +97,7 @@
 }
 
 
-- (ASByte)byteAtIndex:(ASIndex)idx {
+- (ASByte)byteatByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 4);
     
     ASSize bitOffset = idx * 8;
@@ -109,7 +109,7 @@
 }
 
 
-- (ASWord)wordAtIndex:(ASIndex)idx {
+- (ASWord)wordatByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 2);
     
     ASSize bitOffset = idx * 16;
@@ -121,7 +121,7 @@
 }
 
 
-- (ASDword)dwordAtIndex:(ASIndex)idx {
+- (ASDword)dwordatByteIndex:(ASIndex)idx {
     NSParameterAssert(0 == idx);
     TDAssertMainThread();
     
@@ -129,7 +129,7 @@
 }
 
 
-- (void)setDword:(ASDword)dword atIndex:(ASIndex)idx {
+- (void)setDword:(ASDword)dword atByteIndex:(ASIndex)idx {
     NSParameterAssert(0 == idx);
     TDAssertMainThread();
     
@@ -146,22 +146,22 @@
 
 
 - (ASByte)byteValue {
-    return [self byteAtIndex:0];
+    return [self byteatByteIndex:0];
 }
 
 
 - (ASWord)wordValue {
-    return [self wordAtIndex:0];
+    return [self wordatByteIndex:0];
 }
 
 
 - (ASDword)dwordValue {
-    return [self dwordAtIndex:0];
+    return [self dwordatByteIndex:0];
 }
 
 
 - (ASInteger)integerValue {
-    ASInteger i = [self dwordAtIndex:0];
+    ASInteger i = [self dwordatByteIndex:0];
     return i;
 }
 

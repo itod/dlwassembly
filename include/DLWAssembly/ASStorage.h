@@ -23,9 +23,9 @@
 - (NSString *)asHexString;
 - (NSString *)asBinaryString;
 
-- (ASByte)byteAtIndex:(ASIndex)idx;
-- (ASWord)wordAtIndex:(ASIndex)idx;
-- (ASDword)dwordAtIndex:(ASIndex)idx;
+- (ASByte)byteatByteIndex:(ASIndex)idx;
+- (ASWord)wordatByteIndex:(ASIndex)idx;
+- (ASDword)dwordatByteIndex:(ASIndex)idx;
 
 - (BOOL)boolatBitIndex:(ASIndex)idx;
 

@@ -168,7 +168,7 @@
     TDEqualObjects(@"%1001_0000_0000_0000", [stor asBinaryString]);
     [stor setNybble:9 atBitIndex:8]; // C src, B dest
     TDEqualObjects(@"%1001_1001_0000_0000", [stor asBinaryString]);
-    [stor setByte:7 atIndex:0]; // 7 arg
+    [stor setByte:7 atByteIndex:0]; // 7 arg
     TDEqualObjects(@"%1001_1001_0000_0111", [stor asBinaryString]);
     
 }
@@ -183,7 +183,7 @@
     TDEqualObjects(@"%1001_1000_0000_0000", [stor asBinaryString]);
     [stor setNyblet:1 atBitIndex:8]; // B dest
     TDEqualObjects(@"%1001_1001_0000_0000", [stor asBinaryString]);
-    [stor setByte:7 atIndex:0]; // 7 arg
+    [stor setByte:7 atByteIndex:0]; // 7 arg
     TDEqualObjects(@"%1001_1001_0000_0111", [stor asBinaryString]);
     
 }

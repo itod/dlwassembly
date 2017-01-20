@@ -10,12 +10,12 @@
 #import <DLWAssembly/ASUtils.h>
 
 @interface ASStorage ()
-- (void)setDword:(ASDword)dword atIndex:(ASIndex)idx;
+- (void)setDword:(ASDword)dword atByteIndex:(ASIndex)idx;
 @end
 
 @implementation ASMutableStorage
 
-- (void)setByte:(ASByte)byte atIndex:(ASIndex)idx {
+- (void)setByte:(ASByte)byte atByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 4);
 
     ASSize bitOffset = idx * 8;
@@ -32,7 +32,7 @@
 }
 
 
-- (void)setWord:(ASWord)word atIndex:(ASIndex)idx {
+- (void)setWord:(ASWord)word atByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 2);
 
     ASSize bitOffset = idx * 16;
@@ -49,8 +49,8 @@
 }
 
 
-- (void)setDword:(ASDword)dword atIndex:(ASIndex)idx {
-    [super setDword:dword atIndex:idx];
+- (void)setDword:(ASDword)dword atByteIndex:(ASIndex)idx {
+    [super setDword:dword atByteIndex:idx];
 }
 
 
@@ -96,22 +96,22 @@
 
 
 - (void)setByteValue:(ASByte)byte {
-    [self setByte:byte atIndex:0];
+    [self setByte:byte atByteIndex:0];
 }
 
 
 - (void)setWordValue:(ASWord)word {
-    [self setWord:word atIndex:0];
+    [self setWord:word atByteIndex:0];
 }
 
 
 - (void)setDwordValue:(ASDword)dword {
-    [self setDword:dword atIndex:0];
+    [self setDword:dword atByteIndex:0];
 }
 
 
 - (void)setIntegerValue:(ASInteger)i {
-    [self setDword:i atIndex:0];
+    [self setDword:i atByteIndex:0];
 }
 
 @dynamic byteValue;

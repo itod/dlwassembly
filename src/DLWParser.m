@@ -382,7 +382,7 @@
 
 - (void)label_ {
     
-    [self testAndThrow:(id)^{ return islower([LS(1) characterAtIndex:0]); }]; 
+    [self testAndThrow:(id)^{ return islower([LS(1) characterAtIndex:0]); }];
     [self matchWord:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchLabel:)];
