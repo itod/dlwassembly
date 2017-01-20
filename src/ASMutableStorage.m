@@ -55,6 +55,7 @@
 
 
 - (void)setNybble:(ASByte)byte atBitIndex:(ASIndex)idx {
+    NSParameterAssert(byte < 16);
     NSParameterAssert(idx < 32);
     
     ASDword inValue = byte;
@@ -70,6 +71,7 @@
 
 
 - (void)setNyblet:(ASByte)byte atBitIndex:(ASIndex)idx {
+    NSParameterAssert(byte < 8);
     NSParameterAssert(idx < 32);
     
     ASDword inValue = byte;
