@@ -14,9 +14,9 @@
 - (void)setWord:(ASWord)word atIndex:(ASIndex)idx;
 - (void)setDword:(ASDword)dword atIndex:(ASIndex)idx;
 
-- (void)setNybble:(ASByte)byte forNybbleAtIndex:(ASIndex)idx;
-- (void)setNyblet:(ASByte)byte forNybletAtIndex:(ASIndex)idx;
-- (void)setBool:(BOOL)yn forBitAtIndex:(ASIndex)idx;
+- (void)setNybble:(ASByte)byte atBitIndex:(ASIndex)idx;
+- (void)setNyblet:(ASByte)byte atBitIndex:(ASIndex)idx;
+- (void)setBool:(BOOL)yn atBitIndex:(ASIndex)idx;
 
 @property (nonatomic, assign, readwrite) ASByte byteValue;
 @property (nonatomic, assign, readwrite) ASWord wordValue;

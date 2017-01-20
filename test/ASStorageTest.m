@@ -34,15 +34,15 @@
     ASByte val = 0;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
 
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
 
     TDEqualObjects(@"%0000_0000", [stor asBinaryString]);
     TDEqualObjects(@"0", [stor asDecimalString]);
@@ -54,15 +54,15 @@
     ASByte val = 1;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0001", [stor asBinaryString]);
     TDEqualObjects(@"1", [stor asDecimalString]);
@@ -74,15 +74,15 @@
     ASByte val = 2;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0010", [stor asBinaryString]);
     TDEqualObjects(@"2", [stor asDecimalString]);
@@ -94,10 +94,10 @@
     ASByte val = 3;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
     TDEqualObjects(@"%0000_0011", [stor asBinaryString]);
     TDEqualObjects(@"3", [stor asDecimalString]);
@@ -109,15 +109,15 @@
     ASByte val = 4;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
 
     TDEqualObjects(@"%0000_0100", [stor asBinaryString]);
     TDEqualObjects(@"4", [stor asDecimalString]);
@@ -129,15 +129,15 @@
     ASByte val = 5;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0101", [stor asBinaryString]);
     TDEqualObjects(@"5", [stor asDecimalString]);
@@ -149,15 +149,15 @@
     ASByte val = 6;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0110", [stor asBinaryString]);
     TDEqualObjects(@"6", [stor asDecimalString]);
@@ -169,15 +169,15 @@
     ASByte val = 7;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0111", [stor asBinaryString]);
     TDEqualObjects(@"7", [stor asDecimalString]);
@@ -189,15 +189,15 @@
     ASByte val = 8;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1000", [stor asBinaryString]);
     TDEqualObjects(@"8", [stor asDecimalString]);
@@ -209,15 +209,15 @@
     ASByte val = 9;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1001", [stor asBinaryString]);
     TDEqualObjects(@"9", [stor asDecimalString]);
@@ -229,15 +229,15 @@
     ASByte val = 10;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1010", [stor asBinaryString]);
     TDEqualObjects(@"10", [stor asDecimalString]);
@@ -249,15 +249,15 @@
     ASByte val = 11;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1011", [stor asBinaryString]);
     TDEqualObjects(@"11", [stor asDecimalString]);
@@ -269,15 +269,15 @@
     ASByte val = 12;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1100", [stor asBinaryString]);
     TDEqualObjects(@"12", [stor asDecimalString]);
@@ -289,15 +289,15 @@
     ASByte val = 13;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1101", [stor asBinaryString]);
     TDEqualObjects(@"13", [stor asDecimalString]);
@@ -309,15 +309,15 @@
     ASByte val = 14;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1110", [stor asBinaryString]);
     TDEqualObjects(@"14", [stor asDecimalString]);
@@ -329,15 +329,15 @@
     ASByte val = 15;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_1111", [stor asBinaryString]);
     TDEqualObjects(@"15", [stor asDecimalString]);
@@ -349,15 +349,15 @@
     ASByte val = 255;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithByte:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDTrue([stor boolForBitAtIndex:4]);
-    TDTrue([stor boolForBitAtIndex:5]);
-    TDTrue([stor boolForBitAtIndex:6]);
-    TDTrue([stor boolForBitAtIndex:7]);
+    TDTrue([stor boolatBitIndex:4]);
+    TDTrue([stor boolatBitIndex:5]);
+    TDTrue([stor boolatBitIndex:6]);
+    TDTrue([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%1111_1111", [stor asBinaryString]);
     TDEqualObjects(@"255", [stor asDecimalString]);
@@ -387,9 +387,9 @@
     ASWord val = 0;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
     
     TDEqualObjects(@"%0000_0000_0000_0000", [stor asBinaryString]);
     TDEqualObjects(@"0", [stor asDecimalString]);
@@ -401,15 +401,15 @@
     ASWord val = 1;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0001", [stor asBinaryString]);
     TDEqualObjects(@"1", [stor asDecimalString]);
@@ -421,15 +421,15 @@
     ASWord val = 2;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0010", [stor asBinaryString]);
     TDEqualObjects(@"2", [stor asDecimalString]);
@@ -441,15 +441,15 @@
     ASWord val = 3;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0011", [stor asBinaryString]);
     TDEqualObjects(@"3", [stor asDecimalString]);
@@ -461,15 +461,15 @@
     ASWord val = 4;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0100", [stor asBinaryString]);
     TDEqualObjects(@"4", [stor asDecimalString]);
@@ -481,15 +481,15 @@
     ASWord val = 5;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0101", [stor asBinaryString]);
     TDEqualObjects(@"5", [stor asDecimalString]);
@@ -501,15 +501,15 @@
     ASWord val = 6;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0110", [stor asBinaryString]);
     TDEqualObjects(@"6", [stor asDecimalString]);
@@ -521,15 +521,15 @@
     ASWord val = 7;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0111", [stor asBinaryString]);
     TDEqualObjects(@"7", [stor asDecimalString]);
@@ -541,15 +541,15 @@
     ASWord val = 8;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1000", [stor asBinaryString]);
     TDEqualObjects(@"8", [stor asDecimalString]);
@@ -561,15 +561,15 @@
     ASWord val = 9;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1001", [stor asBinaryString]);
     TDEqualObjects(@"9", [stor asDecimalString]);
@@ -581,15 +581,15 @@
     ASWord val = 10;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1010", [stor asBinaryString]);
     TDEqualObjects(@"10", [stor asDecimalString]);
@@ -601,15 +601,15 @@
     ASWord val = 11;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1011", [stor asBinaryString]);
     TDEqualObjects(@"11", [stor asDecimalString]);
@@ -621,15 +621,15 @@
     ASWord val = 12;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1100", [stor asBinaryString]);
     TDEqualObjects(@"12", [stor asDecimalString]);
@@ -641,15 +641,15 @@
     ASWord val = 13;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1101", [stor asBinaryString]);
     TDEqualObjects(@"13", [stor asDecimalString]);
@@ -661,15 +661,15 @@
     ASWord val = 14;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1110", [stor asBinaryString]);
     TDEqualObjects(@"14", [stor asDecimalString]);
@@ -681,15 +681,15 @@
     ASWord val = 15;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_1111", [stor asBinaryString]);
     TDEqualObjects(@"15", [stor asDecimalString]);
@@ -701,15 +701,15 @@
     ASWord val = 255;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDTrue([stor boolForBitAtIndex:4]);
-    TDTrue([stor boolForBitAtIndex:5]);
-    TDTrue([stor boolForBitAtIndex:6]);
-    TDTrue([stor boolForBitAtIndex:7]);
+    TDTrue([stor boolatBitIndex:4]);
+    TDTrue([stor boolatBitIndex:5]);
+    TDTrue([stor boolatBitIndex:6]);
+    TDTrue([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_1111_1111", [stor asBinaryString]);
     TDEqualObjects(@"255", [stor asDecimalString]);
@@ -728,9 +728,9 @@
     ASDword val = 0;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0000", [stor asBinaryString]);
     TDEqualObjects(@"0", [stor asDecimalString]);
@@ -742,15 +742,15 @@
     ASDword val = 1;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0001", [stor asBinaryString]);
     TDEqualObjects(@"1", [stor asDecimalString]);
@@ -762,15 +762,15 @@
     ASDword val = 2;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0010", [stor asBinaryString]);
     TDEqualObjects(@"2", [stor asDecimalString]);
@@ -782,15 +782,15 @@
     ASDword val = 3;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0011", [stor asBinaryString]);
     TDEqualObjects(@"3", [stor asDecimalString]);
@@ -802,15 +802,15 @@
     ASDword val = 4;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0100", [stor asBinaryString]);
     TDEqualObjects(@"4", [stor asDecimalString]);
@@ -822,15 +822,15 @@
     ASDword val = 5;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0101", [stor asBinaryString]);
     TDEqualObjects(@"5", [stor asDecimalString]);
@@ -842,15 +842,15 @@
     ASDword val = 6;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0110", [stor asBinaryString]);
     TDEqualObjects(@"6", [stor asDecimalString]);
@@ -862,15 +862,15 @@
     ASDword val = 7;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDFalse([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDFalse([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_0111", [stor asBinaryString]);
     TDEqualObjects(@"7", [stor asDecimalString]);
@@ -882,15 +882,15 @@
     ASDword val = 8;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1000", [stor asBinaryString]);
     TDEqualObjects(@"8", [stor asDecimalString]);
@@ -902,15 +902,15 @@
     ASDword val = 9;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1001", [stor asBinaryString]);
     TDEqualObjects(@"9", [stor asDecimalString]);
@@ -922,15 +922,15 @@
     ASDword val = 10;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1010", [stor asBinaryString]);
     TDEqualObjects(@"10", [stor asDecimalString]);
@@ -942,15 +942,15 @@
     ASDword val = 11;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDFalse([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDFalse([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1011", [stor asBinaryString]);
     TDEqualObjects(@"11", [stor asDecimalString]);
@@ -962,15 +962,15 @@
     ASDword val = 12;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1100", [stor asBinaryString]);
     TDEqualObjects(@"12", [stor asDecimalString]);
@@ -982,15 +982,15 @@
     ASDword val = 13;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDFalse([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDFalse([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1101", [stor asBinaryString]);
     TDEqualObjects(@"13", [stor asDecimalString]);
@@ -1002,15 +1002,15 @@
     ASDword val = 14;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDFalse([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDFalse([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1110", [stor asBinaryString]);
     TDEqualObjects(@"14", [stor asDecimalString]);
@@ -1022,15 +1022,15 @@
     ASDword val = 15;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDFalse([stor boolForBitAtIndex:4]);
-    TDFalse([stor boolForBitAtIndex:5]);
-    TDFalse([stor boolForBitAtIndex:6]);
-    TDFalse([stor boolForBitAtIndex:7]);
+    TDFalse([stor boolatBitIndex:4]);
+    TDFalse([stor boolatBitIndex:5]);
+    TDFalse([stor boolatBitIndex:6]);
+    TDFalse([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_0000_1111", [stor asBinaryString]);
     TDEqualObjects(@"15", [stor asDecimalString]);
@@ -1042,15 +1042,15 @@
     ASDword val = 255;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithDword:val];
-    TDTrue([stor boolForBitAtIndex:0]);
-    TDTrue([stor boolForBitAtIndex:1]);
-    TDTrue([stor boolForBitAtIndex:2]);
-    TDTrue([stor boolForBitAtIndex:3]);
+    TDTrue([stor boolatBitIndex:0]);
+    TDTrue([stor boolatBitIndex:1]);
+    TDTrue([stor boolatBitIndex:2]);
+    TDTrue([stor boolatBitIndex:3]);
     
-    TDTrue([stor boolForBitAtIndex:4]);
-    TDTrue([stor boolForBitAtIndex:5]);
-    TDTrue([stor boolForBitAtIndex:6]);
-    TDTrue([stor boolForBitAtIndex:7]);
+    TDTrue([stor boolatBitIndex:4]);
+    TDTrue([stor boolatBitIndex:5]);
+    TDTrue([stor boolatBitIndex:6]);
+    TDTrue([stor boolatBitIndex:7]);
     
     TDEqualObjects(@"%0000_0000_0000_0000_0000_0000_1111_1111", [stor asBinaryString]);
     TDEqualObjects(@"255", [stor asDecimalString]);

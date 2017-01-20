@@ -27,7 +27,7 @@
 - (ASWord)wordAtIndex:(ASIndex)idx;
 - (ASDword)dwordAtIndex:(ASIndex)idx;
 
-- (BOOL)boolForBitAtIndex:(ASIndex)idx;
+- (BOOL)boolatBitIndex:(ASIndex)idx;
 
 @property (nonatomic, assign, readonly) ASSize numBytes;
 

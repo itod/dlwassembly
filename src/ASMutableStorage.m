@@ -54,15 +54,13 @@
 }
 
 
-- (void)setNybble:(ASByte)byte forNybbleAtIndex:(ASIndex)idx {
-    NSParameterAssert(idx < 8);
-    
-    ASSize bitOffset = idx * 4;
+- (void)setNybble:(ASByte)byte atBitIndex:(ASIndex)idx {
+    NSParameterAssert(idx < 32);
     
     ASDword inValue = byte;
-    inValue <<= bitOffset;
+    inValue <<= idx;
     
-    ASDword mask = 0xFFFFFFF0 << bitOffset;
+    ASDword mask = 0xFFFFFFF0 << idx;
     ASDword dword = self.dwordValue;
     dword &= mask;
     dword |= inValue;
@@ -71,15 +69,13 @@
 }
 
 
-- (void)setNyblet:(ASByte)byte forNybletAtIndex:(ASIndex)idx {
-    NSParameterAssert(idx < 8);
-    
-    ASSize bitOffset = idx * 2;
+- (void)setNyblet:(ASByte)byte atBitIndex:(ASIndex)idx {
+    NSParameterAssert(idx < 32);
     
     ASDword inValue = byte;
-    inValue <<= bitOffset;
+    inValue <<= idx;
     
-    ASDword mask = 0xFFFFFFFC << bitOffset;
+    ASDword mask = 0xFFFFFFFC << idx;
     ASDword dword = self.dwordValue;
     dword &= mask;
     dword |= inValue;
@@ -88,7 +84,9 @@
 }
 
 
-- (void)setBool:(BOOL)yn forBitAtIndex:(ASIndex)idx {
+- (void)setBool:(BOOL)yn atBitIndex:(ASIndex)idx {
+    NSParameterAssert(idx < 32);
+    
     ASByte inVal = yn;
     ASDword inMask = (inVal << idx);
     ASDword oldVal = self.dwordValue;
