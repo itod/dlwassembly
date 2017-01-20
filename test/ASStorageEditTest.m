@@ -179,9 +179,9 @@
     TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
     [stor setBool:YES atBitIndex:15]; // immedate
     TDEqualObjects(@"%1001_0000_0000_0000", [stor asBinaryString]);
-    [stor setNyblet:2 atBitIndex:10]; // C src
+    [stor setNybblet:2 atBitIndex:10]; // C src
     TDEqualObjects(@"%1001_1000_0000_0000", [stor asBinaryString]);
-    [stor setNyblet:1 atBitIndex:8]; // B dest
+    [stor setNybblet:1 atBitIndex:8]; // B dest
     TDEqualObjects(@"%1001_1001_0000_0000", [stor asBinaryString]);
     [stor setByte:7 atByteIndex:0]; // 7 arg
     TDEqualObjects(@"%1001_1001_0000_0111", [stor asBinaryString]);

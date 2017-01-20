@@ -70,7 +70,7 @@
 }
 
 
-- (void)setNyblet:(ASByte)byte atBitIndex:(ASIndex)idx {
+- (void)setNybblet:(ASByte)byte atBitIndex:(ASIndex)idx {
     NSParameterAssert(byte < 8);
     NSParameterAssert(idx < 32);
     

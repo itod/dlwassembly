@@ -56,13 +56,13 @@
         
     } else {
         // src1
-        [stor setNyblet:[(DLWExpression *)self.children[0] byteCode] atBitIndex:10];
+        [stor setNybblet:[(DLWExpression *)self.children[0] byteCode] atBitIndex:10];
         
         // src2
-        [stor setNyblet:[(DLWExpression *)self.children[1] byteCode] atBitIndex:8];
+        [stor setNybblet:[(DLWExpression *)self.children[1] byteCode] atBitIndex:8];
         
         // dest
-        [stor setNyblet:[(DLWExpression *)self.children[2] byteCode] atBitIndex:6];
+        [stor setNybblet:[(DLWExpression *)self.children[2] byteCode] atBitIndex:6];
     }
     
     return stor.wordValue;
