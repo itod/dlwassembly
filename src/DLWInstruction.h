@@ -22,7 +22,15 @@
 
 @end
 
+@interface DLWAddImmediateInstruction : DLWAddInstruction
+
+@end
+
 @interface DLWSubInstruction : DLWAddInstruction
+
+@end
+
+@interface DLWSubImmediateInstruction : DLWSubInstruction
 
 @end
 

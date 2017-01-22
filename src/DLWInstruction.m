@@ -49,9 +49,6 @@
     // op code
     [stor setNybble:self.opCode atBitIndex:12];
     
-    // immediate?
-    [stor setBool:self.isImmediate atBitIndex:15];
-    
     if (self.isImmediate) {
         
     } else {
@@ -69,11 +66,6 @@
 }
 
 
-- (BOOL)isImmediate {
-    return [self.children[0] isLiteral] || [self.children[1] isLiteral];
-}
-
-
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(3 == [self.children count]);
     ASWord arg0 = [self.children[0] evaluateInContext:ctx];
@@ -84,6 +76,13 @@
     DLWDestination *dest = self.children[2];
     [dest setWord:res inContext:ctx];
 }
+
+@end
+
+@implementation DLWAddImmediateInstruction
+
+- (ASByte)opCode { return 8; }
+- (BOOL)isImmediate { return YES; }
 
 @end
 
@@ -102,6 +101,13 @@
     DLWDestination *dest = self.children[2];
     [dest setWord:res inContext:ctx];
 }
+
+@end
+
+@implementation DLWSubImmediateInstruction
+
+- (ASByte)opCode { return 9; }
+- (BOOL)isImmediate { return YES; }
 
 @end
 

@@ -20,44 +20,64 @@
 #pragma mark Instructions
 
 - (void)parser:(PKParser *)p didMatchAddInstr:(PKAssembly *)a {
-    DLWDestination *arg2 = [a pop];
-    DLWExpression *arg1 = [a pop];
-    DLWExpression *arg0 = [a pop];
+    DLWDestination *dest = [a pop];
+    DLWExpression *src1 = [a pop];
+    DLWExpression *src0 = [a pop];
     
-    if ([arg0 isLiteral] && [arg1 isLiteral]) {
+    BOOL isSrc0Literal = [src0 isLiteral];
+    BOOL isSrc1Literal = [src1 isLiteral];
+    
+    if (isSrc0Literal && isSrc1Literal) {
         [p raise:@"`add` instruction with `immediate` mode allows only one literal source operand."];
     }
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"add"]);
-    DLWInstruction *Instruction = [DLWAddInstruction ASTWithToken:tok];
-    [Instruction addChild:arg0];
-    [Instruction addChild:arg1];
-    [Instruction addChild:arg2];
+    DLWInstruction *instr = nil;
+    
+    if (isSrc0Literal || isSrc1Literal) {
+        instr = [DLWAddImmediateInstruction ASTWithToken:tok];
+    } else {
+        instr = [DLWAddInstruction ASTWithToken:tok];
+    }
+    
+    [instr addChild:src0];
+    [instr addChild:src1];
+    [instr addChild:dest];
     
     TDAssert(a.target);
-    [a.target addObject:Instruction];
+    [a.target addObject:instr];
 }
 
 
 - (void)parser:(PKParser *)p didMatchSubInstr:(PKAssembly *)a {
-    DLWDestination *arg2 = [a pop];
-    DLWExpression *arg1 = [a pop];
-    DLWExpression *arg0 = [a pop];
+    DLWDestination *dest = [a pop];
+    DLWExpression *src1 = [a pop];
+    DLWExpression *src0 = [a pop];
     
-    if ([arg0 isLiteral] && [arg1 isLiteral]) {
+    BOOL isSrc0Literal = [src0 isLiteral];
+    BOOL isSrc1Literal = [src1 isLiteral];
+    
+    if (isSrc0Literal && isSrc1Literal) {
         [p raise:@"`sub` instruction with `immediate` mode allows only one literal source operand."];
     }
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"sub"]);
-    DLWInstruction *Instruction = [DLWSubInstruction ASTWithToken:tok];
-    [Instruction addChild:arg0];
-    [Instruction addChild:arg1];
-    [Instruction addChild:arg2];
+    DLWInstruction *instr = nil;
+
+    if (isSrc0Literal || isSrc1Literal) {
+        instr = [DLWSubImmediateInstruction ASTWithToken:tok];
+    } else {
+        instr = [DLWSubInstruction ASTWithToken:tok];
+    }
+    
+    [instr addChild:src0];
+    [instr addChild:src1];
+    [instr addChild:dest];
     
     TDAssert(a.target);
-    [a.target addObject:Instruction];
+    [a.target addObject:instr];
 }
 
 
@@ -67,12 +87,12 @@
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"load"]);
-    DLWInstruction *Instruction = [DLWLoadInstruction ASTWithToken:tok];
-    [Instruction addChild:arg0];
-    [Instruction addChild:arg1];
+    DLWInstruction *instr = [DLWLoadInstruction ASTWithToken:tok];
+    [instr addChild:arg0];
+    [instr addChild:arg1];
     
     TDAssert(a.target);
-    [a.target addObject:Instruction];
+    [a.target addObject:instr];
 }
 
 
@@ -82,12 +102,12 @@
     
     PKToken *tok = [a pop];
     TDAssert([tok.stringValue isEqualToString:@"store"]);
-    DLWInstruction *Instruction = [DLWStoreInstruction ASTWithToken:tok];
-    [Instruction addChild:arg0];
-    [Instruction addChild:arg1];
+    DLWInstruction *instr = [DLWStoreInstruction ASTWithToken:tok];
+    [instr addChild:arg0];
+    [instr addChild:arg1];
     
     TDAssert(a.target);
-    [a.target addObject:Instruction];
+    [a.target addObject:instr];
 }
 
 

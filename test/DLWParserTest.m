@@ -57,12 +57,12 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWInstruction *Instruction = prog[0];
-        TDEqualObjects([Instruction class], [DLWAddInstruction class]);
-        TDEquals(3, [Instruction.children count]);
-        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([Instruction.children[1] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([Instruction.children[2] class], [DLWRegisterDestination class]);
+        DLWInstruction *instr = prog[0];
+        TDTrue([instr isKindOfClass:[DLWAddInstruction class]]);
+        TDEquals(3, [instr.children count]);
+        TDTrue([instr.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([instr.children[1] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([instr.children[2] class], [DLWRegisterDestination class]);
     }
     
 }
@@ -77,12 +77,12 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWInstruction *Instruction = prog[0];
-        TDEqualObjects([Instruction class], [DLWSubInstruction class]);
-        TDEquals(3, [Instruction.children count]);
-        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([Instruction.children[1] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([Instruction.children[2] class], [DLWRegisterDestination class]);
+        DLWInstruction *instr = prog[0];
+        TDTrue([instr isKindOfClass:[DLWSubInstruction class]]);
+        TDEquals(3, [instr.children count]);
+        TDTrue([instr.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([instr.children[1] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([instr.children[2] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -96,11 +96,11 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWInstruction *Instruction = prog[0];
-        TDEqualObjects([Instruction class], [DLWLoadInstruction class]);
-        TDEquals(2, [Instruction.children count]);
-        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
-        TDEqualObjects([Instruction.children[1] class], [DLWRegisterDestination class]);
+        DLWInstruction *instr = prog[0];
+        TDEqualObjects([instr class], [DLWLoadInstruction class]);
+        TDEquals(2, [instr.children count]);
+        TDTrue([instr.children[0] isKindOfClass:[DLWExpression class]]);
+        TDEqualObjects([instr.children[1] class], [DLWRegisterDestination class]);
     }
 }
 
@@ -114,11 +114,11 @@
     TDEquals(1, [prog count]);
     
     {
-        DLWInstruction *Instruction = prog[0];
-        TDEqualObjects([Instruction class], [DLWStoreInstruction class]);
-        TDEquals(2, [Instruction.children count]);
-        TDTrue([Instruction.children[0] isKindOfClass:[DLWExpression class]]);
-        TDTrue([Instruction.children[1] isKindOfClass:[DLWDestination class]]);
+        DLWInstruction *instr = prog[0];
+        TDEqualObjects([instr class], [DLWStoreInstruction class]);
+        TDEquals(2, [instr.children count]);
+        TDTrue([instr.children[0] isKindOfClass:[DLWExpression class]]);
+        TDTrue([instr.children[1] isKindOfClass:[DLWDestination class]]);
     }
 }
 
