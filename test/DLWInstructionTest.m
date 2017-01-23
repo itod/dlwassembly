@@ -59,13 +59,13 @@
 - (void)testAdd_A_B_C {
     NSString *str = @"add A, B, C;";
     
-    ctx.registerA = 10;
-    ctx.registerB = 2;
+    ctx.registerA = 128;
+    ctx.registerB = 0;
     
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASWord)12, ctx.registerC);
+    TDEquals((ASWord)128, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -119,6 +119,28 @@
     TDFalse(ctx.isStatusZero);
     TDFalse(ctx.isStatusOverflow);
     TDTrue(ctx.isStatusNegative);
+}
+
+
+- (void)testAdd_D_A_B_OVER {
+    NSString *str = @"add D, A, B;";
+    
+    ctx.registerD = 128;
+    ctx.registerA = 1;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    
+    [exec _execute:prog];
+    TDEquals((ASWord)-127, ctx.registerB);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0000_1100_0100_0000", ASBinaryStringFromWord(code));
+    
+    TDFalse(ctx.isStatusZero);
+    TDTrue(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
 }
 
 

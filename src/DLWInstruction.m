@@ -75,9 +75,9 @@
     {
         ASInteger i = (ASInteger)res;
         BOOL isZero = 0 == i;
-        BOOL isOver = NO;
         BOOL isNeg = i < 0;
-        
+        BOOL isOver = i > 128 || i < -127;
+
         ctx.statusZero = isZero;
         ctx.statusOverflow = isOver;
         ctx.statusNegative = isNeg;
