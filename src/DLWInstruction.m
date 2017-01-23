@@ -10,6 +10,7 @@
 #import "DLWExpression.h"
 #import "DLWDestination.h"
 #import <DLWAssembly/ASMutableStorage.h>
+#import <DLWAssembly/DLWContext.h>
 
 @class DLWContext;
 
@@ -70,6 +71,18 @@
     
     ASWord res = [self performWithLhs:arg0 rhs:arg1];
     
+    // processor status
+    {
+        ASInteger i = (ASInteger)res;
+        BOOL isZero = 0 == i;
+        BOOL isOver = NO;
+        BOOL isNeg = i < 0;
+        
+        ctx.statusZero = isZero;
+        ctx.statusOverflow = isOver;
+        ctx.statusNegative = isNeg;
+    }
+
     DLWDestination *dest = self.children[2];
     [dest setWord:res inContext:ctx];
 }
