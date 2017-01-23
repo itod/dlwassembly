@@ -94,6 +94,11 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)11, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_0010_0000_0001", ASBinaryStringFromWord(code));
 }
 
 
@@ -107,6 +112,11 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)7, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_0110_0000_0101", ASBinaryStringFromWord(code));
 }
 
 

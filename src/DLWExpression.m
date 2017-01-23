@@ -40,6 +40,7 @@
 
 - (BOOL)isLiteral { return YES; }
 - (ASSize)numBits { return 8; }
+- (ASByte)byteCode { return (ASByte)self.token.doubleValue; }
 
 
 - (ASWord)evaluateInContext:(DLWContext *)ctx {
