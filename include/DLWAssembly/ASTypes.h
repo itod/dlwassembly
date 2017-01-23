@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Todd Ditchendorf. All rights reserved.
 //
 
+typedef  uint8_t ASNybble;
 typedef  uint8_t ASByte;
 typedef uint16_t ASWord;
 typedef uint32_t ASDword;

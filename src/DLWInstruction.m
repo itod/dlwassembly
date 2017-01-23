@@ -22,7 +22,7 @@
 }
 
 
-- (ASByte)opCode {
+- (ASNybble)opCode {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;
 }
@@ -41,7 +41,7 @@
 
 @implementation DLWAddInstruction
 
-- (ASByte)opCode { return 0; }
+- (ASNybble)opCode { return 0; }
 - (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs + rhs; }
 
 
@@ -91,7 +91,7 @@
 
 @implementation DLWAddImmediateInstruction
 
-- (ASByte)opCode { return 8; }
+- (ASNybble)opCode { return 8; }
 - (BOOL)isImmediate { return YES; }
 
 
@@ -127,14 +127,14 @@
 
 @implementation DLWSubInstruction
 
-- (ASByte)opCode { return 1; }
+- (ASNybble)opCode { return 1; }
 - (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs - rhs; }
 
 @end
 
 @implementation DLWSubImmediateInstruction
 
-- (ASByte)opCode { return 9; }
+- (ASNybble)opCode { return 9; }
 - (BOOL)isImmediate { return YES; }
 - (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs - rhs; }
 
@@ -142,7 +142,7 @@
 
 @implementation DLWLoadInstruction
 
-- (ASByte)opCode { return 3; }
+- (ASNybble)opCode { return 3; }
 
 
 - (void)executeInContext:(DLWContext *)ctx {
@@ -157,31 +157,31 @@
 
 @implementation DLWStoreInstruction
 
-- (ASByte)opCode { return 4; }
+- (ASNybble)opCode { return 4; }
 
 @end
 
 @implementation DLWJumpInstruction
 
-- (ASByte)opCode { return 5; }
+- (ASNybble)opCode { return 5; }
 
 @end
 
 @implementation DLWJumpzInstruction
 
-- (ASByte)opCode { return 6; }
+- (ASNybble)opCode { return 6; }
 
 @end
 
 @implementation DLWJumpnInstruction
 
-- (ASByte)opCode { return 7; }
+- (ASNybble)opCode { return 7; }
 
 @end
 
 @implementation DLWJumpoInstruction
 
-- (ASByte)opCode { return 8; }
+- (ASNybble)opCode { return 8; }
 
 @end
 

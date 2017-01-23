@@ -13,7 +13,7 @@
 
 @interface DLWInstruction : PKAST
 - (ASWord)byteCode;
-- (ASByte)opCode;
+- (ASNybble)opCode;
 - (BOOL)isImmediate;
 - (void)executeInContext:(DLWContext *)ctx;
 @end
