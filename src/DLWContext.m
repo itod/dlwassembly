@@ -14,7 +14,7 @@
 #define NEG_IDX 2
 
 @implementation DLWContext {
-    ASValue *_storage;
+    ASValue *_memory;
 }
 
 - (void)dealloc {
@@ -28,14 +28,14 @@
     self.labelTable = [NSMutableDictionary dictionary];
     
     size_t count = pow(2, 8);
-    _storage = calloc(count, sizeof(ASValue));
-    TDAssert(_storage);
+    _memory = calloc(count, sizeof(ASValue));
+    TDAssert(_memory);
 }
 
 
 - (void)tearDown {
-    TDAssert(_storage);
-    free(_storage);
+    TDAssert(_memory);
+    free(_memory);
 
     self.labelTable = nil;
     self.processorStatus = nil;
@@ -43,15 +43,15 @@
 
 
 - (ASValue)valueForMemoryAddress:(ASIndex)addr {
-    TDAssert(_storage);
-    ASValue res = _storage[addr];
+    TDAssert(_memory);
+    ASValue res = _memory[addr];
     return res;
 }
 
 
 - (void)setValue:(ASValue)val forMemoryAddress:(ASIndex)addr {
-    TDAssert(_storage);
-    _storage[addr] = val;
+    TDAssert(_memory);
+    _memory[addr] = val;
 }
 
 
