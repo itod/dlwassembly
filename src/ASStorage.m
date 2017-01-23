@@ -97,7 +97,7 @@
 }
 
 
-- (ASByte)byteatByteIndex:(ASIndex)idx {
+- (ASByte)byteAtByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 4);
     
     ASSize bitOffset = idx * 8;
@@ -109,7 +109,7 @@
 }
 
 
-- (ASWord)wordatByteIndex:(ASIndex)idx {
+- (ASWord)wordAtByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 2);
     
     ASSize bitOffset = idx * 16;
@@ -121,7 +121,7 @@
 }
 
 
-- (ASDword)dwordatByteIndex:(ASIndex)idx {
+- (ASDword)dwordAtByteIndex:(ASIndex)idx {
     NSParameterAssert(0 == idx);
     TDAssertMainThread();
     
@@ -146,22 +146,22 @@
 
 
 - (ASByte)byteValue {
-    return [self byteatByteIndex:0];
+    return [self byteAtByteIndex:0];
 }
 
 
 - (ASWord)wordValue {
-    return [self wordatByteIndex:0];
+    return [self wordAtByteIndex:0];
 }
 
 
 - (ASDword)dwordValue {
-    return [self dwordatByteIndex:0];
+    return [self dwordAtByteIndex:0];
 }
 
 
 - (ASLong)integerValue {
-    ASLong i = [self dwordatByteIndex:0];
+    ASLong i = [self dwordAtByteIndex:0];
     return i;
 }
 
