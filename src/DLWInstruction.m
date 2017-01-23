@@ -69,14 +69,14 @@
     ASInteger arg0 = [self.children[0] evaluateInContext:ctx];
     ASInteger arg1 = [self.children[1] evaluateInContext:ctx];
     
-    ASLong i = [self performWithLhs:arg0 rhs:arg1];
-    ASInteger res = (ASInteger)i;
+    ASLong l = [self performWithLhs:arg0 rhs:arg1];
+    ASInteger i = (ASInteger)l;
     
     // processor status
     {
         BOOL isZero = 0 == i;
-        BOOL isNeg = res < 0;
-        BOOL isOver = i > 127 || i < -128;
+        BOOL isNeg = i < 0;
+        BOOL isOver = l > 127 || l < -128;
 
         ctx.statusZero = isZero;
         ctx.statusOverflow = isOver;
@@ -84,7 +84,7 @@
     }
 
     DLWDestination *dest = self.children[2];
-    [dest setValue:res inContext:ctx];
+    [dest setValue:i inContext:ctx];
 }
 
 @end
