@@ -13,4 +13,4 @@ typedef  int16_t ASInteger;
 typedef  uint8_t ASSize;
 typedef  uint8_t ASIndex;
 
-#define ASValue ASWord
+#define ASValue int8_t

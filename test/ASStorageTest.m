@@ -384,7 +384,7 @@
 #pragma mark DWords
 
 - (void)testWord0 {
-    ASValue val = 0;
+    ASWord val = 0;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -398,7 +398,7 @@
 
 
 - (void)testWord1 {
-    ASValue val = 1;
+    ASWord val = 1;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -418,7 +418,7 @@
 
 
 - (void)testWord2 {
-    ASValue val = 2;
+    ASWord val = 2;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -438,7 +438,7 @@
 
 
 - (void)testWord3 {
-    ASValue val = 3;
+    ASWord val = 3;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -458,7 +458,7 @@
 
 
 - (void)testWord4 {
-    ASValue val = 4;
+    ASWord val = 4;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -478,7 +478,7 @@
 
 
 - (void)testWord5 {
-    ASValue val = 5;
+    ASWord val = 5;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -498,7 +498,7 @@
 
 
 - (void)testWord6 {
-    ASValue val = 6;
+    ASWord val = 6;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -518,7 +518,7 @@
 
 
 - (void)testWord7 {
-    ASValue val = 7;
+    ASWord val = 7;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -538,7 +538,7 @@
 
 
 - (void)testWord8 {
-    ASValue val = 8;
+    ASWord val = 8;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -558,7 +558,7 @@
 
 
 - (void)testWord9 {
-    ASValue val = 9;
+    ASWord val = 9;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -578,7 +578,7 @@
 
 
 - (void)testWord10 {
-    ASValue val = 10;
+    ASWord val = 10;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -598,7 +598,7 @@
 
 
 - (void)testWord11 {
-    ASValue val = 11;
+    ASWord val = 11;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -618,7 +618,7 @@
 
 
 - (void)testWord12 {
-    ASValue val = 12;
+    ASWord val = 12;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -638,7 +638,7 @@
 
 
 - (void)testWord13 {
-    ASValue val = 13;
+    ASWord val = 13;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -658,7 +658,7 @@
 
 
 - (void)testWord14 {
-    ASValue val = 14;
+    ASWord val = 14;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDFalse([stor boolAtBitIndex:0]);
@@ -678,7 +678,7 @@
 
 
 - (void)testWord15 {
-    ASValue val = 15;
+    ASWord val = 15;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
@@ -698,7 +698,7 @@
 
 
 - (void)testWord255 {
-    ASValue val = 255;
+    ASWord val = 255;
     
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:val];
     TDTrue([stor boolAtBitIndex:0]);
