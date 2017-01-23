@@ -12,3 +12,5 @@ typedef uint32_t ASDword;
 typedef  int16_t ASInteger;
 typedef  uint8_t ASSize;
 typedef  uint8_t ASIndex;
+
+#define ASValue ASWord

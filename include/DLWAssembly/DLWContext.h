@@ -16,13 +16,13 @@
 - (void)setUp;
 - (void)tearDown;
 
-- (ASWord)wordForMemoryAddress:(ASIndex)addr;
-- (void)setWord:(ASWord)word forMemoryAddress:(ASIndex)addr;
+- (ASValue)wordForMemoryAddress:(ASIndex)addr;
+- (void)setWord:(ASValue)word forMemoryAddress:(ASIndex)addr;
 
-@property (nonatomic, assign) ASWord registerA;
-@property (nonatomic, assign) ASWord registerB;
-@property (nonatomic, assign) ASWord registerC;
-@property (nonatomic, assign) ASWord registerD;
+@property (nonatomic, assign) ASValue registerA;
+@property (nonatomic, assign) ASValue registerB;
+@property (nonatomic, assign) ASValue registerC;
+@property (nonatomic, assign) ASValue registerD;
 
 @property (nonatomic, retain) ASMutableStorage *processorStatus;
 @property (nonatomic, assign, getter=isStatusZero) BOOL statusZero;
