@@ -65,7 +65,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASValue)127, ctx.registerC);
+    TDEquals((ASInteger)127, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -87,7 +87,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASValue)-128, ctx.registerC);
+    TDEquals((ASInteger)-128, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -109,7 +109,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASValue)0, ctx.registerB);
+    TDEquals((ASInteger)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -131,7 +131,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASValue)-1, ctx.registerB);
+    TDEquals((ASInteger)-1, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -153,7 +153,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASValue)-128, ctx.registerB);
+    TDEquals((ASInteger)-128, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -175,7 +175,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)11, ctx.registerC);
+    TDEquals((ASInteger)11, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -197,7 +197,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)0, ctx.registerC);
+    TDEquals((ASInteger)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -219,7 +219,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)0, ctx.registerC);
+    TDEquals((ASInteger)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -241,7 +241,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)7, ctx.registerC);
+    TDEquals((ASInteger)7, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -263,7 +263,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)-126, ctx.registerA);
+    TDEquals((ASInteger)-126, ctx.registerA);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -285,7 +285,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)-126, ctx.registerA);
+    TDEquals((ASInteger)-126, ctx.registerA);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -308,7 +308,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)8, ctx.registerC);
+    TDEquals((ASInteger)8, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -331,7 +331,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)0, ctx.registerB);
+    TDEquals((ASInteger)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -354,7 +354,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)0, ctx.registerB);
+    TDEquals((ASInteger)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -377,7 +377,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)-127, ctx.registerB);
+    TDEquals((ASInteger)-127, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -399,7 +399,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)9, ctx.registerC);
+    TDEquals((ASInteger)9, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -421,7 +421,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)0, ctx.registerC);
+    TDEquals((ASInteger)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -443,7 +443,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)3, ctx.registerC);
+    TDEquals((ASInteger)3, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -465,7 +465,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASValue)-7, ctx.registerD);
+    TDEquals((ASInteger)-7, ctx.registerD);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -488,14 +488,14 @@
     NSString *str = @"load #12, A;";
     
     ASIndex addr = 12;
-    ASValue val = 47;
+    ASInteger val = 47;
 
     [ctx setValue:val forMemoryAddress:addr];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, ctx.registerA);
+    TDEquals((ASInteger)val, ctx.registerA);
 }
 
 - (void)testLoad_oD108_A {
@@ -503,7 +503,7 @@
     
     ASIndex offset = 108;
     ASIndex addr = 12;
-    ASValue val = 47;
+    ASInteger val = 47;
     
     ctx.registerD = addr;
     [ctx setValue:val forMemoryAddress:(addr + offset)];
@@ -511,7 +511,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, ctx.registerA);
+    TDEquals((ASInteger)val, ctx.registerA);
 }
 
 
@@ -519,7 +519,7 @@
     NSString *str = @"load #A, B;";
     
     ASIndex addr = 17;
-    ASValue val = 3;
+    ASInteger val = 3;
     
     ctx.registerA = addr;
     [ctx setValue:val forMemoryAddress:addr];
@@ -527,14 +527,14 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, ctx.registerB);
+    TDEquals((ASInteger)val, ctx.registerB);
 }
 
 
 - (void)testStore_B_r42 {
     NSString *str = @"store B, #42;";
     
-    ASValue val = 10;
+    ASInteger val = 10;
     ASIndex addr = 42;
 
     ctx.registerB = val;
@@ -542,14 +542,14 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
+    TDEquals((ASInteger)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
 - (void)testStore_C_rD {
     NSString *str = @"store C, #D;";
     
-    ASValue val = 111;
+    ASInteger val = 111;
     ASIndex addr = 88;
     
     ctx.registerC = val;
@@ -558,14 +558,14 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
+    TDEquals((ASInteger)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
 - (void)testStore_44_rA{
     NSString *str = @"store 44, #A;";
     
-    ASValue val = 44;
+    ASInteger val = 44;
     ASIndex addr = 67;
     
     ctx.registerA = addr;
@@ -573,14 +573,14 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
+    TDEquals((ASInteger)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
 - (void)testStore_B_oC102_A {
     NSString *str = @"store B, #(C + 102);";
     
-    ASValue val = 44;
+    ASInteger val = 44;
     ASIndex addr = 67;
     ASIndex offset = 102;
     
@@ -590,7 +590,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx valueForMemoryAddress:(addr + offset)]);
+    TDEquals((ASInteger)val, [ctx valueForMemoryAddress:(addr + offset)]);
 }
 
 @end

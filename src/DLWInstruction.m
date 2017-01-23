@@ -42,7 +42,7 @@
 @implementation DLWAddInstruction
 
 - (ASByte)opCode { return 0; }
-- (ASInteger)performWithLhs:(ASValue)lhs rhs:(ASValue)rhs { return lhs + rhs; }
+- (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs + rhs; }
 
 
 - (ASWord)byteCode {
@@ -66,11 +66,11 @@
 
 - (void)executeInContext:(DLWContext *)ctx {
     TDAssert(3 == [self.children count]);
-    ASValue arg0 = [self.children[0] evaluateInContext:ctx];
-    ASValue arg1 = [self.children[1] evaluateInContext:ctx];
+    ASInteger arg0 = [self.children[0] evaluateInContext:ctx];
+    ASInteger arg1 = [self.children[1] evaluateInContext:ctx];
     
-    ASInteger i = [self performWithLhs:arg0 rhs:arg1];
-    ASValue res = (ASValue)i;
+    ASLong i = [self performWithLhs:arg0 rhs:arg1];
+    ASInteger res = (ASInteger)i;
     
     // processor status
     {
@@ -128,7 +128,7 @@
 @implementation DLWSubInstruction
 
 - (ASByte)opCode { return 1; }
-- (ASInteger)performWithLhs:(ASValue)lhs rhs:(ASValue)rhs { return lhs - rhs; }
+- (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs - rhs; }
 
 @end
 
@@ -136,7 +136,7 @@
 
 - (ASByte)opCode { return 9; }
 - (BOOL)isImmediate { return YES; }
-- (ASInteger)performWithLhs:(ASValue)lhs rhs:(ASValue)rhs { return lhs - rhs; }
+- (ASLong)performWithLhs:(ASInteger)lhs rhs:(ASInteger)rhs { return lhs - rhs; }
 
 @end
 

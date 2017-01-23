@@ -21,7 +21,7 @@
 @property (nonatomic, assign, readwrite) ASByte byteValue;
 @property (nonatomic, assign, readwrite) ASWord wordValue;
 @property (nonatomic, assign, readwrite) ASDword dwordValue;
-@property (nonatomic, assign, readwrite) ASInteger integerValue;
+@property (nonatomic, assign, readwrite) ASLong integerValue;
 
 @property (nonatomic, copy, readonly) NSString *stringValue;
 @end

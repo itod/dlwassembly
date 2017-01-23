@@ -160,8 +160,8 @@
 }
 
 
-- (ASInteger)integerValue {
-    ASInteger i = [self dwordatByteIndex:0];
+- (ASLong)integerValue {
+    ASLong i = [self dwordatByteIndex:0];
     return i;
 }
 

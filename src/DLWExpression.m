@@ -29,7 +29,7 @@
 }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return 0;
 }
@@ -43,8 +43,8 @@
 - (ASByte)byteCode { return (ASByte)self.token.doubleValue; }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
-    return (ASValue)self.token.doubleValue;
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
+    return (ASInteger)self.token.doubleValue;
 }
 
 @end
@@ -79,8 +79,8 @@
 }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
-    ASValue res = 0;
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
+    ASInteger res = 0;
     
     switch (self.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
@@ -110,9 +110,9 @@
 - (ASSize)numBits { return 8; }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
-    ASValue res = [ctx valueForMemoryAddress:addr];
+    ASInteger res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 
@@ -123,7 +123,7 @@
 - (ASSize)numBits { return 2; }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     switch (self.token.tokenKind) {
@@ -144,7 +144,7 @@
             break;
     }
     
-    ASValue res = [ctx valueForMemoryAddress:addr];
+    ASInteger res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 
@@ -155,7 +155,7 @@
 - (ASSize)numBits { return 10; }
 
 
-- (ASValue)evaluateInContext:(DLWContext *)ctx {
+- (ASInteger)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     DLWExpression *regExpr = self.children[0];
@@ -185,7 +185,7 @@
     ASIndex offset = (ASIndex)litExpr.token.doubleValue; // index or word?
     addr += offset;
     
-    ASValue res = [ctx valueForMemoryAddress:addr];
+    ASInteger res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 

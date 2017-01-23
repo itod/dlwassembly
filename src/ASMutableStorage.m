@@ -112,7 +112,7 @@
 }
 
 
-- (void)setIntegerValue:(ASInteger)i {
+- (void)setIntegerValue:(ASLong)i {
     [self setDword:i atByteIndex:0];
 }
 

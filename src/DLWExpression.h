@@ -15,7 +15,7 @@
 - (BOOL)isLiteral;
 //- (ASSize)numBits; // remove?
 - (ASByte)byteCode;
-- (ASValue)evaluateInContext:(DLWContext *)ctx;
+- (ASInteger)evaluateInContext:(DLWContext *)ctx;
 @end
 
 @interface DLWLiteralExpression : DLWExpression

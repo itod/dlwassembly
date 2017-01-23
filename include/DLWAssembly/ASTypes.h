@@ -9,8 +9,7 @@
 typedef  uint8_t ASByte;
 typedef uint16_t ASWord;
 typedef uint32_t ASDword;
-typedef  int16_t ASInteger;
+typedef   int8_t ASInteger;
+typedef  int16_t ASLong;
 typedef  uint8_t ASSize;
 typedef  uint8_t ASIndex;
-
-#define ASValue int8_t
