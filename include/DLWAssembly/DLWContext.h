@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <DLWAssembly/ASTypes.h>
 
+@class ASMutableStorage;
+
 @interface DLWContext : NSObject
 
 - (void)setUp;
@@ -21,6 +23,11 @@
 @property (nonatomic, assign) ASWord registerB;
 @property (nonatomic, assign) ASWord registerC;
 @property (nonatomic, assign) ASWord registerD;
+
+@property (nonatomic, retain) ASMutableStorage *processorStatus;
+@property (nonatomic, assign, getter=isStatusZero) BOOL statusZero;
+@property (nonatomic, assign, getter=isStatusOverflow) BOOL statusOverflow;
+@property (nonatomic, assign, getter=isStatusNegative) BOOL statusNegative;
 
 @property (nonatomic, retain) NSMutableDictionary *labelTable;
 @end

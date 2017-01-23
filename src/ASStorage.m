@@ -137,7 +137,7 @@
 }
 
 
-- (BOOL)boolatBitIndex:(ASIndex)idx {
+- (BOOL)boolAtBitIndex:(ASIndex)idx {
     ASDword mask = (1 << idx);
     ASDword dword = self.dwordValue;
     ASDword result = (dword & mask);
