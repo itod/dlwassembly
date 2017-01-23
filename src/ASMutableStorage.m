@@ -32,7 +32,7 @@
 }
 
 
-- (void)setWord:(ASWord)word atByteIndex:(ASIndex)idx {
+- (void)setValue:(ASWord)word atByteIndex:(ASIndex)idx {
     NSParameterAssert(idx < 2);
 
     ASSize bitOffset = idx * 16;
@@ -103,7 +103,7 @@
 
 
 - (void)setWordValue:(ASWord)word {
-    [self setWord:word atByteIndex:0];
+    [self setValue:word atByteIndex:0];
 }
 
 

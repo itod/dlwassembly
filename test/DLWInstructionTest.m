@@ -468,7 +468,7 @@
     ASIndex addr = 12;
     ASValue val = 47;
 
-    [ctx setWord:val forMemoryAddress:addr];
+    [ctx setValue:val forMemoryAddress:addr];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
@@ -484,7 +484,7 @@
     ASValue val = 47;
     
     ctx.registerD = addr;
-    [ctx setWord:val forMemoryAddress:(addr + offset)];
+    [ctx setValue:val forMemoryAddress:(addr + offset)];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
@@ -500,7 +500,7 @@
     ASValue val = 3;
     
     ctx.registerA = addr;
-    [ctx setWord:val forMemoryAddress:addr];
+    [ctx setValue:val forMemoryAddress:addr];
     
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
@@ -520,7 +520,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx wordForMemoryAddress:addr]);
+    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
@@ -536,7 +536,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx wordForMemoryAddress:addr]);
+    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
@@ -551,7 +551,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx wordForMemoryAddress:addr]);
+    TDEquals((ASValue)val, [ctx valueForMemoryAddress:addr]);
 }
 
 
@@ -568,7 +568,7 @@
     NSArray *prog = [p parseString:str error:nil];
     [exec _execute:prog];
     
-    TDEquals((ASValue)val, [ctx wordForMemoryAddress:(addr + offset)]);
+    TDEquals((ASValue)val, [ctx valueForMemoryAddress:(addr + offset)]);
 }
 
 @end

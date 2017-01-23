@@ -84,7 +84,7 @@
     }
 
     DLWDestination *dest = self.children[2];
-    [dest setWord:res inContext:ctx];
+    [dest setValue:res inContext:ctx];
 }
 
 @end
@@ -150,7 +150,7 @@
     ASWord val = [self.children[0] evaluateInContext:ctx];
     DLWDestination *dest = self.children[1];
     
-    [dest setWord:val inContext:ctx];
+    [dest setValue:val inContext:ctx];
 }
 
 @end

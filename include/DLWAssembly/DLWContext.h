@@ -16,8 +16,8 @@
 - (void)setUp;
 - (void)tearDown;
 
-- (ASValue)wordForMemoryAddress:(ASIndex)addr;
-- (void)setWord:(ASValue)word forMemoryAddress:(ASIndex)addr;
+- (ASValue)valueForMemoryAddress:(ASIndex)addr;
+- (void)setValue:(ASValue)val forMemoryAddress:(ASIndex)addr;
 
 @property (nonatomic, assign) ASValue registerA;
 @property (nonatomic, assign) ASValue registerB;

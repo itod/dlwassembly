@@ -11,7 +11,7 @@
 @interface ASMutableStorage : ASStorage
 
 - (void)setByte:(ASByte)byte atByteIndex:(ASIndex)idx;
-- (void)setWord:(ASWord)word atByteIndex:(ASIndex)idx;
+- (void)setValue:(ASWord)word atByteIndex:(ASIndex)idx;
 - (void)setDword:(ASDword)dword atByteIndex:(ASIndex)idx;
 
 - (void)setNybble:(ASByte)byte atBitIndex:(ASIndex)idx;

@@ -112,7 +112,7 @@
 
 - (ASValue)evaluateInContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
-    ASValue res = [ctx wordForMemoryAddress:addr];
+    ASValue res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 
@@ -144,7 +144,7 @@
             break;
     }
     
-    ASValue res = [ctx wordForMemoryAddress:addr];
+    ASValue res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 
@@ -185,7 +185,7 @@
     ASIndex offset = (ASIndex)litExpr.token.doubleValue; // index or word?
     addr += offset;
     
-    ASValue res = [ctx wordForMemoryAddress:addr];
+    ASValue res = [ctx valueForMemoryAddress:addr];
     return res;
 }
 

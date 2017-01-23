@@ -19,7 +19,7 @@
 }
 
 
-- (void)setWord:(ASValue)word inContext:(DLWContext *)ctx {
+- (void)setValue:(ASValue)val inContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
 }
 
@@ -52,19 +52,19 @@
 }
 
 
-- (void)setWord:(ASValue)word inContext:(DLWContext *)ctx {
+- (void)setValue:(ASValue)val inContext:(DLWContext *)ctx {
     switch (self.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
-            ctx.registerA = word;
+            ctx.registerA = val;
             break;
         case DLWPARSER_TOKEN_KIND_B:
-            ctx.registerB = word;
+            ctx.registerB = val;
             break;
         case DLWPARSER_TOKEN_KIND_C:
-            ctx.registerC = word;
+            ctx.registerC = val;
             break;
         case DLWPARSER_TOKEN_KIND_D:
-            ctx.registerD = word;
+            ctx.registerD = val;
             break;
         default:
             TDAssert(0);
@@ -76,16 +76,16 @@
 
 @implementation DLWMemoryDestination
 
-- (void)setWord:(ASValue)word inContext:(DLWContext *)ctx {
+- (void)setValue:(ASValue)val inContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
-    [ctx setWord:word forMemoryAddress:addr];
+    [ctx setValue:val forMemoryAddress:addr];
 }
 
 @end
 
 @implementation DLWIndirectionDestination
 
-- (void)setWord:(ASValue)word inContext:(DLWContext *)ctx {
+- (void)setValue:(ASValue)val inContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     switch (self.token.tokenKind) {
@@ -106,14 +106,14 @@
             break;
     }
 
-    [ctx setWord:word forMemoryAddress:addr];
+    [ctx setValue:val forMemoryAddress:addr];
 }
 
 @end
 
 @implementation DLWOffsetDestination
 
-- (void)setWord:(ASValue)word inContext:(DLWContext *)ctx {
+- (void)setValue:(ASValue)val inContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     DLWExpression *reg = self.children[0];
@@ -139,7 +139,7 @@
     ASIndex offset = (ASIndex)lit.token.doubleValue; // index or word?
     addr += offset;
     
-    [ctx setWord:word forMemoryAddress:addr];
+    [ctx setValue:val forMemoryAddress:addr];
 }
 
 @end
