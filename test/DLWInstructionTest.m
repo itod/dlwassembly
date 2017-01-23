@@ -144,6 +144,50 @@
 }
 
 
+- (void)testAdd_B_127_C_ZERO {
+    NSString *str = @"add B, 127, C;";
+    
+    ctx.registerB = -127;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)0, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_0110_0111_1111", ASBinaryStringFromWord(code));
+    
+    TDTrue(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testAdd_B_n127_C_ZERO {
+    NSString *str = @"add B, -127, C;";
+    
+    ctx.registerB = 127;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)0, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_0110_1000_0001", ASBinaryStringFromWord(code));
+    
+    TDTrue(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
+}
+
+
 - (void)testAdd_5_B_C {
     NSString *str = @"add 5, B, C;";
     
@@ -163,6 +207,50 @@
     TDFalse(ctx.isStatusZero);
     TDFalse(ctx.isStatusOverflow);
     TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testAdd_1_D_A_NEG {
+    NSString *str = @"add 1, D, A;";
+    
+    ctx.registerD = -127;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)-126, ctx.registerA);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_1100_0000_0001", ASBinaryStringFromWord(code));
+    
+    TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDTrue(ctx.isStatusNegative);
+}
+
+
+- (void)testAdd_n127_D_A_NEG {
+    NSString *str = @"add -127, D, A;";
+    
+    ctx.registerD = 1;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)-126, ctx.registerA);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1000_1100_1000_0001", ASBinaryStringFromWord(code));
+    
+    TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDTrue(ctx.isStatusNegative);
 }
 
 
