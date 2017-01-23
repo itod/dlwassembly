@@ -87,7 +87,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASInteger)-128, ctx.registerC);
+    TDEquals((ASByte)-128, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -109,7 +109,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASInteger)0, ctx.registerB);
+    TDEquals((ASByte)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -131,7 +131,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASInteger)-1, ctx.registerB);
+    TDEquals((ASByte)-1, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -153,7 +153,7 @@
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASInteger)-128, ctx.registerB);
+    TDEquals((ASByte)-128, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -175,7 +175,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)11, ctx.registerC);
+    TDEquals((ASByte)11, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -197,7 +197,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)0, ctx.registerC);
+    TDEquals((ASByte)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -219,7 +219,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)0, ctx.registerC);
+    TDEquals((ASByte)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -241,7 +241,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)7, ctx.registerC);
+    TDEquals((ASByte)7, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -263,7 +263,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)-126, ctx.registerA);
+    TDEquals((ASByte)-126, ctx.registerA);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -285,7 +285,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)-126, ctx.registerA);
+    TDEquals((ASByte)-126, ctx.registerA);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -308,7 +308,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)8, ctx.registerC);
+    TDEquals((ASByte)8, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -331,7 +331,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)0, ctx.registerB);
+    TDEquals((ASByte)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -354,7 +354,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)0, ctx.registerB);
+    TDEquals((ASByte)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -377,7 +377,7 @@
     TDFalse([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)-127, ctx.registerB);
+    TDEquals((ASByte)-127, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
@@ -399,7 +399,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)9, ctx.registerC);
+    TDEquals((ASByte)9, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -421,7 +421,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)0, ctx.registerC);
+    TDEquals((ASByte)0, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -443,7 +443,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)3, ctx.registerC);
+    TDEquals((ASByte)3, ctx.registerC);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);
@@ -465,7 +465,7 @@
     TDTrue([prog[0] isImmediate]);
     [exec _execute:prog];
     
-    TDEquals((ASInteger)-7, ctx.registerD);
+    TDEquals((ASByte)-7, ctx.registerD);
     
     DLWInstruction *instr = prog[0];
     TDTrue([instr isImmediate]);

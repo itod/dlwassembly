@@ -14,7 +14,7 @@
 @interface DLWExpression : PKAST
 - (BOOL)isLiteral;
 - (ASByte)byteCode;
-- (ASInteger)evaluateInContext:(DLWContext *)ctx;
+- (ASByte)evaluateInContext:(DLWContext *)ctx;
 @end
 
 @interface DLWLiteralExpression : DLWExpression

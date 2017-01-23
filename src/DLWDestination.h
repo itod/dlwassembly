@@ -13,7 +13,7 @@
 
 @interface DLWDestination : PKAST
 - (ASByte)byteCode;
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx;
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx;
 @end
 
 @interface DLWRegisterDestination : DLWDestination

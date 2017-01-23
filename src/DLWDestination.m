@@ -19,7 +19,7 @@
 }
 
 
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx {
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx {
     NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
 }
 
@@ -52,7 +52,7 @@
 }
 
 
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx {
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx {
     switch (self.token.tokenKind) {
         case DLWPARSER_TOKEN_KIND_A:
             ctx.registerA = val;
@@ -76,7 +76,7 @@
 
 @implementation DLWMemoryDestination
 
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx {
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx {
     ASIndex addr = (ASIndex)self.token.doubleValue;
     [ctx setValue:val forMemoryAddress:addr];
 }
@@ -85,7 +85,7 @@
 
 @implementation DLWIndirectionDestination
 
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx {
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     switch (self.token.tokenKind) {
@@ -113,7 +113,7 @@
 
 @implementation DLWOffsetDestination
 
-- (void)setValue:(ASInteger)val inContext:(DLWContext *)ctx {
+- (void)setValue:(ASByte)val inContext:(DLWContext *)ctx {
     ASIndex addr = 0;
     
     DLWExpression *reg = self.children[0];
