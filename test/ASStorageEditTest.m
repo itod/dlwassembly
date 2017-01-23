@@ -147,14 +147,14 @@
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 atBitIndex:8];
     TDEqualObjects(@"%0000_0001_0000_0000", [stor asBinaryString]);
-    TDEquals(256, stor.integerValue);
+    TDEquals(256, stor.longValue);
 }
 
 - (void)testWordNybble3 {
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     [stor setNybble:1 atBitIndex:12];
     TDEqualObjects(@"%0001_0000_0000_0000", [stor asBinaryString]);
-    TDEquals(4096, stor.integerValue);
+    TDEquals(4096, stor.longValue);
 }
 
 #pragma mark -

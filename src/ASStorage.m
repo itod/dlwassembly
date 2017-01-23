@@ -50,7 +50,7 @@
 
 
 - (NSString *)asDecimalString {
-    NSString *str = [NSString stringWithFormat:@"%d", self.integerValue];
+    NSString *str = [NSString stringWithFormat:@"%d", self.longValue];
     return str;
 }
 
@@ -160,9 +160,15 @@
 }
 
 
-- (ASLong)integerValue {
-    ASLong i = [self dwordAtByteIndex:0];
+- (ASInteger)integerValue {
+    ASInteger i = [self dwordAtByteIndex:0];
     return i;
+}
+
+
+- (ASLong)longValue {
+    ASLong l = [self dwordAtByteIndex:0];
+    return l;
 }
 
 

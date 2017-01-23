@@ -34,7 +34,8 @@
 @property (nonatomic, assign, readonly) ASByte byteValue;
 @property (nonatomic, assign, readonly) ASWord wordValue;
 @property (nonatomic, assign, readonly) ASDword dwordValue;
-@property (nonatomic, assign, readonly) ASLong integerValue;
+@property (nonatomic, assign, readonly) ASInteger integerValue;
+@property (nonatomic, assign, readonly) ASLong longValue;
 
 @property (nonatomic, copy, readonly) NSString *stringValue;
 @end

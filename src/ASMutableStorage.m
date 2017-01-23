@@ -112,13 +112,19 @@
 }
 
 
-- (void)setIntegerValue:(ASLong)i {
+- (void)setIntegerValue:(ASInteger)i {
     [self setDword:i atByteIndex:0];
+}
+
+
+- (void)setLongValue:(ASLong)l {
+    [self setDword:l atByteIndex:0];
 }
 
 @dynamic byteValue;
 @dynamic wordValue;
 @dynamic dwordValue;
 @dynamic integerValue;
+@dynamic longValue;
 @dynamic stringValue;
 @end
