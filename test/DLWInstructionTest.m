@@ -277,6 +277,75 @@
 }
 
 
+- (void)testSub_D_C_B_ZERO {
+    NSString *str = @"sub D, C, B;";
+    
+    ctx.registerD = 1;
+    ctx.registerC = 1;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDFalse([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)0, ctx.registerB);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0001_1110_0100_0000", ASBinaryStringFromWord(code));
+    
+    TDTrue(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testSub_D_B_A_ZERO {
+    NSString *str = @"sub D, B, A;";
+    
+    ctx.registerD = 0;
+    ctx.registerC = 0;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDFalse([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)0, ctx.registerB);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0001_1101_0000_0000", ASBinaryStringFromWord(code));
+    
+    TDTrue(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testSub_C_D_B_NEG {
+    NSString *str = @"sub C, D, B;";
+    
+    ctx.registerC = -127;
+    ctx.registerD = 0;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDFalse([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)-127, ctx.registerB);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0001_1011_0100_0000", ASBinaryStringFromWord(code));
+    
+    TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDTrue(ctx.isStatusNegative);
+}
+
+
 - (void)testSub_A_1_C {
     NSString *str = @"sub A, 1, C;";
     
@@ -294,6 +363,28 @@
     TDEqualObjects(@"%1001_0010_0000_0001", ASBinaryStringFromWord(code));
     
     TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testSub_A_1_C_ZERO {
+    NSString *str = @"sub A, -1, C;";
+    
+    ctx.registerA = -1;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)0, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1001_0010_1111_1111", ASBinaryStringFromWord(code));
+    
+    TDTrue(ctx.isStatusZero);
     TDFalse(ctx.isStatusOverflow);
     TDFalse(ctx.isStatusNegative);
 }
@@ -318,6 +409,34 @@
     TDFalse(ctx.isStatusZero);
     TDFalse(ctx.isStatusOverflow);
     TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testSub_n5_B_D_NEG {
+    NSString *str = @"sub -5, B, D;";
+    
+    ctx.registerB = 2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    TDTrue([prog[0] isImmediate]);
+    [exec _execute:prog];
+    
+    TDEquals((ASWord)-7, ctx.registerD);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1001_0111_1111_1011", ASBinaryStringFromWord(code));
+    
+//    1111 -1
+//    1110 -2
+//    1101 -3
+//    1100 -4
+//    1011 -5
+    
+    TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDTrue(ctx.isStatusNegative);
 }
 
 
