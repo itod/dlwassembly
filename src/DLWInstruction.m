@@ -41,11 +41,7 @@
 @implementation DLWAddInstruction
 
 - (ASByte)opCode { return 0; }
-
-
-- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
-    return lhs + rhs;
-}
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs { return lhs + rhs; }
 
 
 - (ASWord)byteCode {
@@ -119,11 +115,7 @@
 @implementation DLWSubInstruction
 
 - (ASByte)opCode { return 1; }
-
-
-- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
-    return lhs - rhs;
-}
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs { return lhs - rhs; }
 
 @end
 
@@ -131,11 +123,7 @@
 
 - (ASByte)opCode { return 9; }
 - (BOOL)isImmediate { return YES; }
-
-
-- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
-    return lhs - rhs;
-}
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs { return lhs - rhs; }
 
 @end
 
