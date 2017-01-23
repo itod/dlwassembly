@@ -103,6 +103,7 @@
     
     DLWExpression *src0 = self.children[0];
     DLWExpression *src1 = self.children[1];
+    DLWExpression *dest = self.children[2];
     DLWExpression *litSrc = nil;
     
     // reg src
@@ -115,7 +116,7 @@
     }
     
     // dest
-    [stor setNybblet:[(DLWExpression *)self.children[2] byteCode] atBitIndex:8];
+    [stor setNybblet:[dest byteCode] atBitIndex:8];
 
     // lit src
     [stor setByte:[litSrc byteCode] atByteIndex:0];
