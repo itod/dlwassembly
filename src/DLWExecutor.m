@@ -48,8 +48,8 @@
     NSParameterAssert(program);
     TDAssert(_context);
     
-    for (DLWInstruction *Instruction in program) {
-        [Instruction executeInContext:_context];
+    for (DLWInstruction *instr in program) {
+        [instr executeInContext:_context];
     }
 }
 
