@@ -43,6 +43,11 @@
 - (ASByte)opCode { return 0; }
 
 
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
+    return lhs + rhs;
+}
+
+
 - (ASWord)byteCode {
     ASMutableStorage *stor = [ASMutableStorage storageWithWord:0];
     
@@ -67,7 +72,7 @@
     ASWord arg0 = [self.children[0] evaluateInContext:ctx];
     ASWord arg1 = [self.children[1] evaluateInContext:ctx];
     
-    ASWord res = arg0 + arg1;
+    ASWord res = [self performWithLhs:arg0 rhs:arg1];
     
     DLWDestination *dest = self.children[2];
     [dest setWord:res inContext:ctx];
@@ -116,15 +121,8 @@
 - (ASByte)opCode { return 1; }
 
 
-- (void)executeInContext:(DLWContext *)ctx {
-    TDAssert(3 == [self.children count]);
-    ASWord arg0 = [self.children[0] evaluateInContext:ctx];
-    ASWord arg1 = [self.children[1] evaluateInContext:ctx];
-    
-    ASWord res = arg0 - arg1;
-    
-    DLWDestination *dest = self.children[2];
-    [dest setWord:res inContext:ctx];
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
+    return lhs - rhs;
 }
 
 @end
@@ -133,6 +131,11 @@
 
 - (ASByte)opCode { return 9; }
 - (BOOL)isImmediate { return YES; }
+
+
+- (ASWord)performWithLhs:(ASWord)lhs rhs:(ASWord)rhs {
+    return lhs - rhs;
+}
 
 @end
 

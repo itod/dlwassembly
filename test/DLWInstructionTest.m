@@ -120,16 +120,6 @@
 }
 
 
-//- (void)testSub_2_1_B {
-//    NSString *str = @"sub 2, 1, B;";
-//    
-//    NSArray *prog = [p parseString:str error:nil];
-//    [exec _execute:prog];
-//    
-//    TDEquals((ASWord)1, ctx.registerB);
-//}
-
-
 - (void)testSub_A_B_C {
     NSString *str = @"sub A, B, C;";
     
@@ -141,6 +131,11 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)8, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0001_0001_1000_0000", ASBinaryStringFromWord(code));
 }
 
 
@@ -154,6 +149,11 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)9, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1001_0010_0000_0001", ASBinaryStringFromWord(code));
 }
 
 
@@ -167,6 +167,11 @@
     [exec _execute:prog];
     
     TDEquals((ASWord)3, ctx.registerC);
+    
+    DLWInstruction *instr = prog[0];
+    TDTrue([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%1001_0110_0000_0101", ASBinaryStringFromWord(code));
 }
 
 

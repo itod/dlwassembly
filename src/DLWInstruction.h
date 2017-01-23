@@ -30,7 +30,7 @@
 
 @end
 
-@interface DLWSubImmediateInstruction : DLWSubInstruction
+@interface DLWSubImmediateInstruction : DLWAddImmediateInstruction
 
 @end
 

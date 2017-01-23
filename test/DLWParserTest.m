@@ -78,7 +78,7 @@
     
     {
         DLWInstruction *instr = prog[0];
-        TDTrue([instr isKindOfClass:[DLWSubInstruction class]]);
+        TDTrue([instr isKindOfClass:[DLWAddInstruction class]]);
         TDEquals(3, [instr.children count]);
         TDTrue([instr.children[0] isKindOfClass:[DLWExpression class]]);
         TDTrue([instr.children[1] isKindOfClass:[DLWExpression class]]);
