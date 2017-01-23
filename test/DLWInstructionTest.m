@@ -78,25 +78,47 @@
 }
 
 
-- (void)testAdd_A_B_C_ZERO {
-    NSString *str = @"add A, B, C;";
+- (void)testAdd_C_A_B_ZERO {
+    NSString *str = @"add C, A, B;";
     
-    ctx.registerA = 1;
-    ctx.registerB = -1;
+    ctx.registerC = 1;
+    ctx.registerA = -1;
     
     NSArray *prog = [p parseString:str error:nil];
     
     [exec _execute:prog];
-    TDEquals((ASWord)0, ctx.registerC);
+    TDEquals((ASWord)0, ctx.registerB);
     
     DLWInstruction *instr = prog[0];
     TDFalse([instr isImmediate]);
     ASWord code = [instr byteCode];
-    TDEqualObjects(@"%0000_0001_1000_0000", ASBinaryStringFromWord(code));
+    TDEqualObjects(@"%0000_1000_0100_0000", ASBinaryStringFromWord(code));
     
     TDTrue(ctx.isStatusZero);
     TDFalse(ctx.isStatusOverflow);
     TDFalse(ctx.isStatusNegative);
+}
+
+
+- (void)testAdd_D_A_B_NEG {
+    NSString *str = @"add D, A, B;";
+    
+    ctx.registerD = 1;
+    ctx.registerA = -2;
+    
+    NSArray *prog = [p parseString:str error:nil];
+    
+    [exec _execute:prog];
+    TDEquals((ASWord)-1, ctx.registerB);
+    
+    DLWInstruction *instr = prog[0];
+    TDFalse([instr isImmediate]);
+    ASWord code = [instr byteCode];
+    TDEqualObjects(@"%0000_1100_0100_0000", ASBinaryStringFromWord(code));
+    
+    TDFalse(ctx.isStatusZero);
+    TDFalse(ctx.isStatusOverflow);
+    TDTrue(ctx.isStatusNegative);
 }
 
 
