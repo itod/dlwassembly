@@ -117,7 +117,7 @@
     } else if ([self predicts:DLWPARSER_TOKEN_KIND_JUMPO, 0]) {
         [self jumpoInstr_]; 
     } else {
-        [self raise:@"No viable alternative found in rule 'Instr'."];
+        [self raise:@"No viable alternative found in rule 'instr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchInstr:)];
@@ -380,24 +380,24 @@
     [self fireDelegateSelector:@selector(parser:didMatchOffset:)];
 }
 
-- (void)label_ {
+- (void)labelExpr_ {
     
-    [self testAndThrow:(id)^{ return islower([LS(1) characterAtIndex:0]); }];
+    [self testAndThrow:(id)^{ return islower([LS(1) characterAtIndex:0]); }]; 
     [self matchWord:NO]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchLabel:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLabelExpr:)];
 }
 
 - (void)loc_ {
     
-    if ([self speculate:^{ [self label_]; }]) {
-        [self label_]; 
-    } else if ([self speculate:^{ [self addr_]; }]) {
-        [self addr_]; 
-    } else if ([self speculate:^{ [self ref_]; }]) {
-        [self ref_]; 
-    } else if ([self speculate:^{ [self offset_]; }]) {
-        [self offset_]; 
+    if ([self speculate:^{ [self labelExpr_]; }]) {
+        [self labelExpr_]; 
+    } else if ([self speculate:^{ [self addrExpr_]; }]) {
+        [self addrExpr_]; 
+    } else if ([self speculate:^{ [self refExpr_]; }]) {
+        [self refExpr_]; 
+    } else if ([self speculate:^{ [self offsetExpr_]; }]) {
+        [self offsetExpr_]; 
     } else {
         [self raise:@"No viable alternative found in rule 'loc'."];
     }

@@ -64,5 +64,5 @@ addr = '#'! Number;
 ref = '#'! reg;
 offset = '#'! '(' regExpr '+'! litExpr ')'!;
 
-label = { islower([LS(1) characterAtIndex:0]) }? Word;
-loc = label | addr | ref | offset;
+labelExpr = { islower([LS(1) characterAtIndex:0]) }? Word;
+loc = labelExpr | addrExpr | refExpr | offsetExpr;
